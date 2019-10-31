@@ -94,3 +94,18 @@ Add OptaPlanner bom to `pom.xml`:
   </dependency>
 </dependencies>
 ```
+
+Files:
+
+```sh
+$ touch .gitignore README.md CONTRIBUTING.md
+$ mkdir -p doc/plans tmp
+```
+
+Classes:
+
+```sh
+subdir=java/com/joelparkerhenderson/demo/optaplanner
+touch src/main/$subdir/{App,Maker,MakerSet,Taker,TakerSet,Matcher,Solution}.java
+touch src/test/$subdir/{App,Maker,MakerSet,Taker,TakerSet,Matcher,Solution}Test.java
+```
