@@ -1,12 +1,19 @@
 # Demo OptaPlanner
 
-* [](#)
+* [Setup](#setup)
+  * [macOS with Homebrew](#macos-with-homebrew)
+  * [Preflight](#preflight)
+  * [Build and run](#build-and-run)
+* [Create](#create)
+  * [Maven](#maven)
+  * [OptaPlanner](#optaplanner)
+  * [Placeholders](#placeholders)
 
 
 ## Setup
 
 
-### Setup with macOS with Homebrew
+### macOS with Homebrew
 
 ```sh
 $ brew install adoptopenjdk
@@ -59,6 +66,11 @@ Hello World!
 
 ## Create
 
+Create a skeleton app with Maven, OptaPlanner, and placeholders for files and classes.
+
+
+### Maven
+
 Maven:
 
 ```sh
@@ -69,6 +81,9 @@ $ mvn archetype:generate \
   -DarchetypeVersion=1.4 \
   -DinteractiveMode=false
 ```
+
+
+### OptaPlanner
 
 Add OptaPlanner bom to `pom.xml`:
 
@@ -94,6 +109,9 @@ Add OptaPlanner bom to `pom.xml`:
   </dependency>
 </dependencies>
 ```
+
+
+### Placeholders
 
 Files:
 
