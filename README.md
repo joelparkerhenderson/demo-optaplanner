@@ -27,6 +27,23 @@ $ mvn -v
 Apache Maven 3.6.2
 ```
 
+### Build and run
+
+Build:
+
+```sh
+$ mvn package
+```
+
+Run:
+
+```sh
+$ java -cp \
+  target/demo_optaplanner-1.0-SNAPSHOT.jar \
+  com.joelparkerhenderson.demo.optaplanner.App
+Hello World!
+```
+
 
 ## Create
 
