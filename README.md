@@ -40,3 +40,28 @@ $ mvn archetype:generate \
   -DarchetypeVersion=1.4 \
   -DinteractiveMode=false
 ```
+
+Add OptaPlanner bom to `pom.xml`:
+
+```xml
+<dependencyManagement>
+  <dependencies>
+    …
+    <dependency>
+      <groupId>org.optaplanner</groupId>
+      <artifactId>optaplanner-bom</artifactId>
+      <type>pom</type>
+      <version>7.28.0.Final</version>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+
+<dependencies>
+  …
+  <dependency>
+    <groupId>org.optaplanner</groupId>
+    <artifactId>optaplanner-core</artifactId>
+  </dependency>
+</dependencies>
+```
