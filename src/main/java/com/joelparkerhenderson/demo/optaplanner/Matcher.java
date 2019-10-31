@@ -1,5 +1,11 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
+
+@PlanningEntity
 public class Matcher {
 
     private String name;
@@ -14,6 +20,8 @@ public class Matcher {
 
     private Maker maker;
 
+    // Ref corresponds to the ref on Solution.makers().
+    @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderMakers"}) 
     public Maker getMaker(){
         return maker;
     }
@@ -23,7 +31,9 @@ public class Matcher {
     }
 
     private Taker taker;
-
+    
+    // Ref corresponds to the ref on Solution.takers().
+    @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderTakers"}) 
     public Taker getTaker(){
         return taker;
     }

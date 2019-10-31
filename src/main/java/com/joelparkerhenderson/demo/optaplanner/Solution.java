@@ -1,7 +1,14 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
+import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
+import org.optaplanner.core.api.domain.solution.PlanningSolution;
+import org.optaplanner.core.api.domain.solution.PlanningScore;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
+@PlanningSolution
 public class Solution {
 
     private String name;
@@ -14,18 +21,21 @@ public class Solution {
         this.name = name;
     }
 
-    private int score;
+    @PlanningScore
+    private HardSoftScore score;
 
-    public int getScore() {
+    public HardSoftScore getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(HardSoftScore score) {
         this.score = score;
     }
 
     private Set<Maker> makers;
 
+    @ValueRangeProvider(id = "ValueRangeProviderMakers")
+    @ProblemFactCollectionProperty
     public Set<Maker> getMakers() {
         return makers;
     }
@@ -36,6 +46,8 @@ public class Solution {
 
     private Set<Taker> takers;
 
+    @ValueRangeProvider(id = "ValueRangeProviderTakers")
+    @ProblemFactCollectionProperty
     public Set<Taker> getTakers() {
         return takers;
     }
@@ -46,6 +58,7 @@ public class Solution {
 
     private Set<Matcher> matchers;
 
+    @PlanningEntityCollectionProperty
     public Set<Matcher> getMatchers() {
         return matchers;
     }

@@ -3,8 +3,9 @@ package com.joelparkerhenderson.demo.optaplanner;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import java.util.*;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class SolutionTest 
+public class SolutionTest
 {
     @Test
     public void name()
@@ -19,7 +20,7 @@ public class SolutionTest
     public void score()
     {
         final Solution o = new Solution();
-        final int score = 123;
+        final HardSoftScore score = HardSoftScore.of(123,456);
         o.setScore(score);
         assertSame(score, o.getScore());
     }
