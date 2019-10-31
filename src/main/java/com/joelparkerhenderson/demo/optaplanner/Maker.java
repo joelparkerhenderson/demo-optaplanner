@@ -1,4 +1,4 @@
-package org.nonprofitnetworks.homer;
+package com.joelparkerhenderson.demo.optaplanner;
 
 public class Maker {
 

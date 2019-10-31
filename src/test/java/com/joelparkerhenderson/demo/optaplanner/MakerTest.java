@@ -1,4 +1,4 @@
-package org.nonprofitnetworks.homer;
+package com.joelparkerhenderson.demo.optaplanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
