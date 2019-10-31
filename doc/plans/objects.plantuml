@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+
+object Solution {
+    name
+    score
+    makers
+    takers
+    matchers
+}
+
+object Matcher {
+    name
+    maker
+    taker
+}
+
+object Maker {
+    name
+}
+
+object Taker {
+    name
+}
+
+Solution o-- Matcher
+Matcher o-- Maker
+Matcher o-- Taker
+
+@enduml

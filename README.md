@@ -2,14 +2,18 @@
 
 * [](#)
 
+
 ## Setup
+
 
 ### Setup with macOS with Homebrew
 
 ```sh
 $ brew install adoptopenjdk
 $ brew install maven
+$ brew install plantuml
 ```
+
 
 ### Preflight
 
@@ -26,6 +30,14 @@ Maven:
 $ mvn -v
 Apache Maven 3.6.2
 ```
+
+PlantUML for documentation:
+
+```sh
+$ plantuml -version
+PlantUML version 1.2019.11
+```
+
 
 ### Build and run
 
