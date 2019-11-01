@@ -1,6 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import org.optaplanner.core.api.solver.SolverFactory;
 
 /**
  * Hello world!
@@ -46,6 +47,8 @@ public class App
         for(Matcher matcher: matchers){
             System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
         }
+
+        SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
 
     }
 }
