@@ -35,4 +35,14 @@ public class Scorer implements EasyScoreCalculator<Solution> {
         return score;
     }       
 
+    public HardSoftScore calculateScoreWithMaker(Maker maker) {
+        HardSoftScore score = HardSoftScore.of(0,0);
+        return score;
+    }       
+
+    public HardSoftScore calculateScoreWithTaker(Taker taker) {
+        HardSoftScore score = HardSoftScore.of(0,0);
+        return score;
+    }       
+
 }

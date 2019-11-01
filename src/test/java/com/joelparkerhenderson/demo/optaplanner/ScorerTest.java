@@ -83,4 +83,24 @@ public class ScorerTest
         assertEquals(exp, act);
     }
 
+    @Test
+    public void calculateScoreWithMaker()
+    {
+        final Scorer o = new Scorer();
+        final Maker maker = new Maker();
+        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore act = o.calculateScoreWithMaker(maker);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithTaker()
+    {
+        final Scorer o = new Scorer();
+        final Taker taker = new Taker();
+        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore act = o.calculateScoreWithTaker(taker);
+        assertEquals(exp, act);
+    }
+
 }
