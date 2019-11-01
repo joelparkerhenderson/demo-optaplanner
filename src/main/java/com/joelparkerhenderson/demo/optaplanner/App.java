@@ -1,6 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 
 /**
@@ -49,6 +50,7 @@ public class App
         }
 
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
+        Solver<Solution> solver = solverFactory.buildSolver();
 
     }
 }
