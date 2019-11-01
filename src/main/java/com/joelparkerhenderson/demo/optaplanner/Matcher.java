@@ -20,8 +20,6 @@ public class Matcher {
 
     private Maker maker;
 
-    // Ref corresponds to the ref on Solution.makers().
-    @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderMakers"}) 
     public Maker getMaker(){
         return maker;
     }
