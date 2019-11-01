@@ -45,11 +45,11 @@ public class ScorerTest
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
-        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA);
-        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB);
+        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA); assertNotEquals(HardSoftScore.of(0,0), matcherAScore);
+        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB); assertNotEquals(HardSoftScore.of(0,0), matcherBScore);
 
         final HardSoftScore exp = HardSoftScore.of(0,0).add(matcherAScore).add(matcherBScore);
-        final HardSoftScore act = o.calculateScore(solution);
+        final HardSoftScore act = o.calculateScore(solution);        
         assertEquals(exp, act);
     }
 
