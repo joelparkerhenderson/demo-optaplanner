@@ -7,13 +7,14 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 public class Scorer implements EasyScoreCalculator<Solution> {
 
     public HardSoftScore calculateScore(Solution solution) {
-        final HardSoftScore score = HardSoftScore.of(0,0);
+        HardSoftScore score = HardSoftScore.of(0,0);
 
         final Set<Maker> makers = solution.getMakers(); assert makers != null : " makers is null";
         final Set<Taker> takers = solution.getTakers(); assert takers != null : " makers is null";
         final Set<Matcher> matchers = solution.getMatchers(); assert matchers != null : " matchers is null";
 
         for(Matcher matcher: matchers){
+            score = score.add(this.calculateScoreWithMatcher(matcher));
         }
 
         return score;

@@ -9,15 +9,48 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 public class ScorerTest 
 {
     @Test
-    public void calculateScoreWithSolution()
+    public void calculateScoreWithSolutionWithDefaults()
     {
         final Scorer o = new Scorer();
         final Solution solution = new Solution();
+
         solution.setMakers(new HashSet<Maker>());
         solution.setTakers(new HashSet<Taker>());
         solution.setMatchers(new HashSet<Matcher>());
-        final HardSoftScore score = HardSoftScore.of(0,0);
-        assertEquals(score, o.calculateScore(solution));
+
+        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore act = o.calculateScore(solution);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithSolutionWithMatchersExample()
+    {
+        final Scorer o = new Scorer();
+        final Solution solution = new Solution();
+        final Set<Maker> makers = new HashSet<Maker>();
+        final Set<Taker> takers = new HashSet<Taker>();
+        final Set<Matcher> matchers = new HashSet<Matcher>();
+    
+        final Maker makerA = new Maker(); makerA.setName("A"); makers.add(makerA);
+        final Maker makerB = new Maker(); makerB.setName("B"); makers.add(makerB);
+
+        final Taker takerA = new Taker(); takerA.setName("A"); takers.add(takerA);
+        final Taker takerB = new Taker(); takerB.setName("B"); takers.add(takerB);
+
+        final Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
+        final Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
+
+        solution.setMakers(makers);
+        solution.setTakers(takers);
+        solution.setMatchers(matchers);
+
+        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA);
+        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB);
+
+        final HardSoftScore exp = HardSoftScore.of(0,0).add(matcherAScore).add(matcherBScore);
+        final HardSoftScore act = o.calculateScore(solution);
+        assertEquals(exp, act);
     }
 
     @Test
@@ -29,6 +62,7 @@ public class ScorerTest
         final Matcher matcher = new Matcher();
         final Maker maker = new Maker(); maker.setName(makerName); matcher.setMaker(maker);
         final Taker taker = new Taker(); taker.setName(takerName); matcher.setTaker(taker);
+
         final HardSoftScore exp = HardSoftScore.of(0,1);
         final HardSoftScore act = o.calculateScoreWithMatcher(matcher);
         assertEquals(exp, act);
@@ -43,6 +77,7 @@ public class ScorerTest
         final Matcher matcher = new Matcher();
         final Maker maker = new Maker(); maker.setName(makerName); matcher.setMaker(maker);
         final Taker taker = new Taker(); taker.setName(takerName); matcher.setTaker(taker);
+
         final HardSoftScore exp = HardSoftScore.of(0,-1);
         final HardSoftScore act = o.calculateScoreWithMatcher(matcher);
         assertEquals(exp, act);
