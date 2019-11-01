@@ -103,4 +103,30 @@ public class ScorerTest
         assertEquals(exp, act);
     }
 
+    @Test
+    public void calculateScoreWithMakerTakerNameEqual()
+    {
+        final Scorer o = new Scorer();
+        final String makerName = "alpha";
+        final String takerName = "alpha";
+        final Maker maker = new Maker(); maker.setName(makerName);
+        final Taker taker = new Taker(); taker.setName(takerName);
+        final HardSoftScore exp = HardSoftScore.of(0,1);
+        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithMakerTakerNameUnequal()
+    {
+        final Scorer o = new Scorer();
+        final String makerName = "alpha";
+        final String takerName = "bravo";
+        final Maker maker = new Maker(); maker.setName(makerName);
+        final Taker taker = new Taker(); taker.setName(takerName);
+        final HardSoftScore exp = HardSoftScore.of(0,-1);
+        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        assertEquals(exp, act);
+    }
+
 }
