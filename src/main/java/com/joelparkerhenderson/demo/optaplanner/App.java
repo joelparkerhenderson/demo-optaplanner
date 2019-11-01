@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
+import org.optaplanner.core.config.score.director.ScoreDirectorFactoryConfig;
 import org.optaplanner.core.config.solver.SolverConfig;
 
 /**
@@ -62,6 +63,10 @@ public class App
         entityClassList.add(Matcher.class);
         solverConfig.setEntityClassList(entityClassList);
 
+        ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
+        scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
+        solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
+        
         // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
