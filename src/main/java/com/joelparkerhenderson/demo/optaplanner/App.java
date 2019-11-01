@@ -11,8 +11,8 @@ import org.optaplanner.core.config.solver.SolverConfig;
  * Hello world!
  *
  */
-public class App 
-{    
+public class App
+{
     public static void main( String[] args )
     {
         System.out.println("Demo OptaPlanner version 0.1.0");
@@ -20,7 +20,7 @@ public class App
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
         final Set<Matcher> matchers = new HashSet<Matcher>();
-        
+
         final Maker makerA = new Maker(); makerA.setName("A"); makers.add(makerA);
         final Maker makerB = new Maker(); makerB.setName("B"); makers.add(makerB);
         final Maker makerC = new Maker(); makerC.setName("C"); makers.add(makerC);

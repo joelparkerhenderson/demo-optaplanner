@@ -29,9 +29,9 @@ public class Matcher {
     }
 
     private Taker taker;
-    
+
     // Ref corresponds to the ref on Solution.takers().
-    @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderTakers"}) 
+    @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderTakers"})
     public Taker getTaker(){
         return taker;
     }

@@ -6,7 +6,7 @@ import java.util.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class ScorerTest 
+public class ScorerTest
 {
     @Test
     public void calculateScoreWithSolutionWithDefaults()
@@ -31,7 +31,7 @@ public class ScorerTest
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
         final Set<Matcher> matchers = new HashSet<Matcher>();
-    
+
         final Maker makerA = new Maker(); makerA.setName("A"); makers.add(makerA);
         final Maker makerB = new Maker(); makerB.setName("B"); makers.add(makerB);
 
@@ -49,7 +49,7 @@ public class ScorerTest
         final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB); assertNotEquals(HardSoftScore.of(0,0), matcherBScore);
 
         final HardSoftScore exp = HardSoftScore.of(0,0).add(matcherAScore).add(matcherBScore);
-        final HardSoftScore act = o.calculateScore(solution);        
+        final HardSoftScore act = o.calculateScore(solution);
         assertEquals(exp, act);
     }
 

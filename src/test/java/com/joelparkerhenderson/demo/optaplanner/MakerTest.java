@@ -3,7 +3,7 @@ package com.joelparkerhenderson.demo.optaplanner;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class MakerTest 
+public class MakerTest
 {
     @Test
     public void name()

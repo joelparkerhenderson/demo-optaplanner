@@ -20,25 +20,25 @@ public class Scorer implements EasyScoreCalculator<Solution> {
     public HardSoftScore calculateScoreWithMatcher(Matcher matcher) {
         HardSoftScore score = HardSoftScore.of(0,0);
         final Maker maker = matcher.getMaker(); assert maker != null : " maker is null";
-        final Taker taker = matcher.getTaker(); assert taker != null : " taker is null"; 
+        final Taker taker = matcher.getTaker(); assert taker != null : " taker is null";
         score = score.add(calculateScoreWithMakerTaker(maker, taker));
         return score;
-    }       
+    }
 
     public HardSoftScore calculateScoreWithMaker(Maker maker) {
         HardSoftScore score = HardSoftScore.of(0,0);
         return score;
-    }       
+    }
 
     public HardSoftScore calculateScoreWithTaker(Taker taker) {
         HardSoftScore score = HardSoftScore.of(0,0);
         return score;
-    }       
+    }
 
     public HardSoftScore calculateScoreWithMakerTaker(Maker maker, Taker taker) {
-        final String makerName = maker.getName(); assert makerName != null : " makerName is null"; 
-        final String takerName = taker.getName(); assert takerName != null : " takerName is null"; 
+        final String makerName = maker.getName(); assert makerName != null : " makerName is null";
+        final String takerName = taker.getName(); assert takerName != null : " takerName is null";
         return HardSoftScore.of(0, (makerName == takerName) ? 1 : -1);
-    }       
+    }
 
 }
