@@ -10,7 +10,7 @@ public class App
 {    
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println("Demo OptaPlanner version 0.1.0");
 
         Set<Maker> makers = new HashSet<Maker>();
         Set<Taker> takers = new HashSet<Taker>();
@@ -30,17 +30,22 @@ public class App
         Taker takerE = new Taker(); takerE.setName("E"); takers.add(takerE);
         Taker takerF = new Taker(); takerF.setName("F"); takers.add(takerF);
 
-        Matcher matcherA = new Matcher(); matcherA.setMaker(makerA); matchers.add(matcherA);
-        Matcher matcherB = new Matcher(); matcherB.setMaker(makerB); matchers.add(matcherB);
-        Matcher matcherC = new Matcher(); matcherC.setMaker(makerC); matchers.add(matcherC);
-        Matcher matcherD = new Matcher(); matcherD.setMaker(makerD); matchers.add(matcherD);
-        Matcher matcherE = new Matcher(); matcherE.setMaker(makerE); matchers.add(matcherE);
-        Matcher matcherF = new Matcher(); matcherF.setMaker(makerF); matchers.add(matcherF);
+        Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
+        Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
+        Matcher matcherC = new Matcher(); matcherC.setName("C"); matcherC.setMaker(makerC); matcherC.setTaker(takerC); matchers.add(matcherC);
+        Matcher matcherD = new Matcher(); matcherD.setName("D"); matcherD.setMaker(makerD); matcherD.setTaker(takerD); matchers.add(matcherD);
+        Matcher matcherE = new Matcher(); matcherE.setName("E"); matcherE.setMaker(makerE); matcherE.setTaker(takerE); matchers.add(matcherE);
+        Matcher matcherF = new Matcher(); matcherF.setName("F"); matcherF.setMaker(makerF); matcherF.setTaker(takerF); matchers.add(matcherF);
 
         Solution solution = new Solution();
         solution.setMakers(makers);
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
+        System.out.println("Matchers...");
+        for(Matcher matcher: matchers){
+            System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
+        }
+        
     }
 }
