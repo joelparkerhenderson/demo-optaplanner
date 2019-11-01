@@ -52,9 +52,17 @@ public class App
             System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
         }
 
+        // Create the solver factory and its config
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
         SolverConfig solverConfig = solverFactory.getSolverConfig();
+
+        // Adjust the config as needed
         solverConfig.setSolutionClass(Solution.class);
+        List<Class<?>> entityClassList = new Vector<Class<?>>();
+        entityClassList.add(Matcher.class);
+        solverConfig.setEntityClassList(entityClassList);
+
+        // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
 
