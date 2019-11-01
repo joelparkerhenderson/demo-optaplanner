@@ -52,10 +52,9 @@ public class App
             System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
         }
 
-        SolverConfig solverConfig = new SolverConfig();
-        solverConfig.setSolutionClass(Solution.class);
-
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
+        SolverConfig solverConfig = solverFactory.getSolverConfig();
+        solverConfig.setSolutionClass(Solution.class);
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
 
