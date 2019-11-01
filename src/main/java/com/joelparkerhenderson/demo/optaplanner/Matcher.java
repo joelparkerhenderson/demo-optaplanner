@@ -6,7 +6,7 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher {
+public class Matcher implements Comparable<Matcher> {
 
     private String name;
 
@@ -38,6 +38,11 @@ public class Matcher {
 
     public void setTaker(Taker taker){
         this.taker = taker;
+    }
+
+    @Override
+    public int compareTo(Matcher that) {
+        return (int)(this.name.compareTo(that.getName()));
     }
 
 }

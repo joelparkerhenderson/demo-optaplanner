@@ -1,6 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Taker {
+public class Taker implements Comparable<Taker> {
 
     private String name;
 
@@ -10,6 +10,11 @@ public class Taker {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Taker that) {
+        return (int)(this.name.compareTo(that.getName()));
     }
 
 }

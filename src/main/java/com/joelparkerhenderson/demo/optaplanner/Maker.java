@@ -1,6 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Maker {
+public class Maker implements Comparable<Maker> {
 
     private String name;
 
@@ -10,6 +10,11 @@ public class Maker {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Maker that) {
+        return (int)(this.name.compareTo(that.getName()));
     }
 
 }

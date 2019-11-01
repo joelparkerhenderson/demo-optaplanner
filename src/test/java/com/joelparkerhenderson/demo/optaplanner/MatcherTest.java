@@ -32,4 +32,28 @@ public class MatcherTest
         assertSame(taker, o.getTaker());
     }
 
+    @Test
+    public void compareToWithEqual()
+    {
+        final Matcher o = new Matcher(); o.setName("A");
+        final Matcher x = new Matcher(); x.setName("A");
+        assertEquals(0, o.compareTo(x));
+    }
+
+    @Test
+    public void compareToWithLesser()
+    {
+        final Matcher o = new Matcher(); o.setName("A");
+        final Matcher x = new Matcher(); x.setName("B");
+        assertEquals(-1, o.compareTo(x));
+    }
+
+    @Test
+    public void compareToWithGreater()
+    {
+        final Matcher o = new Matcher(); o.setName("B");
+        final Matcher x = new Matcher(); x.setName("A");
+        assertEquals(1, o.compareTo(x));
+    }
+
 }
