@@ -60,7 +60,7 @@ Run:
 $ java -cp \
   "$CLASSPATH:./target/demo_optaplanner-1.0-SNAPSHOT.jar" \
   com.joelparkerhenderson.demo.optaplanner.App
-Hello World!
+Demo OptaPlanner …
 ```
 
 
@@ -110,3 +110,30 @@ SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 
 Then verify the CLASSPATH includes the SLF4J simple binary, or equivalent SLF4J binding of your preference.
 
+
+### Apache Lang and Math
+
+The app expects the CLASSPATH to include Apache commons lang and math.
+
+Example: add then with typical Unix syntax and typical Maven location:
+
+```sh
+export CLASSPATH="$CLASSPATH:$HOME/.m2/repository/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"
+export CLASSPATH="$CLASSPATH:$HOME/.m2/repository/org/apache/commons/commons-math3/3.4.1/commons-math3-3.4.1.jar"
+```
+
+If you get this error:
+
+```sh
+java.lang.ClassNotFoundException: org.apache.commons.lang3.…
+```
+
+Then you are missing Apache commons lang library.
+
+If you get an error such as:
+
+```sh
+java.lang.NoClassDefFoundError: org/apache/commons/math3/…
+```
+
+Then you are missing Apache commons math libary.
