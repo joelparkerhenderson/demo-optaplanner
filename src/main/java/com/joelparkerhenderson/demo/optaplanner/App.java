@@ -1,8 +1,11 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
+import org.optaplanner.core.config.solver.SolverConfig;
 
 /**
  * Hello world!
@@ -49,8 +52,10 @@ public class App
             System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
         }
 
+        //SolverConfig solverConfig = new SolverConfig();
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
         Solver<Solution> solver = solverFactory.buildSolver();
+        Solution solved = solver.solve(solution);
 
     }
 }
