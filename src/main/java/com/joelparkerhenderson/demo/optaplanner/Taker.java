@@ -13,10 +13,12 @@ public class Taker implements ToStringDeep, HasName, Comparable<Taker> {
 
     private String name;
 
+    @Override
     public String getName(){
         return name;
     }
 
+    @Override
     public void setName(String name){
         this.name = name;
     }
