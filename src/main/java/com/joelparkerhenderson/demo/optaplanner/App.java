@@ -14,18 +14,26 @@ public class App
 
     public static void main( String[] args )
     {
+        // Startup
         Logger logger = LoggerFactory.getLogger(App.class);
-        logger.info("Demo OptaPlanner version 0.1.0");
-        System.out.println("Demo OptaPlanner version 0.1.0");
+        logger.info("Demo OptaPlanner version 1.0.0");
+        System.out.println("Demo OptaPlanner version 1.0.0");
+
+        // Create the solution container
         final Solution solution = createDemoSolutionWithExamples();
+        System.out.println("Initialize...");
+        System.out.println(solution.toStringDeep());
+
+        // Create the solver
         final SolverFactory<Solution> solverFactory = createDemoSolverFactory();
         final Solver<Solution> solver = solverFactory.buildSolver();
+
+        // Solve
         final Solution solved = solver.solve(solution);
         System.out.println("Solved...");
         System.out.println(solved.toStringDeep());
         System.exit(0);
     }
-
 
     public static Solution createDemoSolutionWithExamples(){
         final Solution solution = new Solution();

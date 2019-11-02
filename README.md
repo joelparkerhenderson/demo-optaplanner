@@ -50,6 +50,17 @@ Solution pseudocode:
   * The solver will try associating the matchers with various takers, then report results.
 
 
+### Run
+
+Run the app:
+
+```sh
+java \
+    -classpath "$CLASSPATH:./target/demo_optaplanner-1.0-SNAPSHOT.jar" \
+    -Dorg.slf4j.simpleLogger.defaultLogLevel=warn  \
+    com.joelparkerhenderson.demo.optaplanner.App
+```
+
 ### Output
 
 The output shows the solution successfully associates all makers and takers.
@@ -61,42 +72,34 @@ The score `10soft` means the soft constraint score is 10, which is correct becau
 Output with log level info:
 
 ```sh
-[main] INFO com.joelparkerhenderson.demo.optaplanner.App - Demo OptaPlanner version 0.1.0
-Demo OptaPlanner version 0.1.0
-[main] INFO org.optaplanner.core.impl.solver.DefaultSolver -
-    Solving started: time spent (27),
-    best score (-10init/0hard/0soft),
-    environment mode (REPRODUCIBLE),
-    random (JDK with seed 0).
-[main] INFO org.optaplanner.core.impl.constructionheuristic.DefaultConstructionHeuristicPhase - 
-    Construction Heuristic phase (0) ended: time spent (42), 
-    best score (0hard/10soft), 
-    score calculation speed (7769/sec), 
-    step total (10).
-[main] INFO org.optaplanner.core.impl.localsearch.DefaultLocalSearchPhase - 
-    Local Search phase (1) ended: time spent (10000),
-    best score (0hard/10soft), 
-    score calculation speed (1362721/sec),
-    step total (1).
-[main] INFO org.optaplanner.core.impl.solver.DefaultSolver - 
-    Solving ended: time spent (10000), 
-    best score (0hard/10soft), 
-    score calculation speed (1356871/sec), 
-    phase total (2), 
-    environment mode (REPRODUCIBLE).
+Demo OptaPlanner version 1.0.0
+
+Initialize...
+    name:Demo Solution,
+    score:(0hard/0soft),
+    matchers:[
+        matcher:{name:0,maker:{name:0},taker:{null}},
+        matcher:{name:1,maker:{name:1},taker:{null}},
+        matcher:{name:2,maker:{name:2},taker:{null}},
+        matcher:{name:3,maker:{name:3},taker:{null}},
+        matcher:{name:4,maker:{name:4},taker:{null}},
+        matcher:{name:5,maker:{name:5},taker:{null}},
+        matcher:{name:6,maker:{name:6},taker:{null}},
+        matcher:{name:7,maker:{name:7},taker:{null}},
+        matcher:{name:8,maker:{name:8},taker:{null}},
+        matcher:{name:9,maker:{name:9},taker:{null}}]
 Solved...
-name:Demo Solution,
-score:(0hard/10soft),
-matchers:[
-    matcher:{name:0,maker:{name:0},taker:{name:0}},
-    matcher:{name:1,maker:{name:1},taker:{name:1}},
-    matcher:{name:2,maker:{name:2},taker:{name:2}},
-    matcher:{name:3,maker:{name:3},taker:{name:3}},
-    matcher:{name:4,maker:{name:4},taker:{name:4}},
-    matcher:{name:5,maker:{name:5},taker:{name:5}},
-    matcher:{name:6,maker:{name:6},taker:{name:6}},
-    matcher:{name:7,maker:{name:7},taker:{name:7}},
-    matcher:{name:8,maker:{name:8},taker:{name:8}},
-    matcher:{name:9,maker:{name:9},taker:{name:9}}
-]
+    name:Demo Solution,
+    score:(0hard/10soft),
+    matchers:[
+        matcher:{name:0,maker:{name:0},taker:{name:0}},
+        matcher:{name:1,maker:{name:1},taker:{name:1}},
+        matcher:{name:2,maker:{name:2},taker:{name:2}},
+        matcher:{name:3,maker:{name:3},taker:{name:3}},
+        matcher:{name:4,maker:{name:4},taker:{name:4}},
+        matcher:{name:5,maker:{name:5},taker:{name:5}},
+        matcher:{name:6,maker:{name:6},taker:{name:6}},
+        matcher:{name:7,maker:{name:7},taker:{name:7}},
+        matcher:{name:8,maker:{name:8},taker:{name:8}},
+        matcher:{name:9,maker:{name:9},taker:{name:9}}]
 ```
