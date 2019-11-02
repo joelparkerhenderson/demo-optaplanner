@@ -8,10 +8,6 @@ import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.config.score.director.ScoreDirectorFactoryConfig;
 import org.optaplanner.core.config.solver.SolverConfig;
 
-/**
- * Hello world!
- *
- */
 public class App
 {
     public static void main( String[] args )
