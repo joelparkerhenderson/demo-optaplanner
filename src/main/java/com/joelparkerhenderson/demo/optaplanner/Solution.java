@@ -22,7 +22,6 @@ public class Solution {
             matchersString = matchers.stream().sorted().map((matcher) -> 
                 "matcher:{" + matcher.toStringDeep() + "}"
             ).collect(Collectors.joining(","));
-            System.out.println("matchersString:" + matchersString);
         }
         return toString() + ",matchers:[" + matchersString + "]";
     }
