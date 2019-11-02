@@ -36,12 +36,12 @@ public class App
         final Taker takerE = new Taker(); takerE.setName("E"); takers.add(takerE);
         final Taker takerF = new Taker(); takerF.setName("F"); takers.add(takerF);
 
-        final Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
-        final Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
-        final Matcher matcherC = new Matcher(); matcherC.setName("C"); matcherC.setMaker(makerC); matcherC.setTaker(takerC); matchers.add(matcherC);
-        final Matcher matcherD = new Matcher(); matcherD.setName("D"); matcherD.setMaker(makerD); matcherD.setTaker(takerD); matchers.add(matcherD);
-        final Matcher matcherE = new Matcher(); matcherE.setName("E"); matcherE.setMaker(makerE); matcherE.setTaker(takerE); matchers.add(matcherE);
-        final Matcher matcherF = new Matcher(); matcherF.setName("F"); matcherF.setMaker(makerF); matcherF.setTaker(takerF); matchers.add(matcherF);
+        final Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerB); matchers.add(matcherA);
+        final Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerC); matchers.add(matcherB);
+        final Matcher matcherC = new Matcher(); matcherC.setName("C"); matcherC.setMaker(makerC); matcherC.setTaker(takerD); matchers.add(matcherC);
+        final Matcher matcherD = new Matcher(); matcherD.setName("D"); matcherD.setMaker(makerD); matcherD.setTaker(takerE); matchers.add(matcherD);
+        final Matcher matcherE = new Matcher(); matcherE.setName("E"); matcherE.setMaker(makerE); matcherE.setTaker(takerF); matchers.add(matcherE);
+        final Matcher matcherF = new Matcher(); matcherF.setName("F"); matcherF.setMaker(makerF); matcherF.setTaker(takerA); matchers.add(matcherF);
 
         System.out.println("Makers...");
         makers.stream().sorted().forEachOrdered((maker) -> 
