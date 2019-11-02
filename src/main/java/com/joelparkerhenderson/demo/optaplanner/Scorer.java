@@ -18,26 +18,25 @@ public class Scorer implements EasyScoreCalculator<Solution> {
     }
 
     public HardSoftScore calculateScoreWithMatcher(Matcher matcher) {
-        HardSoftScore score = HardSoftScore.of(0,0);
-        final Maker maker = matcher.getMaker(); assert maker != null : " maker is null";
-        final Taker taker = matcher.getTaker(); assert taker != null : " taker is null";
-        score = score.add(calculateScoreWithMakerTaker(maker, taker));
-        return score;
+        final Maker maker = matcher.getMaker(); if (maker == null){ return HardSoftScore.of(0,0); }
+        final Taker taker = matcher.getTaker(); if (taker == null){ return HardSoftScore.of(0,0); }
+        return calculateScoreWithMakerTaker(maker, taker);
     }
 
     public HardSoftScore calculateScoreWithMaker(Maker maker) {
-        HardSoftScore score = HardSoftScore.of(0,0);
-        return score;
+        return HardSoftScore.of(0,0);
     }
 
     public HardSoftScore calculateScoreWithTaker(Taker taker) {
-        HardSoftScore score = HardSoftScore.of(0,0);
-        return score;
+        return HardSoftScore.of(0,0);
     }
 
     public HardSoftScore calculateScoreWithMakerTaker(Maker maker, Taker taker) {
-        final String makerName = maker.getName(); assert makerName != null : " makerName is null";
-        final String takerName = taker.getName(); assert takerName != null : " takerName is null";
+        if (maker == null){ return HardSoftScore.of(0,0); }
+        if (taker == null){ return HardSoftScore.of(0,0); }
+        final String makerName = maker.getName(); if (makerName == null){ return HardSoftScore.of(0,0); }
+        final String takerName = taker.getName(); if (takerName == null){ return HardSoftScore.of(0,0); }
+        HardSoftScore score = HardSoftScore.of(0,0);
         return HardSoftScore.of(0, (makerName == takerName) ? 1 : -1);
     }
 

@@ -104,6 +104,30 @@ public class ScorerTest
     }
 
     @Test
+    public void calculateScoreWithMakerTakerNull()
+    {
+        final Scorer o = new Scorer();
+        final Maker maker = null;
+        final Taker taker = null;
+        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithMakerTakerNameNull()
+    {
+        final Scorer o = new Scorer();
+        final String makerName = null;
+        final String takerName = null;
+        final Maker maker = new Maker(); maker.setName(makerName);
+        final Taker taker = new Taker(); taker.setName(takerName);
+        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        assertEquals(exp, act);
+    }
+
+    @Test
     public void calculateScoreWithMakerTakerNameEqual()
     {
         final Scorer o = new Scorer();
