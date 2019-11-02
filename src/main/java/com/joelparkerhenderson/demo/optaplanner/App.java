@@ -39,15 +39,25 @@ public class App
         final Matcher matcherE = new Matcher(); matcherE.setName("E"); matcherE.setMaker(makerE); matcherE.setTaker(takerE); matchers.add(matcherE);
         final Matcher matcherF = new Matcher(); matcherF.setName("F"); matcherF.setMaker(makerF); matcherF.setTaker(takerF); matchers.add(matcherF);
 
+        System.out.println("Makers...");
+        makers.stream().sorted().forEachOrdered((maker) -> 
+            System.out.println("Maker name:" + maker.getName())
+        );
+
+        System.out.println("Takers...");
+        takers.stream().sorted().forEachOrdered((taker) -> 
+            System.out.println("Taker name:" + taker.getName())
+        );
+
+        System.out.println("Matchers...");
+        matchers.stream().sorted().forEachOrdered((matcher) -> 
+            System.out.println("Matcher name:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName())
+        );
+
         final Solution solution = new Solution();
         solution.setMakers(makers);
         solution.setTakers(takers);
         solution.setMatchers(matchers);
-
-        System.out.println("Matchers...");
-        matchers.stream().sorted().forEachOrdered((matcher) -> 
-            System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName())
-        );
 
         // Create the solver factory and its config
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
