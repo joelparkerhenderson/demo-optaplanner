@@ -2,7 +2,12 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
 
-public class TakerSet implements HasName {
+public class TakerSet implements ToStringDeep, HasName {
+
+    @Override
+    public String toStringDeep(){
+        return toString();
+    }
 
     private String name;
 
