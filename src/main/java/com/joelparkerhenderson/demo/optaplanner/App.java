@@ -17,80 +17,64 @@ public class App
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("Demo OptaPlanner version 0.1.0");
         System.out.println("Demo OptaPlanner version 0.1.0");
-
-        final Set<Maker> makers = new HashSet<Maker>();
-        final Set<Taker> takers = new HashSet<Taker>();
-        final Set<Matcher> matchers = new HashSet<Matcher>();
-
-        final Maker makerA = new Maker(); makerA.setName("A"); makers.add(makerA);
-        final Maker makerB = new Maker(); makerB.setName("B"); makers.add(makerB);
-        final Maker makerC = new Maker(); makerC.setName("C"); makers.add(makerC);
-        final Maker makerD = new Maker(); makerD.setName("D"); makers.add(makerD);
-        final Maker makerE = new Maker(); makerE.setName("E"); makers.add(makerE);
-        final Maker makerF = new Maker(); makerF.setName("F"); makers.add(makerA);
-
-        final Taker takerA = new Taker(); takerA.setName("A"); takers.add(takerA);
-        final Taker takerB = new Taker(); takerB.setName("B"); takers.add(takerB);
-        final Taker takerC = new Taker(); takerC.setName("C"); takers.add(takerC);
-        final Taker takerD = new Taker(); takerD.setName("D"); takers.add(takerD);
-        final Taker takerE = new Taker(); takerE.setName("E"); takers.add(takerE);
-        final Taker takerF = new Taker(); takerF.setName("F"); takers.add(takerF);
-
-        final Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerB); matchers.add(matcherA);
-        final Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerC); matchers.add(matcherB);
-        final Matcher matcherC = new Matcher(); matcherC.setName("C"); matcherC.setMaker(makerC); matcherC.setTaker(takerD); matchers.add(matcherC);
-        final Matcher matcherD = new Matcher(); matcherD.setName("D"); matcherD.setMaker(makerD); matcherD.setTaker(takerE); matchers.add(matcherD);
-        final Matcher matcherE = new Matcher(); matcherE.setName("E"); matcherE.setMaker(makerE); matcherE.setTaker(takerF); matchers.add(matcherE);
-        final Matcher matcherF = new Matcher(); matcherF.setName("F"); matcherF.setMaker(makerF); matcherF.setTaker(takerA); matchers.add(matcherF);
-
-        System.out.println("Makers...");
-        makers.stream().sorted().forEachOrdered((maker) -> 
-            System.out.println(maker.toStringDeep())
-        );
-
-        System.out.println("Takers...");
-        takers.stream().sorted().forEachOrdered((taker) -> 
-            System.out.println(taker.toStringDeep())
-        );
-
-        System.out.println("Matchers...");
-        matchers.stream().sorted().forEachOrdered((matcher) -> 
-            System.out.println(matcher.toStringDeep())
-        );
-
-        final Solution solution = new Solution();
-        solution.setName("Demo Solution");
-        solution.setMakers(makers);
-        solution.setTakers(takers);
-        solution.setMatchers(matchers);
-
-        // Create the solver factory and its config
-        final SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
-        final SolverConfig solverConfig = solverFactory.getSolverConfig();
-
-        // Config for the solution class
-        solverConfig.setSolutionClass(Solution.class);
-
-        // Config for the entity class list
-        final List<Class<?>> entityClassList = new Vector<Class<?>>();
-        entityClassList.add(Matcher.class);
-        solverConfig.setEntityClassList(entityClassList);
-
-        // Config for the score director factory
-        final ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
-        scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
-        solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
-
-        // Config for termination
-        final TerminationConfig terminationConfig = new TerminationConfig();
-        terminationConfig.setSecondsSpentLimit(1L);
-        solverConfig.setTerminationConfig(terminationConfig);
-
-        // Solve everything
+        final Solution solution = createDemoSolutionWithExamples();
+        final SolverFactory<Solution> solverFactory = createDemoSolverFactory();
         final Solver<Solution> solver = solverFactory.buildSolver();
         final Solution solved = solver.solve(solution);
         System.out.println("Solved...");
         System.out.println(solved.toStringDeep());
         System.exit(0);
     }
+
+
+    public static Solution createDemoSolutionWithExamples(){
+        final Solution solution = new Solution();
+        solution.setName("Demo Solution");
+
+        final Set<Maker> makers = new HashSet<Maker>();
+        final Set<Taker> takers = new HashSet<Taker>();
+        final Set<Matcher> matchers = new HashSet<Matcher>();
+
+        solution.setMakers(makers);
+        solution.setTakers(takers);
+        solution.setMatchers(matchers);
+
+        for(int i=0; i<10; i++){
+            String name = String.format("%01d", i);
+            final Maker maker = new Maker(); maker.setName(name); makers.add(maker);
+            final Taker taker = new Taker(); taker.setName(name); takers.add(taker);
+            final Matcher matcher = new Matcher(); matcher.setName(name); matcher.setMaker(maker); matchers.add(matcher);
+        }
+
+        return solution;
+    }
+
+    public static SolverFactory<Solution> createDemoSolverFactory(){
+        final SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
+        final SolverConfig solverConfig = solverFactory.getSolverConfig();
+        solverConfig.setSolutionClass(Solution.class);
+        solverConfig.setEntityClassList(createDemoEntityClassList());
+        solverConfig.setScoreDirectorFactoryConfig(createDemoScoreDirectorFactoryConfig());
+        solverConfig.setTerminationConfig(createDemoTerminationConfig());
+        return solverFactory;
+    }
+
+    public static ScoreDirectorFactoryConfig createDemoScoreDirectorFactoryConfig(){
+        final ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
+        scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
+        return scoreDirectorFactoryConfig;
+    }
+
+    public static List<Class<?>> createDemoEntityClassList(){
+        final List<Class<?>> entityClassList = new Vector<Class<?>>();
+        entityClassList.add(Matcher.class);
+        return entityClassList;
+    }
+
+    public static TerminationConfig createDemoTerminationConfig(){
+        final TerminationConfig terminationConfig = new TerminationConfig();
+        terminationConfig.setSecondsSpentLimit(10L);
+        return terminationConfig;
+    }
+
 }
