@@ -1,5 +1,7 @@
 # Demo OptaPlanner
 
+<img src="README.png" alt="Objective" style="width: 100%;"/>
+
 * [Documentation](doc/)
   * [Setup](doc/setup.md)
   * [Wordbooks](doc/wordbooks/README.md)
