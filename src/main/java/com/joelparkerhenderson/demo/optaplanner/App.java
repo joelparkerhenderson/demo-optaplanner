@@ -86,6 +86,7 @@ public class App
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
         System.out.println("Solved...");
+        System.out.println(solved.toStringDeep());
         System.exit(0);
     }
 }
