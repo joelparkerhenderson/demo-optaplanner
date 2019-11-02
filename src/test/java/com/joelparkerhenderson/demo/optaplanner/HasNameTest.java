@@ -31,7 +31,9 @@ public class HasNameTest
     public static Collection<Object[]> instancesToTest() {
         return Arrays.asList(
                     new Object[]{Maker.class},
+                    new Object[]{MakerSet.class},
                     new Object[]{Taker.class},
+                    new Object[]{TakerSet.class},
                     new Object[]{Matcher.class},
                     new Object[]{Solution.class}
         );

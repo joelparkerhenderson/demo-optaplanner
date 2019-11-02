@@ -2,14 +2,16 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
 
-public class MakerSet {
+public class MakerSet implements HasName {
 
     private String name;
 
+    @Override
     public String getName(){
         return name;
     }
 
+    @Override
     public void setName(String name){
         this.name = name;
     }
