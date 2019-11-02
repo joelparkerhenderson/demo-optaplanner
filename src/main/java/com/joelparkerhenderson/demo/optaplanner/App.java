@@ -7,6 +7,7 @@ import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.config.score.director.ScoreDirectorFactoryConfig;
 import org.optaplanner.core.config.solver.SolverConfig;
+import org.optaplanner.core.config.solver.termination.TerminationConfig;
 
 public class App
 {
@@ -14,8 +15,7 @@ public class App
     public static void main( String[] args )
     {
         Logger logger = LoggerFactory.getLogger(App.class);
-        logger.info("Hello World");
-
+        logger.info("Demo OptaPlanner version 0.1.0");
         System.out.println("Demo OptaPlanner version 0.1.0");
 
         final Set<Maker> makers = new HashSet<Maker>();
@@ -75,6 +75,11 @@ public class App
         ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
         scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
         solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
+
+        // Termination
+        TerminationConfig terminationConfig = new TerminationConfig();
+        terminationConfig.setSecondsSpentLimit(1L);
+        solverConfig.setTerminationConfig(terminationConfig);
 
         // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
