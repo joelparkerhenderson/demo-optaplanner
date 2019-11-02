@@ -136,4 +136,20 @@ If you get an error such as:
 java.lang.NoClassDefFoundError: org/apache/commons/math3/…
 ```
 
-Then you are missing Apache commons math libary.
+Then verify the CLASSPATH includes the Apache commons libraries.
+
+
+### Google collections and Guava
+
+The app expects the CLASSPATH to include Google collections a.k.a. Guava.
+
+```sh
+export CLASSPATH="$CLASSPATH:$HOME/.m2/repository/com/google/guava/guava/25.0-jre/guava-25.0-jre.jar"
+
+If you get an error such as:
+
+```sh
+java.lang.NoClassDefFoundError: com/google/common/…
+```
+
+Then verify the CLASSPATH includes the Google Guava library.
