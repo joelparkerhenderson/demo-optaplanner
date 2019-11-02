@@ -65,26 +65,30 @@ public class App
         solution.setMatchers(matchers);
 
         // Create the solver factory and its config
-        SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
-        SolverConfig solverConfig = solverFactory.getSolverConfig();
+        final SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
+        final SolverConfig solverConfig = solverFactory.getSolverConfig();
 
-        // Adjust the config as needed
+        // Config for the solution class
         solverConfig.setSolutionClass(Solution.class);
-        List<Class<?>> entityClassList = new Vector<Class<?>>();
+
+        // Config for the entity class list
+        final List<Class<?>> entityClassList = new Vector<Class<?>>();
         entityClassList.add(Matcher.class);
         solverConfig.setEntityClassList(entityClassList);
-        ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
+
+        // Config for the score director factory
+        final ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
         scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
         solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
 
-        // Termination
-        TerminationConfig terminationConfig = new TerminationConfig();
+        // Config for termination
+        final TerminationConfig terminationConfig = new TerminationConfig();
         terminationConfig.setSecondsSpentLimit(1L);
         solverConfig.setTerminationConfig(terminationConfig);
 
         // Solve everything
-        Solver<Solution> solver = solverFactory.buildSolver();
-        Solution solved = solver.solve(solution);
+        final Solver<Solution> solver = solverFactory.buildSolver();
+        final Solution solved = solver.solve(solution);
         System.out.println("Solved...");
         System.out.println(solved.toStringDeep());
         System.exit(0);
