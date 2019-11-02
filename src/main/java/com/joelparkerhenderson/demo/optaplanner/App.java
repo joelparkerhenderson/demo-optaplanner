@@ -59,6 +59,7 @@ public class App
         );
 
         final Solution solution = new Solution();
+        solution.setName("Demo Solution");
         solution.setMakers(makers);
         solution.setTakers(takers);
         solution.setMatchers(matchers);
