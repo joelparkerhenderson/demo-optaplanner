@@ -17,6 +17,7 @@ public class Solution implements ToStringDeep, HasName {
            ",score:(" + score + ")";
     }
 
+    @Override
     public String toStringDeep(){
         String matchersString = "";
         if (matchers != null ) {

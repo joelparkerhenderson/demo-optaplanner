@@ -1,11 +1,12 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Taker implements ToStringDeep, Comparable<Taker> {
+public class Taker implements ToStringDeep, HasName, Comparable<Taker> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
     }
 
+    @Override
     public String toStringDeep(){
         return toString();
     }

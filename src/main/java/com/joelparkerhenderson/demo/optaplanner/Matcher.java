@@ -6,12 +6,13 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher implements ToStringDeep, Comparable<Matcher> {
+public class Matcher implements ToStringDeep, HasName, Comparable<Matcher> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
     }
 
+    @Override
     public String toStringDeep(){
         return toString() + 
         ",maker:{" + ((maker != null) ? maker : "null") + "}" + 
