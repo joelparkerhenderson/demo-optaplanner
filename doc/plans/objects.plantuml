@@ -9,6 +9,15 @@ object Solution {
     matchers
 }
 
+object Solver { 
+}
+
+object Scorer { 
+}
+
+Solver --r- Solution
+Solution --r- Scorer
+
 object Matcher {
     name
     maker
@@ -23,8 +32,8 @@ object Taker {
     name
 }
 
-Solution o-- Matcher
-Matcher o-- Maker
-Matcher o-- Taker
+Solution o-d- Matcher
+Matcher o-d- Maker
+Matcher o-d- Taker
 
 @enduml
