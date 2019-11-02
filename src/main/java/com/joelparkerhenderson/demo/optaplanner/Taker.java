@@ -2,6 +2,10 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 public class Taker implements Comparable<Taker> {
 
+    public String toString(){
+        return "Taker name:" + ((name != null) ? name : "null");
+    }
+
     private String name;
 
     public String getName(){

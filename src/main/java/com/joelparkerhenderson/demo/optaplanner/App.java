@@ -10,6 +10,7 @@ import org.optaplanner.core.config.solver.SolverConfig;
 
 public class App
 {
+
     public static void main( String[] args )
     {
         System.out.println("Demo OptaPlanner version 0.1.0");
@@ -41,17 +42,17 @@ public class App
 
         System.out.println("Makers...");
         makers.stream().sorted().forEachOrdered((maker) -> 
-            System.out.println("Maker name:" + maker.getName())
+            System.out.println(maker)
         );
 
         System.out.println("Takers...");
         takers.stream().sorted().forEachOrdered((taker) -> 
-            System.out.println("Taker name:" + taker.getName())
+            System.out.println(taker)
         );
 
         System.out.println("Matchers...");
         matchers.stream().sorted().forEachOrdered((matcher) -> 
-            System.out.println("Matcher name:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName())
+            System.out.println("" + matcher + " (" + matcher.getMaker() + "), (" + matcher.getTaker() + ")")
         );
 
         final Solution solution = new Solution();
@@ -75,6 +76,7 @@ public class App
         // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
+        System.out.println("Solved...");
         System.exit(0);
     }
 }

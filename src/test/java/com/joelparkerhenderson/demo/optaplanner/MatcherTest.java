@@ -6,6 +6,22 @@ import org.junit.Test;
 public class MatcherTest
 {
     @Test
+    public void toStringWithDefault()
+    {
+        final Maker o = new Maker();
+        assertEquals("Maker name:null", o.toString());
+    }
+
+    @Test
+    public void toStringWithName()
+    {
+        final Maker o = new Maker();
+        final String name = "foo";
+        o.setName(name);
+        assertEquals("Maker name:foo", o.toString());
+    }
+
+    @Test
     public void name()
     {
         final Matcher o = new Matcher();

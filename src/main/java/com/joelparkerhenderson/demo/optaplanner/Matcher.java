@@ -8,6 +8,10 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 @PlanningEntity
 public class Matcher implements Comparable<Matcher> {
 
+    public String toString(){
+        return "Matcher name:" + ((name != null) ? name : "null");
+    }
+
     private String name;
 
     public String getName(){
