@@ -75,6 +75,6 @@ public class App
         // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
-
+        System.exit(0);
     }
 }
