@@ -11,6 +11,10 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 @PlanningSolution
 public class Solution {
 
+    public String toString(){
+        return "Solution name:" + ((name != null) ? name : "null");
+    }
+
     private String name;
 
     public String getName(){

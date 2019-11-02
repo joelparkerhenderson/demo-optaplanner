@@ -8,6 +8,22 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 public class SolutionTest
 {
     @Test
+    public void toStringWithDefault()
+    {
+        final Solution o = new Solution();
+        assertEquals("Solution name:null", o.toString());
+    }
+
+    @Test
+    public void toStringWithName()
+    {
+        final Solution o = new Solution();
+        final String name = "foo";
+        o.setName(name);
+        assertEquals("Solution name:foo", o.toString());
+    }
+
+    @Test
     public void name()
     {
         final Solution o = new Solution();
