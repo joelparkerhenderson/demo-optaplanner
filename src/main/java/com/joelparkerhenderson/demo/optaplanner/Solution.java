@@ -13,7 +13,8 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 public class Solution {
 
     public String toString(){
-        return "name:" + ((name != null) ? name : "null");
+        return "name:" + ((name != null) ? name : "null") +
+           ",score:(" + score + ")";
     }
 
     public String toStringDeep(){
@@ -37,7 +38,7 @@ public class Solution {
     }
 
     @PlanningScore
-    private HardSoftScore score;
+    private HardSoftScore score = HardSoftScore.of(0,0);
 
     public HardSoftScore getScore() {
         return score;

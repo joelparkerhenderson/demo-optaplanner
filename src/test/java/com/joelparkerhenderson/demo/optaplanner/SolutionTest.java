@@ -11,7 +11,7 @@ public class SolutionTest
     public void toStringWithDefault()
     {
         final Solution o = new Solution();
-        assertEquals("name:null", o.toString());
+        assertEquals("name:null,score:(0hard/0soft)", o.toString());
     }
 
     @Test
@@ -20,14 +20,16 @@ public class SolutionTest
         final Solution o = new Solution();
         final String name = "foo";
         o.setName(name);
-        assertEquals("name:foo", o.toString());
+        final HardSoftScore score = HardSoftScore.of(123,456);
+        o.setScore(score);
+        assertEquals("name:foo,score:(123hard/456soft)", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Solution o = new Solution();
-        assertEquals("name:null,matchers:[]", o.toStringDeep());
+        assertEquals("name:null,score:(0hard/0soft),matchers:[]", o.toStringDeep());
     }
 
     @Test
@@ -35,6 +37,8 @@ public class SolutionTest
     {
         final Solution o = new Solution();
         o.setName("A");
+        final HardSoftScore score = HardSoftScore.of(123,456);
+        o.setScore(score);
         final Matcher matcher = new Matcher();
         matcher.setName("B");
         final Maker maker = new Maker(); maker.setName("C"); matcher.setMaker(maker);
@@ -42,7 +46,7 @@ public class SolutionTest
         final Set<Matcher> matchers = new HashSet<Matcher>();
         matchers.add(matcher);     
         o.setMatchers(matchers);
-        assertEquals("name:A,matchers:[matcher:{name:B,maker:{name:C},taker:{name:D}}]", o.toStringDeep());
+        assertEquals("name:A,score:(123hard/456soft),matchers:[matcher:{name:B,maker:{name:C},taker:{name:D}}]", o.toStringDeep());
     }
 
     @Test
