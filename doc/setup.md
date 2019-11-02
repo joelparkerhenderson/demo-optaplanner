@@ -25,21 +25,27 @@ $ brew install plantuml
 
 ### Preflight
 
-Java:
+Java OpenJDK or equivalent:
 
 ```sh
 $ java -version
 openjdk version "13.0.1" 2019-10-15
 ```
 
-Maven:
+Java classpath should exist:
+
+```sh
+$ echo $CLASSPATH
+```
+
+Maven build manager:
 
 ```sh
 $ mvn -v
 Apache Maven 3.6.2
 ```
 
-PlantUML for documentation:
+PlantUML diagrammer:
 
 ```sh
 $ plantuml -version
@@ -47,7 +53,15 @@ PlantUML version 1.2019.11
 ```
 
 
-### Build and run
+
+### Run
+
+Clone such as:
+
+```sh
+$ git clone https://github.com/joelparkerhenderson/demo_optaplanner.git
+$ cd demo_optaplanner
+```
 
 Build:
 
