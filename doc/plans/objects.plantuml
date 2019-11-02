@@ -1,6 +1,10 @@
 @startuml
 skinparam monochrome true
 
+object App {
+    main
+}
+
 object Solution {
     name
     score
@@ -9,11 +13,17 @@ object Solution {
     matchers
 }
 
-object Solver { 
+object Solver {
+    config
 }
 
-object Scorer { 
+object Scorer {
+    config
 }
+
+App -d- Solver
+App -d- Solution
+App -d- Scorer
 
 Solver --r- Solution
 Solution --r- Scorer

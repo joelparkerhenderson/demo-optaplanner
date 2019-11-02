@@ -66,7 +66,7 @@ public class App
         ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
         scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
         solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
-        
+
         // Solve everything
         Solver<Solution> solver = solverFactory.buildSolver();
         Solution solved = solver.solve(solution);
