@@ -60,6 +60,7 @@ Run:
 ```sh
 $ java -cp \
   "$CLASSPATH:./target/demo_optaplanner-1.0-SNAPSHOT.jar" \
+  -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
   com.joelparkerhenderson.demo.optaplanner.App
 Demo OptaPlanner …
 ```

@@ -13,6 +13,9 @@ public class App
 
     public static void main( String[] args )
     {
+        Logger logger = LoggerFactory.getLogger(App.class);
+        logger.info("Hello World");
+
         System.out.println("Demo OptaPlanner version 0.1.0");
 
         final Set<Maker> makers = new HashSet<Maker>();
