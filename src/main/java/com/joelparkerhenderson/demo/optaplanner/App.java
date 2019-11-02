@@ -62,7 +62,6 @@ public class App
         List<Class<?>> entityClassList = new Vector<Class<?>>();
         entityClassList.add(Matcher.class);
         solverConfig.setEntityClassList(entityClassList);
-
         ScoreDirectorFactoryConfig scoreDirectorFactoryConfig = new ScoreDirectorFactoryConfig();
         scoreDirectorFactoryConfig.setEasyScoreCalculatorClass(Scorer.class);
         solverConfig.setScoreDirectorFactoryConfig(scoreDirectorFactoryConfig);
