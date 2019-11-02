@@ -10,7 +10,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution {
+public class Solution implements ToStringDeep {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null") +

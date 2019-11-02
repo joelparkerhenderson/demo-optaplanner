@@ -1,6 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Maker implements Comparable<Maker> {
+public class Maker implements ToStringDeep, Comparable<Maker>{
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
