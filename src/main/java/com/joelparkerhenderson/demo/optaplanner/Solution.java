@@ -1,6 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import java.util.stream.*; 
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
@@ -12,7 +13,18 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 public class Solution {
 
     public String toString(){
-        return "Solution name:" + ((name != null) ? name : "null");
+        return "name:" + ((name != null) ? name : "null");
+    }
+
+    public String toStringDeep(){
+        String matchersString = "";
+        if (matchers != null ) {
+            matchersString = matchers.stream().sorted().map((matcher) -> 
+                "matcher:{" + matcher.toStringDeep() + "}"
+            ).collect(Collectors.joining(","));
+            System.out.println("matchersString:" + matchersString);
+        }
+        return toString() + ",matchers:[" + matchersString + "]";
     }
 
     private String name;

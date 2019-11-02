@@ -45,17 +45,17 @@ public class App
 
         System.out.println("Makers...");
         makers.stream().sorted().forEachOrdered((maker) -> 
-            System.out.println(maker)
+            System.out.println(maker.toStringDeep())
         );
 
         System.out.println("Takers...");
         takers.stream().sorted().forEachOrdered((taker) -> 
-            System.out.println(taker)
+            System.out.println(taker.toStringDeep())
         );
 
         System.out.println("Matchers...");
         matchers.stream().sorted().forEachOrdered((matcher) -> 
-            System.out.println("" + matcher + " (" + matcher.getMaker() + "), (" + matcher.getTaker() + ")")
+            System.out.println(matcher.toStringDeep())
         );
 
         final Solution solution = new Solution();

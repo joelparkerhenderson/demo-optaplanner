@@ -3,7 +3,11 @@ package com.joelparkerhenderson.demo.optaplanner;
 public class Maker implements Comparable<Maker> {
 
     public String toString(){
-        return "Maker name:" + ((name != null) ? name : "null");
+        return "name:" + ((name != null) ? name : "null");
+    }
+
+    public String toStringDeep(){
+        return toString();
     }
 
     private String name;

@@ -8,17 +8,35 @@ public class MatcherTest
     @Test
     public void toStringWithDefault()
     {
-        final Maker o = new Maker();
-        assertEquals("Maker name:null", o.toString());
+        final Matcher o = new Matcher();
+        assertEquals("name:null", o.toString());
     }
 
     @Test
-    public void toStringWithName()
+    public void toStringWithTypical()
     {
-        final Maker o = new Maker();
+        final Matcher o = new Matcher();
         final String name = "foo";
         o.setName(name);
-        assertEquals("Maker name:foo", o.toString());
+        assertEquals("name:foo", o.toString());
+    }
+
+    @Test
+    public void toStringDeepWithDefault()
+    {
+        final Matcher o = new Matcher();
+        assertEquals("name:null,maker:{null},taker:{null}", o.toStringDeep());
+    }
+
+    @Test
+    public void toStringDeepWithTypical()
+    {
+        final Matcher o = new Matcher();
+        final String name = "A";
+        o.setName(name);
+        final Maker maker = new Maker(); maker.setName("B"); o.setMaker(maker);
+        final Taker taker = new Taker(); taker.setName("C"); o.setTaker(taker);
+        assertEquals("name:A,maker:{name:B},taker:{name:C}", o.toStringDeep());
     }
 
     @Test

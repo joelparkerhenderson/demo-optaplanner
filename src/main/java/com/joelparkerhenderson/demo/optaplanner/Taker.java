@@ -3,7 +3,11 @@ package com.joelparkerhenderson.demo.optaplanner;
 public class Taker implements Comparable<Taker> {
 
     public String toString(){
-        return "Taker name:" + ((name != null) ? name : "null");
+        return "name:" + ((name != null) ? name : "null");
+    }
+
+    public String toStringDeep(){
+        return toString();
     }
 
     private String name;

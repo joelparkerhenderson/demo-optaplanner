@@ -9,16 +9,32 @@ public class TakerTest
     public void toStringWithDefault()
     {
         final Taker o = new Taker();
-        assertEquals("Taker name:null", o.toString());
+        assertEquals("name:null", o.toString());
     }
 
     @Test
-    public void toStringWithName()
+    public void toStringWithTypical()
     {
         final Taker o = new Taker();
         final String name = "foo";
         o.setName(name);
-        assertEquals("Taker name:foo", o.toString());
+        assertEquals("name:foo", o.toString());
+    }
+
+    @Test
+    public void toStringDeepWithDefault()
+    {
+        final Taker o = new Taker();
+        assertEquals("name:null", o.toStringDeep());
+    }
+
+    @Test
+    public void toStringDeepWithTypical()
+    {
+        final Taker o = new Taker();
+        final String name = "foo";
+        o.setName(name);
+        assertEquals("name:foo", o.toStringDeep());
     }
 
     @Test

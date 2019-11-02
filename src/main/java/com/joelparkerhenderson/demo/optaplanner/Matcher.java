@@ -9,7 +9,13 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 public class Matcher implements Comparable<Matcher> {
 
     public String toString(){
-        return "Matcher name:" + ((name != null) ? name : "null");
+        return "name:" + ((name != null) ? name : "null");
+    }
+
+    public String toStringDeep(){
+        return toString() + 
+        ",maker:{" + ((maker != null) ? maker : "null") + "}" + 
+        ",taker:{" + ((taker != null) ? taker : "null") + "}";
     }
 
     private String name;

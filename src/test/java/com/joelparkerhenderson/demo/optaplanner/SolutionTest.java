@@ -11,16 +11,38 @@ public class SolutionTest
     public void toStringWithDefault()
     {
         final Solution o = new Solution();
-        assertEquals("Solution name:null", o.toString());
+        assertEquals("name:null", o.toString());
     }
 
     @Test
-    public void toStringWithName()
+    public void toStringWithTypical()
     {
         final Solution o = new Solution();
         final String name = "foo";
         o.setName(name);
-        assertEquals("Solution name:foo", o.toString());
+        assertEquals("name:foo", o.toString());
+    }
+
+    @Test
+    public void toStringDeepWithDefault()
+    {
+        final Solution o = new Solution();
+        assertEquals("name:null,matchers:[]", o.toStringDeep());
+    }
+
+    @Test
+    public void toStringDeepWithTypical()
+    {
+        final Solution o = new Solution();
+        o.setName("A");
+        final Matcher matcher = new Matcher();
+        matcher.setName("B");
+        final Maker maker = new Maker(); maker.setName("C"); matcher.setMaker(maker);
+        final Taker taker = new Taker(); taker.setName("D"); matcher.setTaker(taker);
+        final Set<Matcher> matchers = new HashSet<Matcher>();
+        matchers.add(matcher);     
+        o.setMatchers(matchers);
+        assertEquals("name:A,matchers:[matcher:{name:B,maker:{name:C},taker:{name:D}}]", o.toStringDeep());
     }
 
     @Test

@@ -9,16 +9,32 @@ public class MakerTest
     public void toStringWithDefault()
     {
         final Maker o = new Maker();
-        assertEquals("Maker name:null", o.toString());
+        assertEquals("name:null", o.toString());
     }
 
     @Test
-    public void toStringWithName()
+    public void toStringWithTypical()
     {
         final Maker o = new Maker();
         final String name = "foo";
         o.setName(name);
-        assertEquals("Maker name:foo", o.toString());
+        assertEquals("name:foo", o.toString());
+    }
+
+    @Test
+    public void toStringDeepWithDefault()
+    {
+        final Maker o = new Maker();
+        assertEquals("name:null", o.toStringDeep());
+    }
+
+    @Test
+    public void toStringDeepWithTypical()
+    {
+        final Maker o = new Maker();
+        final String name = "foo";
+        o.setName(name);
+        assertEquals("name:foo", o.toStringDeep());
     }
 
     @Test
