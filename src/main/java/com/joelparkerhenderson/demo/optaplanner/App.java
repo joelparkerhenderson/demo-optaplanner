@@ -45,9 +45,9 @@ public class App
         solution.setMatchers(matchers);
 
         System.out.println("Matchers...");
-        for(Matcher matcher: matchers){
-            System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName());
-        }
+        matchers.stream().sorted().forEachOrdered((matcher) -> 
+            System.out.println("Matcher mame:" + matcher.getName() + " maker_name:" + matcher.getMaker().getName() + " taker_name:" + matcher.getTaker().getName())
+        );
 
         // Create the solver factory and its config
         SolverFactory<Solution> solverFactory = SolverFactory.createEmpty();
