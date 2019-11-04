@@ -50,7 +50,7 @@ public class SolutionTest
     }
 
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final Solution o = new Solution();
         final String name = "foo";
@@ -69,7 +69,7 @@ public class SolutionTest
     }
 
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<solution>\n" +

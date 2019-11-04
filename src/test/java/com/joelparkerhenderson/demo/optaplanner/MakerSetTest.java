@@ -7,7 +7,7 @@ import java.util.*;
 public class MakerSetTest
 {
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final MakerSet o = new MakerSet();
         final String name = "foo";
@@ -21,7 +21,7 @@ public class MakerSetTest
     }
 
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<makerSet>\n" +

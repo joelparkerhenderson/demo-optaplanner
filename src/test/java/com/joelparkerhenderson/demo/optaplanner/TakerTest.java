@@ -38,7 +38,7 @@ public class TakerTest
     }
 
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final Taker o = new Taker();
         final String name = "foo";
@@ -52,7 +52,7 @@ public class TakerTest
     }
     
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<taker>\n" +

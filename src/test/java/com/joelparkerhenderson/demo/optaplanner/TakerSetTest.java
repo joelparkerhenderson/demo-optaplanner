@@ -7,7 +7,7 @@ import java.util.*;
 public class TakerSetTest
 {
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final TakerSet o = new TakerSet();
         final String name = "foo";
@@ -21,7 +21,7 @@ public class TakerSetTest
     }
 
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<takerSet>\n" +

@@ -40,7 +40,7 @@ public class MatcherTest
     }
 
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final Matcher o = new Matcher();
         final String name = "foo";
@@ -54,7 +54,7 @@ public class MatcherTest
     }
 
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<matcher>\n" +

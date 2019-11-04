@@ -40,7 +40,7 @@ public class MakerTest
     }
 
     @Test
-    public void toXML()
+    public void toXMLString()
     {
         final Maker o = new Maker();
         final String name = "foo";
@@ -54,7 +54,7 @@ public class MakerTest
     }
 
     @Test
-    public void fromXML()
+    public void fromXMLString()
     {
         final String xml =
             "<maker>\n" +
