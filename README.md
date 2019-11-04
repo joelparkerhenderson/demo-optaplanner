@@ -105,3 +105,39 @@ Solved...
         matcher:{name:8,maker:{name:8},taker:{name:8}},
         matcher:{name:9,maker:{name:9},taker:{name:9}}]
 ```
+
+## Integration
+
+Integration via XML is work in progress.
+
+Example:
+
+```xml
+<maker>
+  <name>x</name>
+</maker>
+
+<makerSet>
+  <name>x</name>
+</makerSet>
+
+<taker>
+  <name>x</name>
+</taker>
+
+<takerSet>
+  <name>x</name>
+</takerSet>
+
+<matcher>
+  <name>Foo</name>
+</matcher>
+
+<solution>
+  <name>Foo</name>
+  <score>
+    <initScore>0</initScore>
+    <hardScore>0</hardScore>
+    <softScore>0</softScore>
+  </score>
+</solution>
