@@ -1,6 +1,9 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Maker implements ToStringDeep, HasName, Comparable<Maker>{
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+public class Maker implements ToStringDeep, ToXMLString, HasName, Comparable<Maker>{
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -9,6 +12,14 @@ public class Maker implements ToStringDeep, HasName, Comparable<Maker>{
     @Override
     public String toStringDeep(){
         return toString();
+    }
+
+    @Override
+    public String toXMLString()
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("maker", Maker.class);
+        return xstream.toXML(this);
     }
 
     private String name;

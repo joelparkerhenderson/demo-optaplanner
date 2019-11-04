@@ -38,6 +38,20 @@ public class TakerTest
     }
 
     @Test
+    public void toXML()
+    {
+        final Taker o = new Taker();
+        final String name = "foo";
+        o.setName(name);
+        final String exp =
+            "<taker>\n" +
+            "  <name>foo</name>\n" +
+            "</taker>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+    
+    @Test
     public void name()
     {
         final Taker o = new Taker();

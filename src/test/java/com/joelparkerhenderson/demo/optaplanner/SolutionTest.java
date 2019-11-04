@@ -50,6 +50,25 @@ public class SolutionTest
     }
 
     @Test
+    public void toXML()
+    {
+        final Solution o = new Solution();
+        final String name = "foo";
+        o.setName(name);
+        final String exp =
+            "<solution>\n" +
+            "  <name>foo</name>\n" +
+            "  <score>\n" +
+            "    <initScore>0</initScore>\n" +
+            "    <hardScore>0</hardScore>\n" +
+            "    <softScore>0</softScore>\n" +
+            "  </score>\n" +
+            "</solution>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
     public void name()
     {
         final Solution o = new Solution();

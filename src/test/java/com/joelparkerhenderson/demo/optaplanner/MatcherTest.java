@@ -40,6 +40,20 @@ public class MatcherTest
     }
 
     @Test
+    public void toXML()
+    {
+        final Matcher o = new Matcher();
+        final String name = "foo";
+        o.setName(name);
+        final String exp =
+            "<matcher>\n" +
+            "  <name>foo</name>\n" +
+            "</matcher>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
     public void name()
     {
         final Matcher o = new Matcher();

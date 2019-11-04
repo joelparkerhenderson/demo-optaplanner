@@ -1,12 +1,22 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class MakerSet implements ToStringDeep, HasName {
+public class MakerSet implements ToStringDeep, ToXMLString, HasName {
 
     @Override
     public String toStringDeep(){
         return toString();
+    }
+
+    @Override
+    public String toXMLString()
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("makerSet", MakerSet.class);
+        return xstream.toXML(this);
     }
 
     private String name;

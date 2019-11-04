@@ -1,7 +1,9 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
-import java.util.stream.*; 
+import java.util.stream.*;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
@@ -10,7 +12,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution implements ToStringDeep, HasName {
+public class Solution implements ToStringDeep, ToXMLString, HasName {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null") +
@@ -26,6 +28,14 @@ public class Solution implements ToStringDeep, HasName {
             ).collect(Collectors.joining(","));
         }
         return toString() + ",matchers:[" + matchersString + "]";
+    }
+
+    @Override
+    public String toXMLString()
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("solution", Solution.class);
+        return xstream.toXML(this);
     }
 
     private String name;

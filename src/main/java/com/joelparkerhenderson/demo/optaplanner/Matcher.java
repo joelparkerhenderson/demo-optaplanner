@@ -1,12 +1,14 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher implements ToStringDeep, HasName, Comparable<Matcher> {
+public class Matcher implements ToStringDeep, ToXMLString, HasName, Comparable<Matcher> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -17,6 +19,14 @@ public class Matcher implements ToStringDeep, HasName, Comparable<Matcher> {
         return toString() + 
         ",maker:{" + ((maker != null) ? maker : "null") + "}" + 
         ",taker:{" + ((taker != null) ? taker : "null") + "}";
+    }
+
+    @Override
+    public String toXMLString()
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("matcher", Matcher.class);
+        return xstream.toXML(this);
     }
 
     private String name;
