@@ -8,7 +8,7 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher implements ToStringDeep, ToXMLString, HasName, Comparable<Matcher> {
+public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Matcher> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -27,6 +27,14 @@ public class Matcher implements ToStringDeep, ToXMLString, HasName, Comparable<M
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("matcher", Matcher.class);
         return xstream.toXML(this);
+    }
+
+    //@Interface FromXMLString
+    public static Matcher fromXMLString(String xml)
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("matcher", Matcher.class);
+        return (Matcher)xstream.fromXML(xml);
     }
 
     private String name;

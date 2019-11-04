@@ -52,7 +52,18 @@ public class MakerTest
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
-    
+
+    @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<maker>\n" +
+            "  <name>foo</name>\n" +
+            "</maker>";
+        final Maker o = Maker.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
     @Test
     public void name()
     {

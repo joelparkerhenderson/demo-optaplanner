@@ -21,6 +21,17 @@ public class MakerSetTest
     }
 
     @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<makerSet>\n" +
+            "  <name>foo</name>\n" +
+            "</makerSet>";
+        final MakerSet o = MakerSet.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final MakerSet o = new MakerSet();

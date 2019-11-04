@@ -21,6 +21,17 @@ public class TakerSetTest
     }
 
     @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<takerSet>\n" +
+            "  <name>foo</name>\n" +
+            "</takerSet>";
+        final TakerSet o = TakerSet.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final TakerSet o = new TakerSet();

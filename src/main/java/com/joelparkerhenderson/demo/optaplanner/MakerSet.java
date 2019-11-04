@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class MakerSet implements ToStringDeep, ToXMLString, HasName {
+public class MakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasName {
 
     @Override
     public String toStringDeep(){
@@ -17,6 +17,14 @@ public class MakerSet implements ToStringDeep, ToXMLString, HasName {
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("makerSet", MakerSet.class);
         return xstream.toXML(this);
+    }
+
+    //@Interface FromXMLString
+    public static MakerSet fromXMLString(String xml)
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("makerSet", MakerSet.class);
+        return (MakerSet)xstream.fromXML(xml);
     }
 
     private String name;

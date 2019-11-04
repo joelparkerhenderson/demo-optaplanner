@@ -69,6 +69,17 @@ public class SolutionTest
     }
 
     @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<solution>\n" +
+            "  <name>foo</name>\n" +
+            "</solution>";
+        final Solution o = Solution.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final Solution o = new Solution();

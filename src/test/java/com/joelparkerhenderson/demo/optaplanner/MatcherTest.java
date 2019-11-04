@@ -54,6 +54,17 @@ public class MatcherTest
     }
 
     @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<matcher>\n" +
+            "  <name>foo</name>\n" +
+            "</matcher>";
+        final Matcher o = Matcher.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final Matcher o = new Matcher();

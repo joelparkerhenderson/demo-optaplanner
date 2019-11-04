@@ -12,7 +12,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution implements ToStringDeep, ToXMLString, HasName {
+public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasName {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null") +
@@ -36,6 +36,14 @@ public class Solution implements ToStringDeep, ToXMLString, HasName {
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("solution", Solution.class);
         return xstream.toXML(this);
+    }
+
+    //@Interface FromXMLString
+    public static Solution fromXMLString(String xml)
+    {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.alias("solution", Solution.class);
+        return (Solution)xstream.fromXML(xml);
     }
 
     private String name;

@@ -52,6 +52,17 @@ public class TakerTest
     }
     
     @Test
+    public void fromXML()
+    {
+        final String xml =
+            "<taker>\n" +
+            "  <name>foo</name>\n" +
+            "</taker>";
+        final Taker o = Taker.fromXMLString(xml);
+        assertEquals("foo", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final Taker o = new Taker();
