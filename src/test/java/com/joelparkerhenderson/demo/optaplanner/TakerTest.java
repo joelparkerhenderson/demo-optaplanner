@@ -6,42 +6,55 @@ import java.util.*;
 
 public class TakerTest
 {
+    protected Taker _o() {
+        final Taker taker = new Taker();
+        return taker;
+    }
+
+    protected Taker _taker() {
+        final Taker taker = new Taker();
+        taker.setName("myTaker");
+        return taker;
+    }
+
+    protected TagSet _tagSet() {
+        final TagSet tagSet = new TagSet();
+        tagSet.setName("myTagSet");
+        return tagSet;
+    }
+
     @Test
     public void toStringWithDefault()
     {
-        final Taker o = new Taker();
+        final Taker o = _o();
         assertEquals("name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
-        final Taker o = new Taker();
-        final String name = "foo";
-        o.setName(name);
-        assertEquals("name:foo", o.toString());
+        final Taker o = _taker();
+        assertEquals("name:myTaker", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
-        final Taker o = new Taker();
+        final Taker o = _o();
         assertEquals("name:null", o.toStringDeep());
     }
 
     @Test
     public void toStringDeepWithTypical()
     {
-        final Taker o = new Taker();
-        final String name = "foo";
-        o.setName(name);
-        assertEquals("name:foo", o.toStringDeep());
+        final Taker o = _taker();
+        assertEquals("name:myTaker", o.toStringDeep());
     }
 
     @Test
     public void toXMLStringWithDefault()
     {
-        final Taker o = new Taker();
+        final Taker o = _o();
         final String exp =
             "<taker/>";
         final String act = o.toXMLString();
@@ -51,9 +64,7 @@ public class TakerTest
     @Test
     public void toXMLStringWithTypical()
     {
-        final Taker o = new Taker();
-        final String name = "myTaker";
-        o.setName(name);
+        final Taker o = _taker();
         final String exp =
             "<taker>\n" +
             "  <name>myTaker</name>\n" +
@@ -67,26 +78,26 @@ public class TakerTest
     {
         final String xml =
             "<taker>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myTaker</name>\n" +
             "</taker>";
         final Taker o = Taker.fromXMLString(xml);
-        assertEquals("foo", o.getName());
+        assertEquals("myTaker", o.getName());
     }
 
     @Test
     public void name()
     {
-        final Taker o = new Taker();
-        final String name = "foo";
+        final Taker o = _o();
+        final String name = "myTaker";
         o.setName(name);
-        assertEquals(name, o.getName());
+        assertSame(name, o.getName());
     }
 
     @Test
     public void tags()
     {
-        final Taker o = new Taker();
-        final TagSet tagSet = new TagSet();
+        final Taker o = _o();
+        final TagSet tagSet = _tagSet();
         o.setTagSet(tagSet);
         assertSame(tagSet, o.getTagSet());
     }
@@ -94,24 +105,24 @@ public class TakerTest
     @Test
     public void compareToWithEqual()
     {
-        final Taker o = new Taker(); o.setName("A");
-        final Taker x = new Taker(); x.setName("A");
+        final Taker o = _o(); o.setName("A");
+        final Taker x = _o(); x.setName("A");
         assertEquals(0, o.compareTo(x));
     }
 
     @Test
     public void compareToWithLesser()
     {
-        final Taker o = new Taker(); o.setName("A");
-        final Taker x = new Taker(); x.setName("B");
+        final Taker o = _o(); o.setName("A");
+        final Taker x = _o(); x.setName("B");
         assertEquals(-1, o.compareTo(x));
     }
 
     @Test
     public void compareToWithGreater()
     {
-        final Taker o = new Taker(); o.setName("B");
-        final Taker x = new Taker(); x.setName("A");
+        final Taker o = _o(); o.setName("B");
+        final Taker x = _o(); x.setName("A");
         assertEquals(1, o.compareTo(x));
     }
 
