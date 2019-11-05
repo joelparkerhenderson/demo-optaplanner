@@ -2,12 +2,26 @@
 
 <img src="README.png" alt="Objective" style="width: 100%;"/>
 
+* [Documentation](#documentation)
+* [Example](#example)
+  * [Initialization](#initialization)
+  * [Running](#running)
+  * [Run](#run)
+  * [Output](#output)
+
+
+## Documentation
+
+Documentation within this repo:
+
 * [Documentation](doc/)
   * [Setup](doc/setup.md)
+  * [Integration with XML, JSON, etc.](doc/integration_with_xml_json_etc.md)
   * [Wordbooks](doc/wordbooks/README.md)
   * [Plans](doc/plans/)
     * [Bootstrapping - WIP](doc/plans/bootstrapping.md)
     * [Objects UML diagram - WIP](doc/plans/objects.png)
+
 
 ## Example
 
@@ -106,93 +120,3 @@ Solved...
         matcher:{name:9,maker:{name:9},taker:{name:9}}]
 ```
 
-
-## Integration
-
-
-### XML
-
-Integration via XML is work in progress.
-
-Example:
-
-```xml
-<maker>
-  <name>myMaker</name>
-</maker>
-
-<makerSet>
-  <name>myMakerSet</name>
-</makerSet>
-
-<taker>
-  <name>myTaker</name>
-</taker>
-
-<takerSet>
-  <name>myTakerSet</name>
-</takerSet>
-
-<matcher>
-  <name>myMatcher</name>
-  <maker>
-    <name>myMaker</name>
-  </maker>
-  <taker>
-    <name>myTaker</name>
-  </taker>
-</matcher>
-
-<solution>
-  <name>mySolution</name>
-  <score>
-    <initScore>0</initScore>
-    <hardScore>0</hardScore>
-    <softScore>0</softScore>
-  </score>
-</solution>
-```
-
-
-### JSON
-
-Integration via JSON is TODO.
-
-Example:
-
-```json
-"maker": {
-  "name": "myMaker"
-}
-
-"makerSet": {
-  "name": "myMakerSet"
-}
-
-"taker": {
-  "name": "myTaker"
-}
-
-"takerSet": {
-  "name": "myTakerSet"
-}
-
-"matcher": {
-  "name": "myMatcher",
-  "maker": {
-    "name": "myMaker"
-  },
-  "taker": {
-    "name": "myTaker"
-  }
-}
-
-"solution": {
-  "name": "mySolution",
-  "score": {
-    "initScore": 0,
-    "hardScore": 0,
-    "softScore": 0
-  }
-}
-```
