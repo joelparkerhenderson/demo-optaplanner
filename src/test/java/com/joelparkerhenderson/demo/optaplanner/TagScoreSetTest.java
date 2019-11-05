@@ -7,10 +7,39 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 public class TagScoreSetTest
 {
+
+    protected TagScoreSet _o() {
+        final TagScoreSet tagScoreSet = new TagScoreSet();
+        return tagScoreSet;
+    }
+
+    protected TagScoreSet _tagScoreSet() {
+        final TagScoreSet tagScoreSet = new TagScoreSet();
+        tagScoreSet.setName("myTagScoreSet");
+        return tagScoreSet;
+    }
+
+    protected TagScore _tagScore() {
+        final TagScore tagScore = new TagScore();
+        tagScore.setName("myTagScore");
+        return tagScore;
+    }
+
+    protected Tag _tag() {
+        final Tag tag = new Tag();
+        tag.setName("myTag");
+        return tag;
+    }
+
+    protected HardSoftScore _score() {
+        final HardSoftScore score = HardSoftScore.of(123,456);
+        return score;
+    }
+
     @Test
     public void toXMLStringWithDefault()
     {
-        final TagScoreSet o = new TagScoreSet();
+        final TagScoreSet o = _o();
         final String exp =
             "<tag-score-set/>";
         final String act = o.toXMLString();
@@ -20,14 +49,10 @@ public class TagScoreSetTest
     @Test
     public void toXMLStringWithTypical()
     {
-        final TagScoreSet o = new TagScoreSet();
-        final String name = "myTagScoreSet";
-        o.setName(name);
-        final Tag tag = new Tag();
-        tag.setName("myTag");
-        final TagScore tagScore = new TagScore();
-        tagScore.setName("myTagScore");
-        final HardSoftScore score = HardSoftScore.of(123,456);
+        final TagScoreSet o = _tagScoreSet();
+        final Tag tag = _tag();
+        final TagScore tagScore = _tagScore();
+        final HardSoftScore score = _score();
         tagScore.setScore(score);
         final Set<TagScore> tagScores = new HashSet<TagScore>();
         tagScores.add(tagScore);
@@ -64,7 +89,7 @@ public class TagScoreSetTest
     @Test
     public void name()
     {
-        final TagScoreSet o = new TagScoreSet();
+        final TagScoreSet o = _o();
         final String name = "myTagScoreSet";
         o.setName(name);
         assertSame(name, o.getName());
@@ -73,7 +98,7 @@ public class TagScoreSetTest
     @Test
     public void tagScores()
     {
-        final TagScoreSet o = new TagScoreSet();
+        final TagScoreSet o = _o();
         final Set<TagScore> tagScores = new HashSet<TagScore>();
         o.setTagScores(tagScores);
         assertSame(tagScores, o.getTagScores());
