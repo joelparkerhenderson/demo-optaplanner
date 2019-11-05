@@ -54,6 +54,7 @@ public class TagSetTest
     public void tags()
     {
         final TagSet o = new TagSet();
+        final Tag tag = new Tag();
         final Set<Tag> tags = new HashSet<Tag>();
         o.setTags(tags);
         assertSame(tags, o.getTags());

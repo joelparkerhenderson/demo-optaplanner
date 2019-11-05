@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class MakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTags {
+public class MakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet {
 
     @Override
     public String toStringDeep(){
@@ -35,16 +35,16 @@ public class MakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasNa
         this.name = name;
     }
 
-    private Set<Tag> tags;
+    private TagSet tagSet;
 
     @Override
-    public Set<Tag> getTags(){
-        return tags;
+    public TagSet getTagSet(){
+        return tagSet;
     }
 
     @Override
-    public void setTags(Set<Tag> tags){
-        this.tags = tags;
+    public void setTagSet(TagSet tagSet){
+        this.tagSet = tagSet;
     }
 
     private Set<Maker> makers;

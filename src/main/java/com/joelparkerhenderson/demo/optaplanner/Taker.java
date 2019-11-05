@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Taker implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTags, Comparable<Taker> {
+public class Taker implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<Taker> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -39,16 +39,16 @@ public class Taker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
         this.name = name;
     }
 
-    private Set<Tag> tags;
+    private TagSet tagSet;
 
     @Override
-    public Set<Tag> getTags(){
-        return tags;
+    public TagSet getTagSet(){
+        return tagSet;
     }
 
     @Override
-    public void setTags(Set<Tag> tags){
-        this.tags = tags;
+    public void setTagSet(TagSet tagSet){
+        this.tagSet = tagSet;
     }
 
     @Override

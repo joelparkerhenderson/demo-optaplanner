@@ -86,9 +86,9 @@ public class TakerTest
     public void tags()
     {
         final Taker o = new Taker();
-        final Set<Tag> tags = new HashSet<Tag>();
-        o.setTags(tags);
-        assertSame(tags, o.getTags());
+        final TagSet tagSet = new TagSet();
+        o.setTagSet(tagSet);
+        assertSame(tagSet, o.getTagSet());
     }
 
     @Test

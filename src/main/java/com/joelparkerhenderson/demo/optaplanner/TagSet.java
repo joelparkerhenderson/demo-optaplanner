@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class TagSet implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTags {
+public class TagSet implements ToStringDeep, ToXMLString, FromXMLString, HasName {
 
     @Override
     public String toStringDeep(){
@@ -37,12 +37,10 @@ public class TagSet implements ToStringDeep, ToXMLString, FromXMLString, HasName
 
     private Set<Tag> tags;
 
-    @Override
     public Set<Tag> getTags(){
         return tags;
     }
 
-    @Override
     public void setTags(Set<Tag> tags){
         this.tags = tags;
     }

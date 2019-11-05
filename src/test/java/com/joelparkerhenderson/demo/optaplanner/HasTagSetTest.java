@@ -8,19 +8,19 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.*;
 
 @RunWith(Parameterized.class)
-public class HasTagsTest
+public class HasTagSetTest
 {
-    private Class<HasTags> klass;
+    private Class<HasTagSet> klass;
 
-    public HasTagsTest(Class<HasTags> klass) {
+    public HasTagSetTest(Class<HasTagSet> klass) {
         this.klass = klass;
     }
 
     @Test
     public final void hasMethods() {
         try {
-            assertSame(Set.class, klass.getMethod("getTags").getReturnType());
-            assertSame(Void.TYPE, klass.getMethod("setTags", Set.class).getReturnType());
+            assertSame(TagSet.class, klass.getMethod("getTagSet").getReturnType());
+            assertSame(Void.TYPE, klass.getMethod("setTagSet", TagSet.class).getReturnType());
         } 
         catch(final java.lang.NoSuchMethodException e) {
             fail();
