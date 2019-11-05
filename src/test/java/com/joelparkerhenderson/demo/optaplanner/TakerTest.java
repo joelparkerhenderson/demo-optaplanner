@@ -2,6 +2,7 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.*;
 
 public class TakerTest
 {
@@ -79,6 +80,17 @@ public class TakerTest
         final String name = "foo";
         o.setName(name);
         assertEquals(name, o.getName());
+    }
+
+    @Test
+    public void tags()
+    {
+        final Taker o = new Taker();
+        final String tag = "myTag";
+        final Set<String> tags = new HashSet<String>();
+        tags.add(tag);
+        o.setTags(tags);
+        assertEquals(tags, o.getTags());
     }
 
     @Test

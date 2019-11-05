@@ -1,9 +1,10 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Maker>{
+public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTags, Comparable<Maker>{
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -36,6 +37,18 @@ public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
     @Override
     public void setName(String name){
         this.name = name;
+    }
+
+    private Set<String> tags;
+
+    @Override
+    public Set<String> getTags(){
+        return tags;
+    }
+
+    @Override
+    public void setTags(Set<String> tags){
+        this.tags = tags;
     }
 
     @Override

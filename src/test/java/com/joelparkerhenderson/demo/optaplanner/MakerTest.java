@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.util.*;
 
 public class MakerTest
 {
@@ -81,6 +82,17 @@ public class MakerTest
         final String name = "foo";
         o.setName(name);
         assertEquals(name, o.getName());
+    }
+
+    @Test
+    public void tags()
+    {
+        final Maker o = new Maker();
+        final String tag = "myTag";
+        final Set<String> tags = new HashSet<String>();
+        tags.add(tag);
+        o.setTags(tags);
+        assertEquals(tags, o.getTags());
     }
 
     @Test
