@@ -14,17 +14,13 @@ public class MakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("makerSet", MakerSet.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static MakerSet fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("makerSet", MakerSet.class);
-        return (MakerSet)xstream.fromXML(xml);
+        return (MakerSet)AppXML.fromXML(xml);
     }
 
     private String name;

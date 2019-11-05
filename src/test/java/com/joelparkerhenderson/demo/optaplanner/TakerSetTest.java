@@ -11,7 +11,7 @@ public class TakerSetTest
     {
         final TakerSet o = new TakerSet();
         final String exp =
-            "<takerSet/>";
+            "<taker-set/>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
@@ -23,9 +23,9 @@ public class TakerSetTest
         final String name = "myTakerSet";
         o.setName(name);
         final String exp =
-            "<takerSet>\n" +
+            "<taker-set>\n" +
             "  <name>myTakerSet</name>\n" +
-            "</takerSet>";
+            "</taker-set>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
@@ -34,9 +34,9 @@ public class TakerSetTest
     public void fromXMLString()
     {
         final String xml =
-            "<takerSet>\n" +
+            "<taker-set>\n" +
             "  <name>foo</name>\n" +
-            "</takerSet>";
+            "</taker-set>";
         final TakerSet o = TakerSet.fromXMLString(xml);
         assertEquals("foo", o.getName());
     }

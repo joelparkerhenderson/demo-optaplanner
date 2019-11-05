@@ -17,17 +17,13 @@ public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("maker", Maker.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static Maker fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("maker", Maker.class);
-        return (Maker)xstream.fromXML(xml);
+        return (Maker)AppXML.fromXML(xml);
     }
 
     private String name;

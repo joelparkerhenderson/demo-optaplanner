@@ -11,7 +11,7 @@ public class MakerSetTest
     {
         final MakerSet o = new MakerSet();
         final String exp =
-            "<makerSet/>";
+            "<maker-set/>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
@@ -23,9 +23,9 @@ public class MakerSetTest
         final String name = "myMakerSet";
         o.setName(name);
         final String exp =
-            "<makerSet>\n" +
+            "<maker-set>\n" +
             "  <name>myMakerSet</name>\n" +
-            "</makerSet>";
+            "</maker-set>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
@@ -34,9 +34,9 @@ public class MakerSetTest
     public void fromXMLString()
     {
         final String xml =
-            "<makerSet>\n" +
+            "<maker-set>\n" +
             "  <name>foo</name>\n" +
-            "</makerSet>";
+            "</maker-set>";
         final MakerSet o = MakerSet.fromXMLString(xml);
         assertEquals("foo", o.getName());
     }

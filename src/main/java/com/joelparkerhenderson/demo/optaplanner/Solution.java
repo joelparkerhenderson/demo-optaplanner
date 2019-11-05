@@ -33,23 +33,13 @@ public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("solution", Solution.class);
-        xstream.alias("matcher", Matcher.class);
-        xstream.alias("maker", Maker.class);
-        xstream.alias("taker", Taker.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static Solution fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("solution", Solution.class);
-        xstream.alias("matcher", Matcher.class);
-        xstream.alias("maker", Maker.class);
-        xstream.alias("taker", Taker.class);
-        return (Solution)xstream.fromXML(xml);
+        return (Solution)AppXML.fromXML(xml);
     }
 
     private String name;

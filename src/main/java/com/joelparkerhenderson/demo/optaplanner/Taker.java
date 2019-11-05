@@ -17,17 +17,13 @@ public class Taker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("taker", Taker.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static Taker fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("taker", Taker.class);
-        return (Taker)xstream.fromXML(xml);
+        return (Taker)AppXML.fromXML(xml);
     }
 
     private String name;

@@ -14,17 +14,13 @@ public class TakerSet implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("takerSet", TakerSet.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static TakerSet fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("takerSet", TakerSet.class);
-        return (TakerSet)xstream.fromXML(xml);
+        return (TakerSet)AppXML.fromXML(xml);
     }
 
     private String name;

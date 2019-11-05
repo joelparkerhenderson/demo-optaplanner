@@ -24,19 +24,13 @@ public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasNam
     @Override
     public String toXMLString()
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("matcher", Matcher.class);
-        xstream.alias("maker", Maker.class);
-        xstream.alias("taker", Taker.class);
-        return xstream.toXML(this);
+        return AppXML.toXML(this);
     }
 
     //@Interface FromXMLString
     public static Matcher fromXMLString(String xml)
     {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.alias("matcher", Matcher.class);
-        return (Matcher)xstream.fromXML(xml);
+        return (Matcher)AppXML.fromXML(xml);
     }
 
     private String name;
