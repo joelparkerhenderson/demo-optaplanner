@@ -26,6 +26,8 @@ public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasNam
     {
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("matcher", Matcher.class);
+        xstream.alias("maker", Maker.class);
+        xstream.alias("taker", Taker.class);
         return xstream.toXML(this);
     }
 

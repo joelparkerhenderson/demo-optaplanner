@@ -35,6 +35,9 @@ public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     {
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("solution", Solution.class);
+        xstream.alias("matcher", Matcher.class);
+        xstream.alias("maker", Maker.class);
+        xstream.alias("taker", Taker.class);
         return xstream.toXML(this);
     }
 
@@ -43,6 +46,9 @@ public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     {
         XStream xstream = new XStream(new DomDriver());
         xstream.alias("solution", Solution.class);
+        xstream.alias("matcher", Matcher.class);
+        xstream.alias("maker", Maker.class);
+        xstream.alias("taker", Taker.class);
         return (Solution)xstream.fromXML(xml);
     }
 

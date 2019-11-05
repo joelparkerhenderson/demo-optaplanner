@@ -71,6 +71,16 @@ public class SolutionTest
         final Solution o = new Solution();
         final String name = "mySolution";
         o.setName(name);
+        final Maker maker = new Maker();
+        maker.setName("myMaker");
+        final Set<Maker> makers = new HashSet<Maker>();
+        makers.add(maker);
+        o.setMakers(makers);
+        final Taker taker = new Taker();
+        taker.setName("myTaker");
+        final Set<Taker> takers = new HashSet<Taker>();
+        takers.add(taker);
+        o.setTakers(takers);
         final String exp =
             "<solution>\n" +
             "  <name>mySolution</name>\n" +
@@ -79,6 +89,16 @@ public class SolutionTest
             "    <hardScore>0</hardScore>\n" +
             "    <softScore>0</softScore>\n" +
             "  </score>\n" +
+            "  <makers>\n" +
+            "    <maker>\n" +
+            "      <name>myMaker</name>\n" +
+            "    </maker>\n" +
+            "  </makers>\n" +
+            "  <takers>\n" +
+            "    <taker>\n" +
+            "      <name>myTaker</name>\n" +
+            "    </taker>\n" +
+            "  </takers>\n" +
             "</solution>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
