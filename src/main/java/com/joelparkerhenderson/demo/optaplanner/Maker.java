@@ -40,7 +40,7 @@ public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
 
     @Override
     public int compareTo(Maker that) {
-        return (int)(this.name.compareTo(that.getName()));
+        return (int)(this.getName().compareTo(that.getName()));
     }
 
 }

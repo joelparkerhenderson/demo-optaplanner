@@ -69,7 +69,7 @@ public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasNam
 
     @Override
     public int compareTo(Matcher that) {
-        return (int)(this.name.compareTo(that.getName()));
+        return (int)(this.getName().compareTo(that.getName()));
     }
 
 }
