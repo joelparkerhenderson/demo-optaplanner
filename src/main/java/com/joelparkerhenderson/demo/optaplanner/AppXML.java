@@ -15,6 +15,7 @@ class AppXML {
         AppXML.xstream.alias("maker-set", MakerSet.class);
         AppXML.xstream.alias("taker", Taker.class);
         AppXML.xstream.alias("taker-set", TakerSet.class);
+        AppXML.xstream.alias("tag", Tag.class);
         AppXML.xstream.alias("tag-score", TagScore.class);
     }
 
