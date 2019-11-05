@@ -9,17 +9,17 @@ Example:
   <name>myMaker</name>
 </maker>
 
-<makerSet>
+<maker-set>
   <name>myMakerSet</name>
-</makerSet>
+</maker-set>
 
 <taker>
   <name>myTaker</name>
 </taker>
 
-<takerSet>
+<taker-set>
   <name>myTakerSet</name>
-</takerSet>
+</taker-set>
 
 <matcher>
   <name>myMatcher</name>
