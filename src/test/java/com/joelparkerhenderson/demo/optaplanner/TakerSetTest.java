@@ -54,9 +54,7 @@ public class TakerSetTest
     public void tags()
     {
         final TakerSet o = new TakerSet();
-        final String tag = "myTag";
-        final Set<String> tags = new HashSet<String>();
-        tags.add(tag);
+        final Set<Tag> tags = new HashSet<Tag>();
         o.setTags(tags);
         assertEquals(tags, o.getTags());
     }

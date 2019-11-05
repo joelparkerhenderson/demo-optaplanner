@@ -39,15 +39,15 @@ public class Maker implements ToStringDeep, ToXMLString, FromXMLString, HasName,
         this.name = name;
     }
 
-    private Set<String> tags;
+    private Set<Tag> tags;
 
     @Override
-    public Set<String> getTags(){
+    public Set<Tag> getTags(){
         return tags;
     }
 
     @Override
-    public void setTags(Set<String> tags){
+    public void setTags(Set<Tag> tags){
         this.tags = tags;
     }
 

@@ -54,11 +54,9 @@ public class MakerSetTest
     public void tags()
     {
         final MakerSet o = new MakerSet();
-        final String tag = "myTag";
-        final Set<String> tags = new HashSet<String>();
-        tags.add(tag);
+        final Set<Tag> tags = new HashSet<Tag>();
         o.setTags(tags);
-        assertEquals(tags, o.getTags());
+        assertSame(tags, o.getTags());
     }
 
     @Test
