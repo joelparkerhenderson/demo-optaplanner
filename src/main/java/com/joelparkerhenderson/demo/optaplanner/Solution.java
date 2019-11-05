@@ -12,7 +12,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasName {
+public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasScore {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null") +
@@ -57,10 +57,12 @@ public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasNa
     @PlanningScore
     private HardSoftScore score = HardSoftScore.of(0,0);
 
+    @Override
     public HardSoftScore getScore() {
         return score;
     }
 
+    @Override
     public void setScore(HardSoftScore score) {
         this.score = score;
     }
