@@ -16,11 +16,12 @@ Documentation within this repo:
 
 * [Documentation](doc/)
   * [Setup](doc/setup.md)
-  * [Integration with XML, JSON, etc.](doc/integration_with_xml_json_etc.md)
   * [Wordbooks](doc/wordbooks/README.md)
   * [Plans](doc/plans/)
     * [Bootstrapping - WIP](doc/plans/bootstrapping.md)
     * [Objects UML diagram - WIP](doc/plans/objects.png)
+  * [Integration with XML - WIP](doc/integration/xml.md)
+  * [Integration with JSON - TODO](doc/integration/json.md)
 
 
 ## Example
