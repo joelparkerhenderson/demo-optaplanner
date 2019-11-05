@@ -41,6 +41,16 @@ Example:
     <hardScore>0</hardScore>
     <softScore>0</softScore>
   </score>
+  <makers>
+    <maker>
+      <name>myMaker</name>
+    </maker>
+  </makers>
+  <takers>
+    <taker>
+      <name>myTaker</name>
+    </taker>
+  </takers>
 </solution>
 ```
 
@@ -84,6 +94,16 @@ Example:
     "initScore": 0,
     "hardScore": 0,
     "softScore": 0
+  },
+  "makers": {
+    "maker": {
+      "name": "myMaker"
+    }
+  },
+  "takers": {
+    "taker": {
+      "name": "myTaker"
+    }
   }
 }
 ```

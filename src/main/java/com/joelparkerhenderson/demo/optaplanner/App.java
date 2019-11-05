@@ -38,6 +38,7 @@ public class App
     }
 
     public static Solution createDemoSolutionWithExamples(){
+        Logger logger = LoggerFactory.getLogger(App.class);
         final Solution solution = new Solution();
         solution.setName("Demo Solution");
 
@@ -55,6 +56,8 @@ public class App
             final Taker taker = new Taker(); taker.setName(name); takers.add(taker);
             final Matcher matcher = new Matcher(); matcher.setName(name); matcher.setMaker(maker); matchers.add(matcher);
         }
+
+        logger.info("Solution XML...\n" + solution.toXMLString());
 
         return solution;
     }
