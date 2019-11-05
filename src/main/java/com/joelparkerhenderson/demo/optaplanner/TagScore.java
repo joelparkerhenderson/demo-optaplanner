@@ -38,7 +38,7 @@ public class TagScore implements ToStringDeep, ToXMLString, FromXMLString, HasNa
         this.name = name;
     }
 
-    private HardSoftScore score = HardSoftScore.of(0,0);
+    private HardSoftScore score = HardSoftScore.ZERO;
 
     @Override
     public HardSoftScore getScore(){

@@ -18,7 +18,7 @@ public class ScorerTest
         solution.setTakers(new HashSet<Taker>());
         solution.setMatchers(new HashSet<Matcher>());
 
-        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScore(solution);
         assertEquals(exp, act);
     }
@@ -45,10 +45,10 @@ public class ScorerTest
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
-        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA); assertNotEquals(HardSoftScore.of(0,0), matcherAScore);
-        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB); assertNotEquals(HardSoftScore.of(0,0), matcherBScore);
+        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA); assertNotEquals(HardSoftScore.ZERO, matcherAScore);
+        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB); assertNotEquals(HardSoftScore.ZERO, matcherBScore);
 
-        final HardSoftScore exp = HardSoftScore.of(0,0).add(matcherAScore).add(matcherBScore);
+        final HardSoftScore exp = HardSoftScore.ZERO.add(matcherAScore).add(matcherBScore);
         final HardSoftScore act = o.calculateScore(solution);
         assertEquals(exp, act);
     }
@@ -88,7 +88,7 @@ public class ScorerTest
     {
         final Scorer o = new Scorer();
         final Maker maker = new Maker();
-        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithMaker(maker);
         assertEquals(exp, act);
     }
@@ -98,7 +98,7 @@ public class ScorerTest
     {
         final Scorer o = new Scorer();
         final Taker taker = new Taker();
-        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithTaker(taker);
         assertEquals(exp, act);
     }
@@ -109,7 +109,7 @@ public class ScorerTest
         final Scorer o = new Scorer();
         final Maker maker = null;
         final Taker taker = null;
-        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
         assertEquals(exp, act);
     }
@@ -122,7 +122,7 @@ public class ScorerTest
         final String takerName = null;
         final Maker maker = new Maker(); maker.setName(makerName);
         final Taker taker = new Taker(); taker.setName(takerName);
-        final HardSoftScore exp = HardSoftScore.of(0,0);
+        final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
         assertEquals(exp, act);
     }
