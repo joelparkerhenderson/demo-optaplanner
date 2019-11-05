@@ -6,10 +6,28 @@ import java.util.*;
 
 public class TagSetTest
 {
+
+    protected TagSet _o() {
+        final TagSet tagSet = new TagSet();
+        return tagSet;
+    }
+
+    protected TagSet _tagSet() {
+        final TagSet tagSet = new TagSet();
+        tagSet.setName("myTagSet");
+        return tagSet;
+    }
+
+    protected Tag _tag() {
+        final Tag tag = new Tag();
+        tag.setName("myTag");
+        return tag;
+    }
+
     @Test
     public void toXMLStringWithDefault()
     {
-        final TagSet o = new TagSet();
+        final TagSet o = _o();
         final String exp =
             "<tag-set/>";
         final String act = o.toXMLString();
@@ -19,9 +37,7 @@ public class TagSetTest
     @Test
     public void toXMLStringWithTypical()
     {
-        final TagSet o = new TagSet();
-        final String name = "myTagSet";
-        o.setName(name);
+        final TagSet o = _tagSet();
         final String exp =
             "<tag-set>\n" +
             "  <name>myTagSet</name>\n" +
@@ -44,7 +60,7 @@ public class TagSetTest
     @Test
     public void name()
     {
-        final TagSet o = new TagSet();
+        final TagSet o = _o();
         final String name = "myTagSet";
         o.setName(name);
         assertSame(name, o.getName());
@@ -53,8 +69,8 @@ public class TagSetTest
     @Test
     public void tags()
     {
-        final TagSet o = new TagSet();
-        final Tag tag = new Tag();
+        final TagSet o = _o();
+        final Tag tag = _tag();
         final Set<Tag> tags = new HashSet<Tag>();
         o.setTags(tags);
         assertSame(tags, o.getTags());
