@@ -40,14 +40,24 @@ public class MakerTest
     }
 
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final Maker o = new Maker();
-        final String name = "foo";
+        final String exp =
+            "<maker/>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final Maker o = new Maker();
+        final String name = "myMaker";
         o.setName(name);
         final String exp =
             "<maker>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myMaker</name>\n" +
             "</maker>";
         final String act = o.toXMLString();
         assertEquals(exp, act);

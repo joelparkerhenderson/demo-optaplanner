@@ -38,19 +38,29 @@ public class TakerTest
     }
 
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final Taker o = new Taker();
-        final String name = "foo";
-        o.setName(name);
         final String exp =
-            "<taker>\n" +
-            "  <name>foo</name>\n" +
-            "</taker>";
+            "<taker/>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
     }
     
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final Taker o = new Taker();
+        final String name = "myTaker";
+        o.setName(name);
+        final String exp =
+            "<taker>\n" +
+            "  <name>myTaker</name>\n" +
+            "</taker>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
     @Test
     public void fromXMLString()
     {

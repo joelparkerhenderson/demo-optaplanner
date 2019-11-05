@@ -7,14 +7,24 @@ import java.util.*;
 public class TakerSetTest
 {
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final TakerSet o = new TakerSet();
-        final String name = "foo";
+        final String exp =
+            "<takerSet/>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final TakerSet o = new TakerSet();
+        final String name = "myTakerSet";
         o.setName(name);
         final String exp =
             "<takerSet>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myTakerSet</name>\n" +
             "</takerSet>";
         final String act = o.toXMLString();
         assertEquals(exp, act);

@@ -50,14 +50,30 @@ public class SolutionTest
     }
 
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final Solution o = new Solution();
-        final String name = "foo";
+        final String exp =
+            "<solution>\n" +
+            "  <score>\n" +
+            "    <initScore>0</initScore>\n" +
+            "    <hardScore>0</hardScore>\n" +
+            "    <softScore>0</softScore>\n" +
+            "  </score>\n" +
+            "</solution>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final Solution o = new Solution();
+        final String name = "mySolution";
         o.setName(name);
         final String exp =
             "<solution>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>mySolution</name>\n" +
             "  <score>\n" +
             "    <initScore>0</initScore>\n" +
             "    <hardScore>0</hardScore>\n" +

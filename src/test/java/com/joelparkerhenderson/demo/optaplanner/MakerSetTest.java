@@ -7,14 +7,24 @@ import java.util.*;
 public class MakerSetTest
 {
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final MakerSet o = new MakerSet();
-        final String name = "foo";
+        final String exp =
+            "<makerSet/>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final MakerSet o = new MakerSet();
+        final String name = "myMakerSet";
         o.setName(name);
         final String exp =
             "<makerSet>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myMakerSet</name>\n" +
             "</makerSet>";
         final String act = o.toXMLString();
         assertEquals(exp, act);

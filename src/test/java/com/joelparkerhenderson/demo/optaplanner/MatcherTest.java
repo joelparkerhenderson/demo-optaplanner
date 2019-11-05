@@ -40,14 +40,36 @@ public class MatcherTest
     }
 
     @Test
-    public void toXMLString()
+    public void toXMLStringWithDefault()
     {
         final Matcher o = new Matcher();
-        final String name = "foo";
+        final String exp =
+            "<matcher/>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final Matcher o = new Matcher();
+        final String name = "myMatcher";
         o.setName(name);
+        final Maker maker = new Maker();
+        maker.setName("myMaker");
+        o.setMaker(maker);
+        final Taker taker = new Taker();
+        taker.setName("myTaker");
+        o.setTaker(taker);
         final String exp =
             "<matcher>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myMatcher</name>\n" +
+            "  <maker>\n" +
+            "    <name>myMaker</name>\n" +
+            "  </maker>\n" +
+            "  <taker>\n" +
+            "    <name>myTaker</name>\n" +
+            "  </taker>\n" +
             "</matcher>";
         final String act = o.toXMLString();
         assertEquals(exp, act);

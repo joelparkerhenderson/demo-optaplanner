@@ -106,7 +106,11 @@ Solved...
         matcher:{name:9,maker:{name:9},taker:{name:9}}]
 ```
 
+
 ## Integration
+
+
+### XML
 
 Integration via XML is work in progress.
 
@@ -114,30 +118,37 @@ Example:
 
 ```xml
 <maker>
-  <name>x</name>
+  <name>myMaker</name>
 </maker>
 
 <makerSet>
-  <name>x</name>
+  <name>myMakerSet</name>
 </makerSet>
 
 <taker>
-  <name>x</name>
+  <name>myTaker</name>
 </taker>
 
 <takerSet>
-  <name>x</name>
+  <name>myTakerSet</name>
 </takerSet>
 
 <matcher>
-  <name>Foo</name>
+  <name>myMatcher</name>
+  <maker>
+    <name>myMaker</name>
+  </maker>
+  <taker>
+    <name>myTaker</name>
+  </taker>
 </matcher>
 
 <solution>
-  <name>Foo</name>
+  <name>mySolution</name>
   <score>
     <initScore>0</initScore>
     <hardScore>0</hardScore>
     <softScore>0</softScore>
   </score>
 </solution>
+```
