@@ -172,3 +172,20 @@ java.lang.NoClassDefFoundError: com/google/common/…
 ```
 
 Then verify the CLASSPATH includes the Google Guava library.
+
+
+### XStream
+
+The app expects the CLASSPATH to include XStream for XML parsing.
+
+```sh
+export CLASSPATH="$CLASSPATH:$HOME/.m2/repository/com/thoughtworks/xstream/xstream/1.4.11.1/xstream-1.4.11.1.jar"
+```
+
+If you get an error such as:
+
+```sh
+java.lang.NoClassDefFoundError: com/thoughtworks/xstream/…
+```
+
+Then verify the CLASSPATH includes the XStream library.
