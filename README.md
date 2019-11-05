@@ -18,6 +18,7 @@ Documentation within this repo:
   * [Setup](doc/setup.md)
   * [Wordbooks](doc/wordbooks/README.md)
   * [Plans](doc/plans/)
+    * [Roadmap](doc/plans/roadmap/)
     * [Bootstrapping - WIP](doc/plans/bootstrapping.md)
     * [Objects UML diagram - WIP](doc/plans/objects.png)
   * [Integration with XML - WIP](doc/integration/xml.md)
