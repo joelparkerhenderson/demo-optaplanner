@@ -5,44 +5,70 @@ import org.junit.Test;
 
 public class MatcherTest
 {
+
+    protected Matcher _o() {
+        final Matcher matcher = new Matcher();
+        return matcher;
+    }
+
+    protected Matcher _matcher() {
+        final Matcher matcher = new Matcher();
+        matcher.setName("myMatcher");
+        return matcher;
+    }
+
+    protected Maker _maker() {
+        final Maker maker = new Maker();
+        maker.setName("myMaker");
+        return maker;
+    }
+
+    protected Taker _taker() {
+        final Taker taker = new Taker();
+        taker.setName("myTaker");
+        return taker;
+    }
+
+    protected TagSet _tagSet() {
+        final TagSet tagSet = new TagSet();
+        tagSet.setName("myTagSet");
+        return tagSet;
+    }
+
     @Test
     public void toStringWithDefault()
     {
-        final Matcher o = new Matcher();
+        final Matcher o = _o();
         assertEquals("name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
-        final Matcher o = new Matcher();
-        final String name = "foo";
-        o.setName(name);
-        assertEquals("name:foo", o.toString());
+        final Matcher o = _matcher();
+        assertEquals("name:myMatcher", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
-        final Matcher o = new Matcher();
+        final Matcher o = _o();
         assertEquals("name:null,maker:{null},taker:{null}", o.toStringDeep());
     }
 
     @Test
     public void toStringDeepWithTypical()
     {
-        final Matcher o = new Matcher();
-        final String name = "A";
-        o.setName(name);
-        final Maker maker = new Maker(); maker.setName("B"); o.setMaker(maker);
-        final Taker taker = new Taker(); taker.setName("C"); o.setTaker(taker);
-        assertEquals("name:A,maker:{name:B},taker:{name:C}", o.toStringDeep());
+        final Matcher o = _matcher();
+        final Maker maker = _maker(); o.setMaker(maker);
+        final Taker taker = _taker(); o.setTaker(taker);
+        assertEquals("name:myMatcher,maker:{name:myMaker},taker:{name:myTaker}", o.toStringDeep());
     }
 
     @Test
     public void toXMLStringWithDefault()
     {
-        final Matcher o = new Matcher();
+        final Matcher o = _o();
         final String exp =
             "<matcher/>";
         final String act = o.toXMLString();
@@ -52,14 +78,10 @@ public class MatcherTest
     @Test
     public void toXMLStringWithTypical()
     {
-        final Matcher o = new Matcher();
-        final String name = "myMatcher";
-        o.setName(name);
-        final Maker maker = new Maker();
-        maker.setName("myMaker");
+        final Matcher o = _matcher();
+        final Maker maker = _maker();
         o.setMaker(maker);
-        final Taker taker = new Taker();
-        taker.setName("myTaker");
+        final Taker taker = _taker();
         o.setTaker(taker);
         final String exp =
             "<matcher>\n" +
@@ -80,26 +102,26 @@ public class MatcherTest
     {
         final String xml =
             "<matcher>\n" +
-            "  <name>foo</name>\n" +
+            "  <name>myMatcher</name>\n" +
             "</matcher>";
         final Matcher o = Matcher.fromXMLString(xml);
-        assertEquals("foo", o.getName());
+        assertEquals("myMatcher", o.getName());
     }
 
     @Test
     public void name()
     {
-        final Matcher o = new Matcher();
-        final String name = "foo";
+        final Matcher o = _o();
+        final String name = "myMatcher";
         o.setName(name);
-        assertEquals(name, o.getName());
+        assertSame(name, o.getName());
     }
 
     @Test
     public void maker()
     {
-        final Matcher o = new Matcher();
-        final Maker maker = new Maker();
+        final Matcher o = _o();
+        final Maker maker = _maker();
         o.setMaker(maker);
         assertSame(maker, o.getMaker());
     }
@@ -107,8 +129,8 @@ public class MatcherTest
     @Test
     public void taker()
     {
-        final Matcher o = new Matcher();
-        final Taker taker = new Taker();
+        final Matcher o = _o();
+        final Taker taker = _taker();
         o.setTaker(taker);
         assertSame(taker, o.getTaker());
     }
@@ -116,24 +138,24 @@ public class MatcherTest
     @Test
     public void compareToWithEqual()
     {
-        final Matcher o = new Matcher(); o.setName("A");
-        final Matcher x = new Matcher(); x.setName("A");
+        final Matcher o = _o(); o.setName("A");
+        final Matcher x = _o(); x.setName("A");
         assertEquals(0, o.compareTo(x));
     }
 
     @Test
     public void compareToWithLesser()
     {
-        final Matcher o = new Matcher(); o.setName("A");
-        final Matcher x = new Matcher(); x.setName("B");
+        final Matcher o = _o(); o.setName("A");
+        final Matcher x = _o(); x.setName("B");
         assertEquals(-1, o.compareTo(x));
     }
 
     @Test
     public void compareToWithGreater()
     {
-        final Matcher o = new Matcher(); o.setName("B");
-        final Matcher x = new Matcher(); x.setName("A");
+        final Matcher o = _o(); o.setName("B");
+        final Matcher x = _o(); x.setName("A");
         assertEquals(1, o.compareTo(x));
     }
 
