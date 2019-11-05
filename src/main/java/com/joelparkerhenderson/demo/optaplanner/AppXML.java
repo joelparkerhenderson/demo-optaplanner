@@ -18,6 +18,7 @@ class AppXML {
         AppXML.xstream.alias("tag", Tag.class);
         AppXML.xstream.alias("tag-set", TagSet.class);
         AppXML.xstream.alias("tag-score", TagScore.class);
+        AppXML.xstream.alias("tag-score-set", TagScoreSet.class);
     }
 
     public static String toXML(Object o) {
