@@ -2,12 +2,23 @@
 
 <img src="README.png" alt="Objective" style="width: 100%;"/>
 
+* [Introduction](#introduction)
 * [Documentation](#documentation)
+* [Technology](#technology)
 * [Example](#example)
   * [Initialization](#initialization)
   * [Running](#running)
   * [Run](#run)
   * [Output](#output)
+
+
+## Introduction
+
+This is a demonstration of OptaPlanner, which is a constraint satisfaction solver tool.
+
+When the demo app runs, it creates a demo constraint satisfaction problem, then solves it.
+
+The constraint satisfaction problem is how to match makers (a.k.a. producers) with takers (a.k.a. consumers).
 
 
 ## Documentation
@@ -23,6 +34,23 @@ Documentation within this repo:
     * [Objects UML diagram - WIP](doc/plans/objects.png)
   * [Integration with XML - WIP](doc/integration/xml.md)
   * [Integration with JSON - TODO](doc/integration/json.md)
+
+
+## Technology
+
+The software implementation uses:
+
+  * [Java](https://www.java.com) programming language
+  
+  * [OptaPlanner](https://www.optaplanner.org) open source contraint satisfaction solver
+
+  * [XStream](https://x-stream.github.io/) XML serializer/deserializer
+
+  * [SLF4J](http://www.slf4j.org/) (Simple Logging Facade for Java) for log messages.
+
+  * [Google Guava](https://github.com/google/guava) core libraries for Java, such as for collections.
+
+  * [Apache Commons](https://commons.apache.org/) for [Lang](https://commons.apache.org/proper/commons-lang/) and [Math].
 
 
 ## Example
