@@ -10,6 +10,7 @@ class AppXML {
     public static void init() {
         AppXML.xstream = new XStream(new DomDriver());
         AppXML.xstream.alias("solution", Solution.class);
+        AppXML.xstream.alias("scorer", Scorer.class);
         AppXML.xstream.alias("matcher", Matcher.class);
         AppXML.xstream.alias("maker", Maker.class);
         AppXML.xstream.alias("maker-set", MakerSet.class);

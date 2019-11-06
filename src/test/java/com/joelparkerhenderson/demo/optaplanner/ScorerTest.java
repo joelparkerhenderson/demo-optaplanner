@@ -83,6 +83,39 @@ public class ScorerTest
     }
 
     @Test
+    public void toXMLStringWithDefault()
+    {
+        final Scorer o = _o();
+        final String exp =
+            "<scorer/>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void toXMLStringWithTypical()
+    {
+        final Scorer o = _scorer();
+        final String exp =
+            "<scorer>\n" +
+            "  <name>myScorer</name>\n" +
+            "</scorer>";
+        final String act = o.toXMLString();
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void fromXMLString()
+    {
+        final String xml =
+            "<scorer>\n" +
+            "  <name>myScorer</name>\n" +
+            "</scorer>";
+        final Scorer o = Scorer.fromXMLString(xml);
+        assertEquals("myScorer", o.getName());
+    }
+
+    @Test
     public void name()
     {
         final Scorer o = _o();

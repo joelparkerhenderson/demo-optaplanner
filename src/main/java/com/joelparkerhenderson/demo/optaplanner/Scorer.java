@@ -4,7 +4,7 @@ import java.util.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class Scorer implements ToStringDeep, HasName, EasyScoreCalculator<Solution> {
+public class Scorer implements ToStringDeep, ToXMLString, FromXMLString, HasName, EasyScoreCalculator<Solution> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -13,6 +13,18 @@ public class Scorer implements ToStringDeep, HasName, EasyScoreCalculator<Soluti
     @Override
     public String toStringDeep(){
         return toString();
+    }
+
+    @Override
+    public String toXMLString()
+    {
+        return AppXML.toXML(this);
+    }
+
+    //@Interface FromXMLString
+    public static Scorer fromXMLString(String xml)
+    {
+        return (Scorer)AppXML.fromXML(xml);
     }
 
     private String name;
