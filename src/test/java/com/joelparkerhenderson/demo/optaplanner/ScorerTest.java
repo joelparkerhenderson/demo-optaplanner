@@ -8,11 +8,66 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 public class ScorerTest
 {
+    protected Scorer _o() {
+        final Scorer scorer = new Scorer();
+        return scorer;
+    }
+
+    protected Scorer _scorer() {
+        final Scorer scorer = new Scorer();
+        scorer.setName("myScorer");
+        return scorer;
+    }
+
+    protected Solution _solution() {
+        final Solution solution = new Solution();
+        solution.setName("mySolution");
+        return solution;
+    }
+
+    protected Matcher _matcher() {
+        final Matcher matcher = new Matcher();
+        matcher.setName("myMatcher");
+        return matcher;
+    }
+
+    protected Maker _maker() {
+        final Maker maker = new Maker();
+        maker.setName("myMaker");
+        return maker;
+    }
+
+    protected Taker _taker() {
+        final Taker taker = new Taker();
+        taker.setName("myTaker");
+        return taker;
+    }
+
+    protected TagSet _tagSet() {
+        final TagSet tagSet = new TagSet();
+        tagSet.setName("myTagSet");
+        return tagSet;
+    }
+
+    protected HardSoftScore _score() {
+        final HardSoftScore score = HardSoftScore.of(123,456);
+        return score;
+    }
+
+    @Test
+    public void name()
+    {
+        final Scorer o = _o();
+        final String name = "myScorer";
+        o.setName(name);
+        assertSame(name, o.getName());
+    }
+
     @Test
     public void calculateScoreWithSolutionWithDefaults()
     {
-        final Scorer o = new Scorer();
-        final Solution solution = new Solution();
+        final Scorer o = _o();
+        final Solution solution = _solution();
 
         solution.setMakers(new HashSet<Maker>());
         solution.setTakers(new HashSet<Taker>());
@@ -26,8 +81,8 @@ public class ScorerTest
     @Test
     public void calculateScoreWithSolutionWithMatchersExample()
     {
-        final Scorer o = new Scorer();
-        final Solution solution = new Solution();
+        final Scorer o = _o();
+        final Solution solution = _solution();
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
         final Set<Matcher> matchers = new HashSet<Matcher>();
@@ -56,7 +111,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMatcherWithMakerNameTakerNameEqual()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final String makerName = "alpha";
         final String takerName = "alpha";
         final Matcher matcher = new Matcher();
@@ -71,7 +126,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMatcherWithMakerNameTakerNameUnequal()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final String makerName = "alpha";
         final String takerName = "bravo";
         final Matcher matcher = new Matcher();
@@ -86,7 +141,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMaker()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final Maker maker = new Maker();
         final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithMaker(maker);
@@ -96,7 +151,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithTaker()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final Taker taker = new Taker();
         final HardSoftScore exp = HardSoftScore.ZERO;
         final HardSoftScore act = o.calculateScoreWithTaker(taker);
@@ -106,7 +161,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMakerTakerNull()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final Maker maker = null;
         final Taker taker = null;
         final HardSoftScore exp = HardSoftScore.ZERO;
@@ -117,7 +172,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMakerTakerNameNull()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final String makerName = null;
         final String takerName = null;
         final Maker maker = new Maker(); maker.setName(makerName);
@@ -130,7 +185,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMakerTakerNameEqual()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final String makerName = "alpha";
         final String takerName = "alpha";
         final Maker maker = new Maker(); maker.setName(makerName);
@@ -143,7 +198,7 @@ public class ScorerTest
     @Test
     public void calculateScoreWithMakerTakerNameUnequal()
     {
-        final Scorer o = new Scorer();
+        final Scorer o = _o();
         final String makerName = "alpha";
         final String takerName = "bravo";
         final Maker maker = new Maker(); maker.setName(makerName);
