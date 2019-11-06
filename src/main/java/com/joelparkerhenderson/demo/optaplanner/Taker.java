@@ -4,51 +4,11 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Taker implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<Taker> {
-
-    public String toString(){
-        return "name:" + ((name != null) ? name : "null");
-    }
-
-    @Override
-    public String toStringDeep(){
-        return toString();
-    }
-
-    @Override
-    public String toXMLString()
-    {
-        return AppXML.toXML(this);
-    }
+public class Taker extends Trackable<Taker> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<Taker> {
 
     //@Interface FromXMLString
-    public static Taker fromXMLString(String xml)
-    {
+    public static Taker fromXMLString(String xml) {
         return (Taker)AppXML.fromXML(xml);
-    }
-
-    private String name;
-
-    @Override
-    public String getName(){
-        return name;
-    }
-
-    @Override
-    public void setName(String name){
-        this.name = name;
-    }
-
-    private TagSet tagSet;
-
-    @Override
-    public TagSet getTagSet(){
-        return tagSet;
-    }
-
-    @Override
-    public void setTagSet(TagSet tagSet){
-        this.tagSet = tagSet;
     }
 
     @Override
