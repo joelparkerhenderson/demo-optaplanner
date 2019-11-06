@@ -8,50 +8,27 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Matcher> {
-
-    public String toString(){
-        return "name:" + ((name != null) ? name : "null");
-    }
+public class Matcher extends Trackable<Matcher> implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Matcher> {
 
     @Override
-    public String toStringDeep(){
+    public String toStringDeep() {
         return toString() + 
         ",maker:{" + ((maker != null) ? maker : "null") + "}" + 
         ",taker:{" + ((taker != null) ? taker : "null") + "}";
     }
 
-    @Override
-    public String toXMLString()
-    {
-        return AppXML.toXML(this);
-    }
-
     //@Interface FromXMLString
-    public static Matcher fromXMLString(String xml)
-    {
+    public static Matcher fromXMLString(String xml) {
         return (Matcher)AppXML.fromXML(xml);
-    }
-
-    private String name;
-
-    @Override
-    public String getName(){
-        return name;
-    }
-
-    @Override
-    public void setName(String name){
-        this.name = name;
     }
 
     private Maker maker;
 
-    public Maker getMaker(){
+    public Maker getMaker() {
         return maker;
     }
 
-    public void setMaker(Maker maker){
+    public void setMaker(Maker maker) {
         this.maker = maker;
     }
 
@@ -59,11 +36,11 @@ public class Matcher implements ToStringDeep, ToXMLString, FromXMLString, HasNam
 
     // Ref corresponds to the ref on Solution.takers().
     @PlanningVariable(valueRangeProviderRefs = {"ValueRangeProviderTakers"})
-    public Taker getTaker(){
+    public Taker getTaker() {
         return taker;
     }
 
-    public void setTaker(Taker taker){
+    public void setTaker(Taker taker) {
         this.taker = taker;
     }
 

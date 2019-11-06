@@ -109,15 +109,6 @@ public class MatcherTest
     }
 
     @Test
-    public void name()
-    {
-        final Matcher o = _o();
-        final String name = "myMatcher";
-        o.setName(name);
-        assertSame(name, o.getName());
-    }
-
-    @Test
     public void maker()
     {
         final Matcher o = _o();
@@ -133,30 +124,6 @@ public class MatcherTest
         final Taker taker = _taker();
         o.setTaker(taker);
         assertSame(taker, o.getTaker());
-    }
-
-    @Test
-    public void compareToWithEqual()
-    {
-        final Matcher o = _o(); o.setName("A");
-        final Matcher x = _o(); x.setName("A");
-        assertEquals(0, o.compareTo(x));
-    }
-
-    @Test
-    public void compareToWithLesser()
-    {
-        final Matcher o = _o(); o.setName("A");
-        final Matcher x = _o(); x.setName("B");
-        assertEquals(-1, o.compareTo(x));
-    }
-
-    @Test
-    public void compareToWithGreater()
-    {
-        final Matcher o = _o(); o.setName("B");
-        final Matcher x = _o(); x.setName("A");
-        assertEquals(1, o.compareTo(x));
     }
 
 }
