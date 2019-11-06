@@ -31,9 +31,21 @@ public class ScorerTest
         return matcher;
     }
 
+    protected Matcher _matcher(String name){
+        final Matcher matcher = new Matcher(); 
+        matcher.setName(name); 
+        return matcher;
+    }
+
     protected Maker _maker() {
         final Maker maker = new Maker();
         maker.setName("myMaker");
+        return maker;
+    }
+
+    protected Maker _maker(String name){
+        final Maker maker = new Maker();
+        maker.setName(name);
         return maker;
     }
 
@@ -43,9 +55,33 @@ public class ScorerTest
         return taker;
     }
 
+    protected Taker _taker(String name){
+        final Taker taker = new Taker();
+        taker.setName(name);
+        return taker;
+    }
+
+    protected Tag _tag(){
+        final Tag tag = new Tag();
+        tag.setName("myTag");
+        return tag;
+    }
+
+    protected Tag _tag(String name){
+        final Tag tag = new Tag();
+        tag.setName(name);
+        return tag;
+    }
+
     protected TagSet _tagSet() {
         final TagSet tagSet = new TagSet();
         tagSet.setName("myTagSet");
+        return tagSet;
+    }
+
+    protected TagSet _tagSet(String name) {
+        final TagSet tagSet = new TagSet();
+        tagSet.setName(name);
         return tagSet;
     }
 
@@ -144,58 +180,31 @@ public class ScorerTest
     {
         final Scorer o = _o();
         final Solution solution = _solution();
+        
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
         final Set<Matcher> matchers = new HashSet<Matcher>();
 
-        final Maker makerA = new Maker(); makerA.setName("A"); makers.add(makerA);
-        final Maker makerB = new Maker(); makerB.setName("B"); makers.add(makerB);
+        final Tag tag = _tag("myTag");
+        final Set<Tag> tags = new HashSet<Tag>();
+        final TagSet tagSet = _tagSet("myTagSet");
+        tagSet.setTags(tags);
 
-        final Taker takerA = new Taker(); takerA.setName("A"); takers.add(takerA);
-        final Taker takerB = new Taker(); takerB.setName("B"); takers.add(takerB);
+        final Maker makerA = _maker("A"); makerA.setTagSet(tagSet); makers.add(makerA);
+        final Maker makerB = _maker("B"); makerB.setTagSet(tagSet); makers.add(makerB);
 
-        final Matcher matcherA = new Matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
-        final Matcher matcherB = new Matcher(); matcherB.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
+        final Taker takerA = _taker("A"); takerA.setTagSet(tagSet); takers.add(takerA);
+        final Taker takerB = _taker("B"); takerB.setTagSet(tagSet); takers.add(takerB);
+
+        final Matcher matcherA = _matcher("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
+        final Matcher matcherB = _matcher("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
 
         solution.setMakers(makers);
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
-        final HardSoftScore matcherAScore = o.calculateScoreWithMatcher(matcherA); assertNotEquals(HardSoftScore.ZERO, matcherAScore);
-        final HardSoftScore matcherBScore = o.calculateScoreWithMatcher(matcherB); assertNotEquals(HardSoftScore.ZERO, matcherBScore);
-
-        final HardSoftScore exp = HardSoftScore.ZERO.add(matcherAScore).add(matcherBScore);
+        final HardSoftScore exp = HardSoftScore.of(0,2);
         final HardSoftScore act = o.calculateScore(solution);
-        assertEquals(exp, act);
-    }
-
-    @Test
-    public void calculateScoreWithMatcherWithMakerNameTakerNameEqual()
-    {
-        final Scorer o = _o();
-        final String makerName = "alpha";
-        final String takerName = "alpha";
-        final Matcher matcher = new Matcher();
-        final Maker maker = new Maker(); maker.setName(makerName); matcher.setMaker(maker);
-        final Taker taker = new Taker(); taker.setName(takerName); matcher.setTaker(taker);
-
-        final HardSoftScore exp = HardSoftScore.of(0,1);
-        final HardSoftScore act = o.calculateScoreWithMatcher(matcher);
-        assertEquals(exp, act);
-    }
-
-    @Test
-    public void calculateScoreWithMatcherWithMakerNameTakerNameUnequal()
-    {
-        final Scorer o = _o();
-        final String makerName = "alpha";
-        final String takerName = "bravo";
-        final Matcher matcher = new Matcher();
-        final Maker maker = new Maker(); maker.setName(makerName); matcher.setMaker(maker);
-        final Taker taker = new Taker(); taker.setName(takerName); matcher.setTaker(taker);
-
-        final HardSoftScore exp = HardSoftScore.of(0,-1);
-        final HardSoftScore act = o.calculateScoreWithMatcher(matcher);
         assertEquals(exp, act);
     }
 
@@ -205,6 +214,16 @@ public class ScorerTest
         final Scorer o = _o();
         final Maker maker = new Maker();
         final HardSoftScore exp = HardSoftScore.ZERO;
+        final HardSoftScore act = o.calculateScoreWithMaker(maker);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithMakerNull()
+    {
+        final Scorer o = _o();
+        final Maker maker = null;
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
         final HardSoftScore act = o.calculateScoreWithMaker(maker);
         assertEquals(exp, act);
     }
@@ -220,52 +239,71 @@ public class ScorerTest
     }
 
     @Test
+    public void calculateScoreWithTakerNull()
+    {
+        final Scorer o = _o();
+        final Taker taker = null;
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
+        final HardSoftScore act = o.calculateScoreWithTaker(taker);
+        assertEquals(exp, act);
+    }
+
+    @Test
     public void calculateScoreWithMakerTakerNull()
     {
         final Scorer o = _o();
         final Maker maker = null;
         final Taker taker = null;
-        final HardSoftScore exp = HardSoftScore.ZERO;
+
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
         final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithMakerTakerNameNull()
+    public void calculateScoreWithTagSetsNull()
     {
         final Scorer o = _o();
-        final String makerName = null;
-        final String takerName = null;
-        final Maker maker = new Maker(); maker.setName(makerName);
-        final Taker taker = new Taker(); taker.setName(takerName);
-        final HardSoftScore exp = HardSoftScore.ZERO;
-        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+
+        final TagSet tagSet = null;
+
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
+        final HardSoftScore act = o.calculateScoreWithTagSets(tagSet, tagSet);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithMakerTakerNameEqual()
+    public void calculateScoreWithTagSetsEqual()
     {
         final Scorer o = _o();
-        final String makerName = "alpha";
-        final String takerName = "alpha";
-        final Maker maker = new Maker(); maker.setName(makerName);
-        final Taker taker = new Taker(); taker.setName(takerName);
+
+        final Tag tag = _tag("myTag");
+        final Set<Tag> tags = new HashSet<Tag>();
+        final TagSet tagSet = _tagSet("myTagSet");
+        tagSet.setTags(tags);
+
         final HardSoftScore exp = HardSoftScore.of(0,1);
-        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        final HardSoftScore act = o.calculateScoreWithTagSets(tagSet, tagSet);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithMakerTakerNameUnequal()
+    public void calculateScoreWithTagSetsUnequal()
     {
         final Scorer o = _o();
-        final String makerName = "alpha";
-        final String takerName = "bravo";
-        final Maker maker = new Maker(); maker.setName(makerName);
-        final Taker taker = new Taker(); taker.setName(takerName);
+
+        final Tag tagA = _tag("myTagA");
+        final Set<Tag> tagsA = new HashSet<Tag>();
+        final TagSet tagSetA = _tagSet("myTagSetA");
+        tagSetA.setTags(tagsA);
+
+        final Tag tagB = _tag("myTagB");
+        final Set<Tag> tagsB = new HashSet<Tag>();
+        final TagSet tagSetB = _tagSet("myTagSetB");
+        tagSetB.setTags(tagsB);
+
         final HardSoftScore exp = HardSoftScore.of(0,-1);
-        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        final HardSoftScore act = o.calculateScoreWithTagSets(tagSetA, tagSetB);
         assertEquals(exp, act);
     }
 

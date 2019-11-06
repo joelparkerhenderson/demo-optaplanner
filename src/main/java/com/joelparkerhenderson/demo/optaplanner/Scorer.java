@@ -57,20 +57,23 @@ public class Scorer implements ToStringDeep, ToXMLString, FromXMLString, HasName
     }
 
     public HardSoftScore calculateScoreWithMaker(Maker maker) {
+        if (maker == null){ return HardSoftScore.of(-1,0); }
         return HardSoftScore.ZERO;
     }
 
     public HardSoftScore calculateScoreWithTaker(Taker taker) {
+        if (taker == null){ return HardSoftScore.of(-1,0); }
         return HardSoftScore.ZERO;
     }
 
     public HardSoftScore calculateScoreWithMakerTaker(Maker maker, Taker taker) {
-        if (maker == null){ return HardSoftScore.ZERO; }
-        if (taker == null){ return HardSoftScore.ZERO; }
-        final String makerName = maker.getName(); if (makerName == null){ return HardSoftScore.ZERO; }
-        final String takerName = taker.getName(); if (takerName == null){ return HardSoftScore.ZERO; }
-        HardSoftScore score = HardSoftScore.ZERO;
-        return HardSoftScore.of(0, (makerName == takerName) ? 1 : -1);
+        if (maker == null || taker == null){ return HardSoftScore.of(-1,0); }
+        return calculateScoreWithTagSets(maker.getTagSet(), taker.getTagSet());
+    }
+
+    public HardSoftScore calculateScoreWithTagSets(TagSet a, TagSet b) {
+        if (a == null || b == null){ return HardSoftScore.of(-1,0); }
+        return HardSoftScore.of(0, (a == b) ? 1 : -1);
     }
 
 }
