@@ -55,8 +55,9 @@ public class App
             final Maker maker = _maker(name); makers.add(maker);
             final Taker taker = _taker(name); takers.add(taker);
             final Matcher matcher = _matcher(name); matcher.setMaker(maker); matchers.add(matcher);
-            final Tag tag = _tag(name);
-            final TagSet tagSet = _tagSet(name, name, name);
+            final TagSet tagSet = _tagSet(name + "A", name + "B", name + "C");
+            maker.setTagSet(tagSet);
+            taker.setTagSet(tagSet);
         }
 
         logger.info("Solution XML...\n" + solution.toXMLString());
