@@ -87,46 +87,4 @@ public class MakerTest
         assertEquals("myMaker", o.getName());
     }
 
-    @Test
-    public void name()
-    {
-        final Maker o = _o();
-        final String name = "myMaker";
-        o.setName(name);
-        assertSame(name, o.getName());
-    }
-
-    @Test
-    public void tags()
-    {
-        final Maker o = _o();
-        final TagSet tagSet = _tagSet();
-        o.setTagSet(tagSet);
-        assertSame(tagSet, o.getTagSet());
-    }
-
-    @Test
-    public void compareToWithEqual()
-    {
-        final Maker o = _o(); o.setName("A");
-        final Maker x = _o(); x.setName("A");
-        assertEquals(0, o.compareTo(x));
-    }
-
-    @Test
-    public void compareToWithLesser()
-    {
-        final Maker o = _o(); o.setName("A");
-        final Maker x = _o(); x.setName("B");
-        assertEquals(-1, o.compareTo(x));
-    }
-
-    @Test
-    public void compareToWithGreater()
-    {
-        final Maker o = _o(); o.setName("B");
-        final Maker x = _o(); x.setName("A");
-        assertEquals(1, o.compareTo(x));
-    }
-
 }
