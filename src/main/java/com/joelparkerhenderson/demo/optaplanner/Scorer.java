@@ -5,39 +5,11 @@ import com.google.common.collect.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class Scorer implements ToStringDeep, ToXMLString, FromXMLString, HasName, EasyScoreCalculator<Solution> {
-
-    public String toString(){
-        return "name:" + ((name != null) ? name : "null");
-    }
-
-    @Override
-    public String toStringDeep(){
-        return toString();
-    }
-
-    @Override
-    public String toXMLString()
-    {
-        return AppXML.toXML(this);
-    }
+public class Scorer extends Trackable<Scorer> implements ToStringDeep, ToXMLString, FromXMLString, HasName, EasyScoreCalculator<Solution> {
 
     //@Interface FromXMLString
-    public static Scorer fromXMLString(String xml)
-    {
+    public static Scorer fromXMLString(String xml) {
         return (Scorer)AppXML.fromXML(xml);
-    }
-
-    private String name;
-
-    @Override
-    public String getName(){
-        return name;
-    }
-
-    @Override
-    public void setName(String name){
-        this.name = name;
     }
 
     public HardSoftScore calculateScore(Solution solution) {

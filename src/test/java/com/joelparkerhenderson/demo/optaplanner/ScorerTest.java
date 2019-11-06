@@ -152,15 +152,6 @@ public class ScorerTest
     }
 
     @Test
-    public void name()
-    {
-        final Scorer o = _o();
-        final String name = "myScorer";
-        o.setName(name);
-        assertSame(name, o.getName());
-    }
-
-    @Test
     public void calculateScoreWithSolutionWithDefaults()
     {
         final Scorer o = _o();
