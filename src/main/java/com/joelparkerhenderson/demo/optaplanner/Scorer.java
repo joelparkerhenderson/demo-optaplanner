@@ -1,6 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import com.google.common.collect.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
@@ -72,6 +73,11 @@ public class Scorer implements ToStringDeep, ToXMLString, FromXMLString, HasName
     }
 
     public HardSoftScore calculateScoreWithTagSets(TagSet a, TagSet b) {
+        if (a == null || b == null){ return HardSoftScore.of(-1,0); }
+        return calculateScoreWithTags(a.getTags(), b.getTags());
+    }
+
+    public HardSoftScore calculateScoreWithTags(Set<Tag> a, Set<Tag> b) {
         if (a == null || b == null){ return HardSoftScore.of(-1,0); }
         return HardSoftScore.of(0, (a == b) ? 1 : -1);
     }

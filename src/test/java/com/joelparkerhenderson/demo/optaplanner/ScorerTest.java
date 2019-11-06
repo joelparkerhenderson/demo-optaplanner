@@ -208,45 +208,59 @@ public class ScorerTest
         assertEquals(exp, act);
     }
 
-    @Test
-    public void calculateScoreWithMaker()
-    {
-        final Scorer o = _o();
-        final Maker maker = new Maker();
-        final HardSoftScore exp = HardSoftScore.ZERO;
-        final HardSoftScore act = o.calculateScoreWithMaker(maker);
-        assertEquals(exp, act);
-    }
+    //// calculateScoreWithTaker() → Null | Exist
 
     @Test
     public void calculateScoreWithMakerNull()
     {
         final Scorer o = _o();
+
         final Maker maker = null;
+
         final HardSoftScore exp = HardSoftScore.of(-1,0);
         final HardSoftScore act = o.calculateScoreWithMaker(maker);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithTaker()
+    public void calculateScoreWithMakerExist()
     {
         final Scorer o = _o();
-        final Taker taker = new Taker();
+
+        final Maker maker = new Maker();
+
         final HardSoftScore exp = HardSoftScore.ZERO;
-        final HardSoftScore act = o.calculateScoreWithTaker(taker);
+        final HardSoftScore act = o.calculateScoreWithMaker(maker);
         assertEquals(exp, act);
     }
+
+    //// calculateScoreWithTaker() → Null | Exist
 
     @Test
     public void calculateScoreWithTakerNull()
     {
         final Scorer o = _o();
+
         final Taker taker = null;
+
         final HardSoftScore exp = HardSoftScore.of(-1,0);
         final HardSoftScore act = o.calculateScoreWithTaker(taker);
         assertEquals(exp, act);
     }
+
+    @Test
+    public void calculateScoreWithTakerExist()
+    {
+        final Scorer o = _o();
+
+        final Taker taker = new Taker();
+        
+        final HardSoftScore exp = HardSoftScore.ZERO;
+        final HardSoftScore act = o.calculateScoreWithTaker(taker);
+        assertEquals(exp, act);
+    }
+
+    //// calculateScoreWithMakerTaker() → Null | Exist
 
     @Test
     public void calculateScoreWithMakerTakerNull()
@@ -261,6 +275,26 @@ public class ScorerTest
     }
 
     @Test
+    public void calculateScoreWithMakerTakerExist()
+    {
+        final Scorer o = _o();
+
+        final Tag tag = _tag("myTag");
+        final Set<Tag> tags = new HashSet<Tag>();
+        final TagSet tagSet = _tagSet("myTagSet");
+        tagSet.setTags(tags);
+
+        final Maker maker = new Maker(); maker.setTagSet(tagSet);
+        final Taker taker = new Taker(); taker.setTagSet(tagSet);
+
+        final HardSoftScore exp = HardSoftScore.of(0,1);
+        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
+        assertEquals(exp, act);
+    }
+
+    //// calculateScoreWithTagSets() → Null | Equal | Unequal
+
+    @Test
     public void calculateScoreWithTagSetsNull()
     {
         final Scorer o = _o();
@@ -273,7 +307,7 @@ public class ScorerTest
     }
 
     @Test
-    public void calculateScoreWithTagSetsEqual()
+    public void calculateScoreWithTagSetsPositive()
     {
         final Scorer o = _o();
 
@@ -288,7 +322,7 @@ public class ScorerTest
     }
 
     @Test
-    public void calculateScoreWithTagSetsUnequal()
+    public void calculateScoreWithTagSetsNegative()
     {
         final Scorer o = _o();
 
@@ -304,6 +338,51 @@ public class ScorerTest
 
         final HardSoftScore exp = HardSoftScore.of(0,-1);
         final HardSoftScore act = o.calculateScoreWithTagSets(tagSetA, tagSetB);
+        assertEquals(exp, act);
+    }
+
+    //// calculateScoreWithTags() → Null | Positive | Negative
+
+    @Test
+    public void calculateScoreWithTagsNull()
+    {
+        final Scorer o = _o();
+        final Set<Tag> tags = null;
+
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
+        final HardSoftScore act = o.calculateScoreWithTags(tags, tags);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithTagsPositive()
+    {
+        final Scorer o = _o();
+
+        final Tag tag = _tag("myTag");
+        final Set<Tag> tags = new HashSet<Tag>();
+        tags.add(tag);
+
+        final HardSoftScore exp = HardSoftScore.of(0,1);
+        final HardSoftScore act = o.calculateScoreWithTags(tags, tags);
+        assertEquals(exp, act);
+    }
+
+    @Test
+    public void calculateScoreWithTagsNegative()
+    {
+        final Scorer o = _o();
+
+        final Tag tagA = _tag("myTagA");
+        final Set<Tag> tagsA = new HashSet<Tag>();
+        tagsA.add(tagA);
+
+        final Tag tagB = _tag("myTagB");
+        final Set<Tag> tagsB = new HashSet<Tag>();
+        tagsB.add(tagB);
+
+        final HardSoftScore exp = HardSoftScore.of(0,-1);
+        final HardSoftScore act = o.calculateScoreWithTags(tagsA, tagsB);
         assertEquals(exp, act);
     }
 

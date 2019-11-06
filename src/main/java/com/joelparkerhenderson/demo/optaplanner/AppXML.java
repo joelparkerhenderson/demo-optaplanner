@@ -9,6 +9,7 @@ class AppXML {
 
     public static void init() {
         AppXML.xstream = new XStream(new DomDriver());
+        AppXML.xstream.alias("trackable", Trackable.class);
         AppXML.xstream.alias("solution", Solution.class);
         AppXML.xstream.alias("scorer", Scorer.class);
         AppXML.xstream.alias("matcher", Matcher.class);
