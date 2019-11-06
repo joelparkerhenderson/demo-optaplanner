@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Taker extends Trackable<Taker> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<Taker> {
+public class Taker extends Trackable<Taker> implements Comparable<Taker> {
 
     //@Interface FromXMLString
     public static Taker fromXMLString(String xml) {
