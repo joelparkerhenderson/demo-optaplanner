@@ -63,24 +63,6 @@ public class MakerSetTest
     }
 
     @Test
-    public void name()
-    {
-        final MakerSet o = _o();
-        final String name = "myMakerSet";
-        o.setName(name);
-        assertSame(name, o.getName());
-    }
-
-    @Test
-    public void tags()
-    {
-        final MakerSet o = _o();
-        final TagSet tagSet = _tagSet();
-        o.setTagSet(tagSet);
-        assertSame(tagSet, o.getTagSet());
-    }
-
-    @Test
     public void makers()
     {
         final MakerSet o = _o();
