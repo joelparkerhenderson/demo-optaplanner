@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Trackable implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<Trackable> {
+public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<T> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -52,7 +52,7 @@ public class Trackable implements ToStringDeep, ToXMLString, FromXMLString, HasN
     }
 
     @Override
-    public int compareTo(Trackable that) {
+    public int compareTo(T that) {
         return (int)(this.getName().compareTo(that.getName()));
     }
 
