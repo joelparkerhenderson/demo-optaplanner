@@ -39,8 +39,7 @@ public class App
 
     public static Solution createDemoSolutionWithExamples(){
         Logger logger = LoggerFactory.getLogger(App.class);
-        final Solution solution = new Solution();
-        solution.setName("Demo Solution");
+        final Solution solution = _solution("Demo Solution");
 
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
@@ -52,14 +51,38 @@ public class App
 
         for(int i=0; i<10; i++){
             String name = String.format("%01d", i);
-            final Maker maker = new Maker(); maker.setName(name); makers.add(maker);
-            final Taker taker = new Taker(); taker.setName(name); takers.add(taker);
-            final Matcher matcher = new Matcher(); matcher.setName(name); matcher.setMaker(maker); matchers.add(matcher);
+            final Maker maker = _maker(name); makers.add(maker);
+            final Taker taker = _taker(name); takers.add(taker);
+            final Matcher matcher = _matcher(name); matcher.setMaker(maker); matchers.add(matcher);
         }
 
         logger.info("Solution XML...\n" + solution.toXMLString());
 
         return solution;
+    }
+
+    protected static Solution _solution(String name){
+        final Solution solution = new Solution();
+        solution.setName(name);
+        return solution;
+    }
+
+    protected static Maker _maker(String name){
+        final Maker maker = new Maker();
+        maker.setName(name);
+        return maker;
+    }
+
+    protected static Taker _taker(String name){
+        final Taker taker = new Taker();
+        taker.setName(name);
+        return taker;
+    }
+
+    protected static Matcher _matcher(String name){
+        final Matcher matcher = new Matcher(); 
+        matcher.setName(name); 
+        return matcher;
     }
 
     public static SolverFactory<Solution> createDemoSolverFactory(){
