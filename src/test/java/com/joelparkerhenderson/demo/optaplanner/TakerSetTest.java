@@ -63,24 +63,6 @@ public class TakerSetTest
     }
 
     @Test
-    public void name()
-    {
-        final TakerSet o = _o();
-        final String name = "myTakerSet";
-        o.setName(name);
-        assertSame(name, o.getName());
-    }
-
-    @Test
-    public void tags()
-    {
-        final TakerSet o = _o();
-        final TagSet tagSet =_tagSet();
-        o.setTagSet(tagSet);
-        assertSame(tagSet, o.getTagSet());
-    }
-
-    @Test
     public void takers()
     {
         final TakerSet o = _o();
