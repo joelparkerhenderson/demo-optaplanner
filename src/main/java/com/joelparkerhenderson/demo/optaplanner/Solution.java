@@ -12,10 +12,10 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasScore {
+public class Solution extends Trackable<Solution> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasScore {
 
-    public String toString(){
-        return "name:" + ((name != null) ? name : "null") +
+    public String toString() {
+        return super.toString() +
            ",score:(" + score + ")";
     }
 
@@ -30,28 +30,9 @@ public class Solution implements ToStringDeep, ToXMLString, FromXMLString, HasNa
         return toString() + ",matchers:[" + matchersString + "]";
     }
 
-    @Override
-    public String toXMLString()
-    {
-        return AppXML.toXML(this);
-    }
-
     //@Interface FromXMLString
-    public static Solution fromXMLString(String xml)
-    {
+    public static Solution fromXMLString(String xml) {
         return (Solution)AppXML.fromXML(xml);
-    }
-
-    private String name;
-
-    @Override
-    public String getName(){
-        return name;
-    }
-
-    @Override
-    public void setName(String name){
-        this.name = name;
     }
 
     @PlanningScore
