@@ -7,7 +7,9 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasUUID, HasName, HasTagSet, Comparable<T> {
 
     public String toString(){
-        return "name:" + ((name != null) ? name : "null");
+        return 
+            "uuid:" + ((uuid != null) ? uuid : "null") + "," +
+            "name:" + ((name != null) ? name : "null");
     }
 
     @Override

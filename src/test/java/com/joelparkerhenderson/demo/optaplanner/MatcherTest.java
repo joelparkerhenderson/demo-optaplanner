@@ -2,6 +2,7 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.*;
 
 public class MatcherTest
 {
@@ -13,18 +14,21 @@ public class MatcherTest
 
     protected Matcher _matcher() {
         final Matcher matcher = new Matcher();
+        matcher.setUUID(UUID.fromString("85a61bb4-996f-4498-a447-aabfe1069a65"));
         matcher.setName("myMatcher");
         return matcher;
     }
 
     protected Maker _maker() {
         final Maker maker = new Maker();
+        maker.setUUID(UUID.fromString("6a03f2f6-527a-4b35-bc7b-bf291a08a35f"));
         maker.setName("myMaker");
         return maker;
     }
 
     protected Taker _taker() {
         final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
         taker.setName("myTaker");
         return taker;
     }
@@ -39,21 +43,21 @@ public class MatcherTest
     public void toStringWithDefault()
     {
         final Matcher o = _o();
-        assertEquals("name:null", o.toString());
+        assertEquals("uuid:null,name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
         final Matcher o = _matcher();
-        assertEquals("name:myMatcher", o.toString());
+        assertEquals("uuid:85a61bb4-996f-4498-a447-aabfe1069a65,name:myMatcher", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Matcher o = _o();
-        assertEquals("name:null,maker:{null},taker:{null}", o.toStringDeep());
+        assertEquals("uuid:null,name:null,maker:{null},taker:{null}", o.toStringDeep());
     }
 
     @Test
@@ -62,7 +66,7 @@ public class MatcherTest
         final Matcher o = _matcher();
         final Maker maker = _maker(); o.setMaker(maker);
         final Taker taker = _taker(); o.setTaker(taker);
-        assertEquals("name:myMatcher,maker:{name:myMaker},taker:{name:myTaker}", o.toStringDeep());
+        assertEquals("uuid:85a61bb4-996f-4498-a447-aabfe1069a65,name:myMatcher,maker:{uuid:6a03f2f6-527a-4b35-bc7b-bf291a08a35f,name:myMaker},taker:{uuid:7f6f5003-1c43-4607-9fb4-890a02f2bc2a,name:myTaker}", o.toStringDeep());
     }
 
     @Test
@@ -85,11 +89,14 @@ public class MatcherTest
         o.setTaker(taker);
         final String exp =
             "<matcher>\n" +
+            "  <uuid>85a61bb4-996f-4498-a447-aabfe1069a65</uuid>\n" +
             "  <name>myMatcher</name>\n" +
             "  <maker>\n" +
+            "    <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
             "    <name>myMaker</name>\n" +
             "  </maker>\n" +
             "  <taker>\n" +
+            "    <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
             "    <name>myTaker</name>\n" +
             "  </taker>\n" +
             "</matcher>";
@@ -102,7 +109,16 @@ public class MatcherTest
     {
         final String xml =
             "<matcher>\n" +
+            "  <uuid>85a61bb4-996f-4498-a447-aabfe1069a65</uuid>\n" +
             "  <name>myMatcher</name>\n" +
+            "  <maker>\n" +
+            "    <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
+            "    <name>myMaker</name>\n" +
+            "  </maker>\n" +
+            "  <taker>\n" +
+            "    <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
+            "    <name>myTaker</name>\n" +
+            "  </taker>\n" +
             "</matcher>";
         final Matcher o = Matcher.fromXMLString(xml);
         assertEquals("myMatcher", o.getName());

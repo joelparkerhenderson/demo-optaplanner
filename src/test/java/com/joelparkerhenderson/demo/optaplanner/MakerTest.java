@@ -16,6 +16,7 @@ public class MakerTest
 
     protected Maker _maker() {
         final Maker maker = new Maker();
+        maker.setUUID(UUID.fromString("6a03f2f6-527a-4b35-bc7b-bf291a08a35f"));
         maker.setName("myMaker");
         return maker;
     }
@@ -30,28 +31,28 @@ public class MakerTest
     public void toStringWithDefault()
     {
         final Maker o = _o();
-        assertEquals("name:null", o.toString());
+        assertEquals("uuid:null,name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
         final Maker o = _maker();
-        assertEquals("name:myMaker", o.toString());
+        assertEquals("uuid:6a03f2f6-527a-4b35-bc7b-bf291a08a35f,name:myMaker", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Maker o = _o();
-        assertEquals("name:null", o.toStringDeep());
+        assertEquals("uuid:null,name:null", o.toStringDeep());
     }
 
     @Test
     public void toStringDeepWithTypical()
     {
         final Maker o = _maker();
-        assertEquals("name:myMaker", o.toStringDeep());
+        assertEquals("uuid:6a03f2f6-527a-4b35-bc7b-bf291a08a35f,name:myMaker", o.toStringDeep());
     }
 
     @Test
@@ -70,6 +71,7 @@ public class MakerTest
         final Maker o = _maker();
         final String exp =
             "<maker>\n" +
+            "  <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
             "  <name>myMaker</name>\n" +
             "</maker>";
         final String act = o.toXMLString();
@@ -81,6 +83,7 @@ public class MakerTest
     {
         final String xml =
             "<maker>\n" +
+            "  <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
             "  <name>myMaker</name>\n" +
             "</maker>";
         final Maker o = Maker.fromXMLString(xml);

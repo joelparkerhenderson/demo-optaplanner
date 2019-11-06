@@ -15,48 +15,63 @@ public class ScorerTest
 
     protected Scorer _scorer() {
         final Scorer scorer = new Scorer();
+        scorer.setUUID(UUID.fromString("562fe584-0b95-4906-9f24-24cb72c39ed9"));
         scorer.setName("myScorer");
         return scorer;
     }
 
     protected Solution _solution() {
         final Solution solution = new Solution();
+        solution.setUUID(UUID.fromString("e270cf62-c704-4806-8d7a-69d3bc7d06d4"));
         solution.setName("mySolution");
+        return solution;
+    }
+
+    protected Solution _solution(String uuidString, String name) {
+        final Solution solution = new Solution();
+        solution.setUUID(UUID.fromString(uuidString));
+        solution.setName(name);
         return solution;
     }
 
     protected Matcher _matcher() {
         final Matcher matcher = new Matcher();
+        matcher.setUUID(UUID.fromString("85a61bb4-996f-4498-a447-aabfe1069a65"));
         matcher.setName("myMatcher");
         return matcher;
     }
 
-    protected Matcher _matcher(String name){
+    protected Matcher _matcher(String uuidString, String name){
         final Matcher matcher = new Matcher(); 
-        matcher.setName(name); 
+        matcher.setUUID(UUID.fromString(uuidString));
+        matcher.setName(name);
         return matcher;
     }
 
     protected Maker _maker() {
         final Maker maker = new Maker();
+        maker.setUUID(UUID.fromString("6a03f2f6-527a-4b35-bc7b-bf291a08a35f"));
         maker.setName("myMaker");
         return maker;
     }
 
-    protected Maker _maker(String name){
+    protected Maker _maker(String uuidString, String name){
         final Maker maker = new Maker();
+        maker.setUUID(UUID.fromString(uuidString));
         maker.setName(name);
         return maker;
     }
 
     protected Taker _taker() {
         final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
         taker.setName("myTaker");
         return taker;
     }
 
-    protected Taker _taker(String name){
+    protected Taker _taker(String uuidString, String name){
         final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString(uuidString));
         taker.setName(name);
         return taker;
     }
@@ -94,28 +109,28 @@ public class ScorerTest
     public void toStringWithDefault()
     {
         final Scorer o = _o();
-        assertEquals("name:null", o.toString());
+        assertEquals("uuid:null,name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
         final Scorer o = _scorer();
-        assertEquals("name:myScorer", o.toString());
+        assertEquals("uuid:562fe584-0b95-4906-9f24-24cb72c39ed9,name:myScorer", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Scorer o = _o();
-        assertEquals("name:null", o.toStringDeep());
+        assertEquals("uuid:null,name:null", o.toStringDeep());
     }
 
     @Test
     public void toStringDeepWithTypical()
     {
         final Scorer o = _scorer();
-        assertEquals("name:myScorer", o.toStringDeep());
+        assertEquals("uuid:562fe584-0b95-4906-9f24-24cb72c39ed9,name:myScorer", o.toStringDeep());
     }
 
     @Test
@@ -134,6 +149,7 @@ public class ScorerTest
         final Scorer o = _scorer();
         final String exp =
             "<scorer>\n" +
+            "  <uuid>562fe584-0b95-4906-9f24-24cb72c39ed9</uuid>\n" +
             "  <name>myScorer</name>\n" +
             "</scorer>";
         final String act = o.toXMLString();
@@ -145,6 +161,7 @@ public class ScorerTest
     {
         final String xml =
             "<scorer>\n" +
+            "  <uuid>562fe584-0b95-4906-9f24-24cb72c39ed9</uuid>\n" +
             "  <name>myScorer</name>\n" +
             "</scorer>";
         final Scorer o = Scorer.fromXMLString(xml);
@@ -181,14 +198,14 @@ public class ScorerTest
         final TagSet tagSet = _tagSet("myTagSet");
         tagSet.setElements(tags);
 
-        final Maker makerA = _maker("A"); makerA.setTagSet(tagSet); makers.add(makerA);
-        final Maker makerB = _maker("B"); makerB.setTagSet(tagSet); makers.add(makerB);
+        final Maker makerA = _maker(); makerA.setName("A"); makerA.setTagSet(tagSet); makers.add(makerA);
+        final Maker makerB = _maker(); makerB.setName("B"); makerB.setTagSet(tagSet); makers.add(makerB);
 
-        final Taker takerA = _taker("A"); takerA.setTagSet(tagSet); takers.add(takerA);
-        final Taker takerB = _taker("B"); takerB.setTagSet(tagSet); takers.add(takerB);
+        final Taker takerA = _taker(); takerA.setName("A"); takerA.setTagSet(tagSet); takers.add(takerA);
+        final Taker takerB = _taker(); takerB.setName("B"); takerB.setTagSet(tagSet); takers.add(takerB);
 
-        final Matcher matcherA = _matcher("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
-        final Matcher matcherB = _matcher("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
+        final Matcher matcherA = _matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
+        final Matcher matcherB = _matcher(); matcherA.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
 
         solution.setMakers(makers);
         solution.setTakers(takers);

@@ -13,6 +13,7 @@ public class TakerTest
 
     protected Taker _taker() {
         final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
         taker.setName("myTaker");
         return taker;
     }
@@ -27,28 +28,28 @@ public class TakerTest
     public void toStringWithDefault()
     {
         final Taker o = _o();
-        assertEquals("name:null", o.toString());
+        assertEquals("uuid:null,name:null", o.toString());
     }
 
     @Test
     public void toStringWithTypical()
     {
         final Taker o = _taker();
-        assertEquals("name:myTaker", o.toString());
+        assertEquals("uuid:7f6f5003-1c43-4607-9fb4-890a02f2bc2a,name:myTaker", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Taker o = _o();
-        assertEquals("name:null", o.toStringDeep());
+        assertEquals("uuid:null,name:null", o.toStringDeep());
     }
 
     @Test
     public void toStringDeepWithTypical()
     {
         final Taker o = _taker();
-        assertEquals("name:myTaker", o.toStringDeep());
+        assertEquals("uuid:7f6f5003-1c43-4607-9fb4-890a02f2bc2a,name:myTaker", o.toStringDeep());
     }
 
     @Test
@@ -67,6 +68,7 @@ public class TakerTest
         final Taker o = _taker();
         final String exp =
             "<taker>\n" +
+            "  <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
             "  <name>myTaker</name>\n" +
             "</taker>";
         final String act = o.toXMLString();
@@ -78,6 +80,7 @@ public class TakerTest
     {
         final String xml =
             "<taker>\n" +
+            "  <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
             "  <name>myTaker</name>\n" +
             "</taker>";
         final Taker o = Taker.fromXMLString(xml);

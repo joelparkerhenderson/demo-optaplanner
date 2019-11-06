@@ -13,14 +13,16 @@ public class TakerSetTest
     }
 
     protected TakerSet _takerSet() {
-        final TakerSet TakerSet = new TakerSet();
-        TakerSet.setName("myTakerSet");
-        return TakerSet;
+        final TakerSet takerSet = new TakerSet();
+        takerSet.setUUID(UUID.fromString("da953f4c-dd22-4d3c-a7c7-f50e90e41647"));
+        takerSet.setName("myTakerSet");
+        return takerSet;
     }
     protected Taker _taker() {
-        final Taker Taker = new Taker();
-        Taker.setName("myTaker");
-        return Taker;
+        final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
+        taker.setName("myTaker");
+        return taker;
     }
 
     protected TagSet _tagSet() {
@@ -45,6 +47,7 @@ public class TakerSetTest
         final TakerSet o = _takerSet();
         final String exp =
             "<taker-set>\n" +
+            "  <uuid>da953f4c-dd22-4d3c-a7c7-f50e90e41647</uuid>\n" +
             "  <name>myTakerSet</name>\n" +
             "</taker-set>";
         final String act = o.toXMLString();
@@ -56,6 +59,7 @@ public class TakerSetTest
     {
         final String xml =
             "<taker-set>\n" +
+            "  <uuid>da953f4c-dd22-4d3c-a7c7-f50e90e41647</uuid>\n" +
             "  <name>myTakerSet</name>\n" +
             "</taker-set>";
         final TakerSet o = TakerSet.fromXMLString(xml);

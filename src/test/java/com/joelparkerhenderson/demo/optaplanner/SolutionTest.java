@@ -15,23 +15,27 @@ public class SolutionTest
     protected Solution _solution() {
         final Solution solution = new Solution();
         solution.setName("mySolution");
+        solution.setUUID(UUID.fromString("e270cf62-c704-4806-8d7a-69d3bc7d06d4"));
         return solution;
     }
 
     protected Matcher _matcher() {
         final Matcher matcher = new Matcher();
+        matcher.setUUID(UUID.fromString("85a61bb4-996f-4498-a447-aabfe1069a65"));
         matcher.setName("myMatcher");
         return matcher;
     }
 
     protected Maker _maker() {
         final Maker maker = new Maker();
+        maker.setUUID(UUID.fromString("6a03f2f6-527a-4b35-bc7b-bf291a08a35f"));
         maker.setName("myMaker");
         return maker;
     }
 
     protected Taker _taker() {
         final Taker taker = new Taker();
+        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
         taker.setName("myTaker");
         return taker;
     }
@@ -51,7 +55,7 @@ public class SolutionTest
     public void toStringWithDefault()
     {
         final Solution o = _o();
-        assertEquals("name:null,score:(0hard/0soft)", o.toString());
+        assertEquals("uuid:null,name:null,score:(0hard/0soft)", o.toString());
     }
 
     @Test
@@ -60,14 +64,14 @@ public class SolutionTest
         final Solution o = _solution();
         final HardSoftScore score = _score();
         o.setScore(score);
-        assertEquals("name:mySolution,score:(123hard/456soft)", o.toString());
+        assertEquals("uuid:e270cf62-c704-4806-8d7a-69d3bc7d06d4,name:mySolution,score:(123hard/456soft)", o.toString());
     }
 
     @Test
     public void toStringDeepWithDefault()
     {
         final Solution o = _o();
-        assertEquals("name:null,score:(0hard/0soft),matchers:[]", o.toStringDeep());
+        assertEquals("uuid:null,name:null,score:(0hard/0soft),matchers:[]", o.toStringDeep());
     }
 
     @Test
@@ -82,7 +86,7 @@ public class SolutionTest
         final Set<Matcher> matchers = new HashSet<Matcher>();
         matchers.add(matcher);     
         o.setMatchers(matchers);
-        assertEquals("name:mySolution,score:(123hard/456soft),matchers:[matcher:{name:myMatcher,maker:{name:myMaker},taker:{name:myTaker}}]", o.toStringDeep());
+        assertEquals("uuid:e270cf62-c704-4806-8d7a-69d3bc7d06d4,name:mySolution,score:(123hard/456soft),matchers:[matcher:{uuid:85a61bb4-996f-4498-a447-aabfe1069a65,name:myMatcher,maker:{uuid:6a03f2f6-527a-4b35-bc7b-bf291a08a35f,name:myMaker},taker:{uuid:7f6f5003-1c43-4607-9fb4-890a02f2bc2a,name:myTaker}}]", o.toStringDeep());
     }
 
     @Test
@@ -115,6 +119,7 @@ public class SolutionTest
         o.setTakers(takers);
         final String exp =
             "<solution>\n" +
+            "  <uuid>e270cf62-c704-4806-8d7a-69d3bc7d06d4</uuid>\n" +
             "  <name>mySolution</name>\n" +
             "  <score>\n" +
             "    <initScore>0</initScore>\n" +
@@ -123,11 +128,13 @@ public class SolutionTest
             "  </score>\n" +
             "  <makers>\n" +
             "    <maker>\n" +
+            "      <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
             "      <name>myMaker</name>\n" +
             "    </maker>\n" +
             "  </makers>\n" +
             "  <takers>\n" +
             "    <taker>\n" +
+            "      <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
             "      <name>myTaker</name>\n" +
             "    </taker>\n" +
             "  </takers>\n" +
@@ -141,7 +148,25 @@ public class SolutionTest
     {
         final String xml =
             "<solution>\n" +
+            "  <uuid>e270cf62-c704-4806-8d7a-69d3bc7d06d4</uuid>\n" +
             "  <name>mySolution</name>\n" +
+            "  <score>\n" +
+            "    <initScore>0</initScore>\n" +
+            "    <hardScore>0</hardScore>\n" +
+            "    <softScore>0</softScore>\n" +
+            "  </score>\n" +
+            "  <makers>\n" +
+            "    <maker>\n" +
+            "      <uuid>6a03f2f6-527a-4b35-bc7b-bf291a08a35f</uuid>\n" +
+            "      <name>myMaker</name>\n" +
+            "    </maker>\n" +
+            "  </makers>\n" +
+            "  <takers>\n" +
+            "    <taker>\n" +
+            "      <uuid>7f6f5003-1c43-4607-9fb4-890a02f2bc2a</uuid>\n" +
+            "      <name>myTaker</name>\n" +
+            "    </taker>\n" +
+            "  </takers>\n" +
             "</solution>";
         final Solution o = Solution.fromXMLString(xml);
         assertEquals("mySolution", o.getName());
