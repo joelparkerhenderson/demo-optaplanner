@@ -4,7 +4,16 @@ import java.util.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class Scorer implements HasName, EasyScoreCalculator<Solution> {
+public class Scorer implements ToStringDeep, HasName, EasyScoreCalculator<Solution> {
+
+    public String toString(){
+        return "name:" + ((name != null) ? name : "null");
+    }
+
+    @Override
+    public String toStringDeep(){
+        return toString();
+    }
 
     private String name;
 

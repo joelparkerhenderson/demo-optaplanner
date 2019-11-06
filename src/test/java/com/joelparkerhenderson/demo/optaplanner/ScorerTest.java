@@ -55,6 +55,34 @@ public class ScorerTest
     }
 
     @Test
+    public void toStringWithDefault()
+    {
+        final Scorer o = _o();
+        assertEquals("name:null", o.toString());
+    }
+
+    @Test
+    public void toStringWithTypical()
+    {
+        final Scorer o = _scorer();
+        assertEquals("name:myScorer", o.toString());
+    }
+
+    @Test
+    public void toStringDeepWithDefault()
+    {
+        final Scorer o = _o();
+        assertEquals("name:null", o.toStringDeep());
+    }
+
+    @Test
+    public void toStringDeepWithTypical()
+    {
+        final Scorer o = _scorer();
+        assertEquals("name:myScorer", o.toStringDeep());
+    }
+
+    @Test
     public void name()
     {
         final Scorer o = _o();
