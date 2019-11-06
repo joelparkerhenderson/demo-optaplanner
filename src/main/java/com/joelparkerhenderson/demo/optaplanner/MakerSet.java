@@ -16,14 +16,14 @@ public class MakerSet extends Trackable<MakerSet> implements Comparable<MakerSet
         return (int)(this.getName().compareTo(that.getName()));
     }
 
-    private Set<Maker> makers;
+    private Set<Maker> elements;
 
-    public Set<Maker> getMakers() {
-        return makers;
+    public Set<Maker> getElements() {
+        return elements;
     }
 
-    public void setMakers(Set<Maker> makers) {
-        this.makers = makers;
+    public void setElements(Set<Maker> elements) {
+        this.elements = elements;
     }
 
 }

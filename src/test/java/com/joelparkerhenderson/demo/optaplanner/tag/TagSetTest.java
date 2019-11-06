@@ -67,12 +67,12 @@ public class TagSetTest
     }
 
     @Test
-    public void tags()
+    public void elements()
     {
         final TagSet o = _o();
         final Tag tag = _tag();
-        final Set<Tag> tags = new HashSet<Tag>();
-        o.setTags(tags);
-        assertSame(tags, o.getTags());
+        final Set<Tag> elements = new HashSet<Tag>();
+        o.setElements(elements);
+        assertSame(elements, o.getElements());
     }
 }

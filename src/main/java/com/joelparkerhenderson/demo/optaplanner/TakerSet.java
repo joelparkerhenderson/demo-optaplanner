@@ -16,14 +16,14 @@ public class TakerSet extends Trackable<TakerSet> implements Comparable<TakerSet
         return (int)(this.getName().compareTo(that.getName()));
     }
 
-    private Set<Taker> takers;
+    private Set<Taker> elements;
 
-    public Set<Taker> getTakers() {
-        return takers;
+    public Set<Taker> getElements() {
+        return elements;
     }
 
-    public void setTakers(Set<Taker> takers) {
-        this.takers = takers;
+    public void setElements(Set<Taker> elements) {
+        this.elements = elements;
     }
 
 }

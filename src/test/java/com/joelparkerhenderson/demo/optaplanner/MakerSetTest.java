@@ -63,11 +63,12 @@ public class MakerSetTest
     }
 
     @Test
-    public void makers()
+    public void elements()
     {
         final MakerSet o = _o();
-        final Set<Maker> makers = new HashSet<Maker>();
-        o.setMakers(makers);
-        assertSame(makers, o.getMakers());
+        final Set<Maker> elements = new HashSet<Maker>();
+        o.setElements(elements);
+        assertSame(elements, o.getElements());
     }
+
 }

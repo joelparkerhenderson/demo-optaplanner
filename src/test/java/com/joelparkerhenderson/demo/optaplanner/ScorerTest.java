@@ -179,7 +179,7 @@ public class ScorerTest
         final Tag tag = _tag("myTag");
         final Set<Tag> tags = new HashSet<Tag>();
         final TagSet tagSet = _tagSet("myTagSet");
-        tagSet.setTags(tags);
+        tagSet.setElements(tags);
 
         final Maker makerA = _maker("A"); makerA.setTagSet(tagSet); makers.add(makerA);
         final Maker makerB = _maker("B"); makerB.setTagSet(tagSet); makers.add(makerB);
@@ -273,7 +273,7 @@ public class ScorerTest
         final Tag tag = _tag("myTag");
         final Set<Tag> tags = new HashSet<Tag>();
         final TagSet tagSet = _tagSet("myTagSet");
-        tagSet.setTags(tags);
+        tagSet.setElements(tags);
 
         final Maker maker = new Maker(); maker.setTagSet(tagSet);
         final Taker taker = new Taker(); taker.setTagSet(tagSet);
@@ -305,7 +305,7 @@ public class ScorerTest
         final Tag tag = _tag("myTag");
         final Set<Tag> tags = new HashSet<Tag>();
         final TagSet tagSet = _tagSet("myTagSet");
-        tagSet.setTags(tags);
+        tagSet.setElements(tags);
 
         final HardSoftScore exp = HardSoftScore.of(0,1);
         final HardSoftScore act = o.calculateScoreWithTagSets(tagSet, tagSet);
@@ -320,12 +320,12 @@ public class ScorerTest
         final Tag tagA = _tag("myTagA");
         final Set<Tag> tagsA = new HashSet<Tag>();
         final TagSet tagSetA = _tagSet("myTagSetA");
-        tagSetA.setTags(tagsA);
+        tagSetA.setElements(tagsA);
 
         final Tag tagB = _tag("myTagB");
         final Set<Tag> tagsB = new HashSet<Tag>();
         final TagSet tagSetB = _tagSet("myTagSetB");
-        tagSetB.setTags(tagsB);
+        tagSetB.setElements(tagsB);
 
         final HardSoftScore exp = HardSoftScore.of(0,-1);
         final HardSoftScore act = o.calculateScoreWithTagSets(tagSetA, tagSetB);

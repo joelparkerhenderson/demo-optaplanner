@@ -46,7 +46,7 @@ public class Scorer extends Trackable<Scorer> implements ToStringDeep, ToXMLStri
 
     public HardSoftScore calculateScoreWithTagSets(TagSet a, TagSet b) {
         if (a == null || b == null){ return HardSoftScore.of(-1,0); }
-        return calculateScoreWithTags(a.getTags(), b.getTags());
+        return calculateScoreWithTags(a.getElements(), b.getElements());
     }
 
     public HardSoftScore calculateScoreWithTags(Set<Tag> a, Set<Tag> b) {

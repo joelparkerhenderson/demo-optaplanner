@@ -56,11 +56,11 @@ public class TagScoreSetTest
         tagScore.setScore(score);
         final Set<TagScore> tagScores = new HashSet<TagScore>();
         tagScores.add(tagScore);
-        o.setTagScores(tagScores);
+        o.setElements(tagScores);
         final String exp =
             "<tag-score-set>\n" +
             "  <name>myTagScoreSet</name>\n" +
-            "  <tagScores>\n" +
+            "  <elements>\n" +
             "    <tag-score>\n" +
             "      <name>myTagScore</name>\n" +
             "      <score>\n" +
@@ -69,7 +69,7 @@ public class TagScoreSetTest
             "        <softScore>456</softScore>\n" +
             "      </score>\n" +
             "    </tag-score>\n" +
-            "  </tagScores>\n" +
+            "  </elements>\n" +
             "</tag-score-set>";
         final String act = o.toXMLString();
         assertEquals(exp, act);
@@ -96,11 +96,11 @@ public class TagScoreSetTest
     }
 
     @Test
-    public void tagScores()
+    public void elements()
     {
         final TagScoreSet o = _o();
-        final Set<TagScore> tagScores = new HashSet<TagScore>();
-        o.setTagScores(tagScores);
-        assertSame(tagScores, o.getTagScores());
+        final Set<TagScore> elements = new HashSet<TagScore>();
+        o.setElements(elements);
+        assertSame(elements, o.getElements());
     }
 }

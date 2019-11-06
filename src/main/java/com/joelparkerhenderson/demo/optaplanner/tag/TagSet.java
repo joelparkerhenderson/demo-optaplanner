@@ -35,14 +35,14 @@ public class TagSet implements ToStringDeep, ToXMLString, FromXMLString, HasName
         this.name = name;
     }
 
-    private Set<Tag> tags;
+    private Set<Tag> elements;
 
-    public Set<Tag> getTags(){
-        return tags;
+    public Set<Tag> getElements(){
+        return elements;
     }
 
-    public void setTags(Set<Tag> tags){
-        this.tags = tags;
+    public void setElements(Set<Tag> elements){
+        this.elements = elements;
     }
 
 }

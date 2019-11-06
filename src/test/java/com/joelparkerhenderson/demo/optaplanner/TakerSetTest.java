@@ -63,11 +63,12 @@ public class TakerSetTest
     }
 
     @Test
-    public void takers()
+    public void elements()
     {
         final TakerSet o = _o();
-        final Set<Taker> takers = new HashSet<Taker>();
-        o.setTakers(takers);
-        assertSame(takers, o.getTakers());
+        final Set<Taker> elements = new HashSet<Taker>();
+        o.setElements(elements);
+        assertSame(elements, o.getElements());
     }
+
 }

@@ -98,7 +98,7 @@ public class App
     protected static TagSet _tagSet(String ... names){
         TagSet tagSet = new TagSet();
         Set<Tag> tags = Stream.of(names).map(name -> _tag(name)).collect(Collectors.toSet());
-        tagSet.setTags(tags);
+        tagSet.setElements(tags);
         return tagSet;
     }
 

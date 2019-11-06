@@ -36,14 +36,14 @@ public class TagScoreSet implements ToStringDeep, ToXMLString, FromXMLString, Ha
         this.name = name;
     }
 
-    private Set<TagScore> tagScores;
+    private Set<TagScore> elements;
 
-    public Set<TagScore> getTagScores(){
-        return tagScores;
+    public Set<TagScore> getElements(){
+        return elements;
     }
 
-    public void setTagScores(Set<TagScore> tagScores){
-        this.tagScores = tagScores;
+    public void setElements(Set<TagScore> elements){
+        this.elements = elements;
     }
 
 }
