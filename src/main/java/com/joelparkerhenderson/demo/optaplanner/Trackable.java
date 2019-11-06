@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasTagSet, Comparable<T> {
+public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasUUID, HasName, HasTagSet, Comparable<T> {
 
     public String toString(){
         return "name:" + ((name != null) ? name : "null");
@@ -25,6 +25,18 @@ public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString
     public static Trackable fromXMLString(String xml)
     {
         return (Trackable)AppXML.fromXML(xml);
+    }
+
+    private UUID uuid;
+
+    @Override
+    public UUID getUUID(){
+        return uuid;
+    }
+
+    @Override
+    public void setUUID(UUID uuid){
+        this.uuid = uuid;
     }
 
     private String name;

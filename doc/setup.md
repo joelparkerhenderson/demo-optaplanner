@@ -102,6 +102,25 @@ Exception in thread "main" java.lang.NoClassDefFoundError: org/optaplanner/core/
 Then verify the CLASSPATH includes the OptaPlanner binaries.
 
 
+### JUnit testing
+
+The app expects the CLASSPATH to include the OptaPlanner binaries, such as `optaplanner-core-7.28.0.Final.jar`.
+
+Example: add it with typical Unix syntax and typical Maven location:
+
+```sh
+export CLASSPATH="$CLASSPATH:$HOME/.m2/repository/junit/junit/4.11/junit-4.11.jar"
+```
+
+If you get this error:
+
+```sh
+package org.junit does not exist
+```
+
+Then verify the CLASSPATH includes JUnit.
+
+
 ### Simple Logging Facade for Java (SLF4J)
 
 The app expects the CLASSPATH to include Simple Logging Facade for Java (SLF4J).
