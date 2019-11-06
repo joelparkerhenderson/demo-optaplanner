@@ -1,6 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
+import java.util.stream.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.thoughtworks.xstream.XStream;
@@ -54,6 +55,8 @@ public class App
             final Maker maker = _maker(name); makers.add(maker);
             final Taker taker = _taker(name); takers.add(taker);
             final Matcher matcher = _matcher(name); matcher.setMaker(maker); matchers.add(matcher);
+            final Tag tag = _tag(name);
+            final TagSet tagSet = _tagSet(name, name, name);
         }
 
         logger.info("Solution XML...\n" + solution.toXMLString());
@@ -83,6 +86,19 @@ public class App
         final Matcher matcher = new Matcher(); 
         matcher.setName(name); 
         return matcher;
+    }
+
+    protected static Tag _tag(String name){
+        final Tag tag = new Tag();
+        tag.setName(name);
+        return tag;
+    }
+
+    protected static TagSet _tagSet(String ... names){
+        TagSet tagSet = new TagSet();
+        Set<Tag> tags = Stream.of(names).map(name -> _tag(name)).collect(Collectors.toSet());
+        tagSet.setTags(tags);
+        return tagSet;
     }
 
     public static SolverFactory<Solution> createDemoSolverFactory(){
