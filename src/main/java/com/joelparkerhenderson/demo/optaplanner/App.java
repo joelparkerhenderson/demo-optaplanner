@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.config.score.director.ScoreDirectorFactoryConfig;
@@ -50,17 +51,25 @@ public class App
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
+        logger.info("createDemoSolutionWithExamples HERE");
+
+        // For assert in the loop below
+        // final Scorer scorer = new Scorer();
+        // final HardSoftScore score = HardSoftScore.of(0,1).multiply(6); // because there are 3 example tags * 2 example trackables
+
         for(int i=0; i<10; i++){
+            logger.info("createDemoSolutionWithExamples LOOP");
             String name = String.format("%01d", i);
             final Maker maker = _maker(name); makers.add(maker);
             final Taker taker = _taker(name); takers.add(taker);
             final Matcher matcher = _matcher(name); matcher.setMaker(maker); matchers.add(matcher);
             final TagSet tagSet = _tagSet(name + "A", name + "B", name + "C");
-            maker.setTagSet(tagSet);
-            taker.setTagSet(tagSet);
+            final TagScoreSet tagScoreSet = _tagScoreSet(name + "A", name + "B", name + "C");
+            maker.setTagSet(tagSet); maker.setTagScoreSet(tagScoreSet);
+            taker.setTagSet(tagSet); taker.setTagScoreSet(tagScoreSet);
         }
 
-        logger.info("Solution XML...\n" + solution.toXMLString());
+        logger.info("Solution XML ...\n" + solution.toXMLString());
 
         return solution;
     }
@@ -100,6 +109,20 @@ public class App
         Set<Tag> tags = Stream.of(names).map(name -> _tag(name)).collect(Collectors.toSet());
         tagSet.setElements(tags);
         return tagSet;
+    }
+
+    protected static TagScore _tagScore(String name){
+        final TagScore tagScore = new TagScore();
+        tagScore.setName(name);
+        tagScore.setScore(HardSoftScore.of(0,1));
+        return tagScore;
+    }
+
+    protected static TagScoreSet _tagScoreSet(String ... names){
+        TagScoreSet tagScoreSet = new TagScoreSet();
+        Set<TagScore> tagScores = Stream.of(names).map(name -> _tagScore(name)).collect(Collectors.toSet());
+        tagScoreSet.setElements(tagScores);
+        return tagScoreSet;
     }
 
     public static SolverFactory<Solution> createDemoSolverFactory(){

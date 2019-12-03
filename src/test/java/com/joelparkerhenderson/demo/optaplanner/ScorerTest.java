@@ -14,17 +14,19 @@ public class ScorerTest
     }
 
     protected Scorer _scorer() {
+        return _scorer("562fe584-0b95-4906-9f24-24cb72c39ed9", "myScorer");
+    }
+
+    protected Scorer _scorer(String uuidString, String name) {
         final Scorer scorer = new Scorer();
         scorer.setUUID(UUID.fromString("562fe584-0b95-4906-9f24-24cb72c39ed9"));
         scorer.setName("myScorer");
         return scorer;
     }
 
+
     protected Solution _solution() {
-        final Solution solution = new Solution();
-        solution.setUUID(UUID.fromString("e270cf62-c704-4806-8d7a-69d3bc7d06d4"));
-        solution.setName("mySolution");
-        return solution;
+        return _solution("e270cf62-c704-4806-8d7a-69d3bc7d06d4", "mySolution");
     }
 
     protected Solution _solution(String uuidString, String name) {
@@ -35,10 +37,7 @@ public class ScorerTest
     }
 
     protected Matcher _matcher() {
-        final Matcher matcher = new Matcher();
-        matcher.setUUID(UUID.fromString("85a61bb4-996f-4498-a447-aabfe1069a65"));
-        matcher.setName("myMatcher");
-        return matcher;
+        return _matcher("85a61bb4-996f-4498-a447-aabfe1069a65", "myMatcher");
     }
 
     protected Matcher _matcher(String uuidString, String name){
@@ -49,10 +48,7 @@ public class ScorerTest
     }
 
     protected Maker _maker() {
-        final Maker maker = new Maker();
-        maker.setUUID(UUID.fromString("6a03f2f6-527a-4b35-bc7b-bf291a08a35f"));
-        maker.setName("myMaker");
-        return maker;
+        return _maker("6a03f2f6-527a-4b35-bc7b-bf291a08a35f", "myMaker");
     }
 
     protected Maker _maker(String uuidString, String name){
@@ -63,10 +59,7 @@ public class ScorerTest
     }
 
     protected Taker _taker() {
-        final Taker taker = new Taker();
-        taker.setUUID(UUID.fromString("7f6f5003-1c43-4607-9fb4-890a02f2bc2a"));
-        taker.setName("myTaker");
-        return taker;
+        return _taker("7f6f5003-1c43-4607-9fb4-890a02f2bc2a", "myTaker");
     }
 
     protected Taker _taker(String uuidString, String name){
@@ -77,9 +70,7 @@ public class ScorerTest
     }
 
     protected Tag _tag(){
-        final Tag tag = new Tag();
-        tag.setName("myTag");
-        return tag;
+        return _tag("myTag");
     }
 
     protected Tag _tag(String name){
@@ -89,15 +80,34 @@ public class ScorerTest
     }
 
     protected TagSet _tagSet() {
-        final TagSet tagSet = new TagSet();
-        tagSet.setName("myTagSet");
-        return tagSet;
+        return _tagSet("myTagSet");
     }
 
     protected TagSet _tagSet(String name) {
         final TagSet tagSet = new TagSet();
         tagSet.setName(name);
         return tagSet;
+    }
+
+    protected TagScore _tagScore(){
+        return _tagScore("myTagScore", _score());
+    }
+
+    protected TagScore _tagScore(String name, HardSoftScore score){
+        final TagScore tagScore = new TagScore();
+        tagScore.setName(name);
+        tagScore.setScore(score);
+        return tagScore;
+    }
+
+    protected TagScoreSet _tagScoreSet() {
+        return _tagScoreSet("myTagScoreSet");
+    }
+
+    protected TagScoreSet _tagScoreSet(String name) {
+        final TagScoreSet tagScoreSet = new TagScoreSet();
+        tagScoreSet.setName(name);
+        return tagScoreSet;
     }
 
     protected HardSoftScore _score() {
@@ -169,7 +179,7 @@ public class ScorerTest
     }
 
     @Test
-    public void calculateScoreWithSolutionWithDefaults()
+    public void calculateScore_WithSolutionWithDefaults()
     {
         final Scorer o = _o();
         final Solution solution = _solution();
@@ -184,25 +194,34 @@ public class ScorerTest
     }
 
     @Test
-    public void calculateScoreWithSolutionWithMatchersExample()
+    public void calculateScore_WithSolutionWithMatchersExample()
     {
         final Scorer o = _o();
         final Solution solution = _solution();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
         
         final Set<Maker> makers = new HashSet<Maker>();
         final Set<Taker> takers = new HashSet<Taker>();
         final Set<Matcher> matchers = new HashSet<Matcher>();
 
-        final Tag tag = _tag("myTag");
+        final Tag tag = _tag(name);
         final Set<Tag> tags = new HashSet<Tag>();
         final TagSet tagSet = _tagSet("myTagSet");
+        tags.add(tag);
         tagSet.setElements(tags);
 
-        final Maker makerA = _maker(); makerA.setName("A"); makerA.setTagSet(tagSet); makers.add(makerA);
-        final Maker makerB = _maker(); makerB.setName("B"); makerB.setTagSet(tagSet); makers.add(makerB);
+        final TagScore tagScore = _tagScore(name, score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        final TagScoreSet tagScoreSet = _tagScoreSet();
+        tagScores.add(tagScore);
+        tagScoreSet.setElements(tagScores);
 
-        final Taker takerA = _taker(); takerA.setName("A"); takerA.setTagSet(tagSet); takers.add(takerA);
-        final Taker takerB = _taker(); takerB.setName("B"); takerB.setTagSet(tagSet); takers.add(takerB);
+        final Maker makerA = _maker(); makerA.setName("A"); makerA.setTagSet(tagSet); makerA.setTagScoreSet(tagScoreSet); makers.add(makerA);
+        final Maker makerB = _maker(); makerB.setName("B"); makerB.setTagSet(tagSet); makerB.setTagScoreSet(tagScoreSet); makers.add(makerB);
+
+        final Taker takerA = _taker(); takerA.setName("A"); takerA.setTagSet(tagSet); takerA.setTagScoreSet(tagScoreSet);  takers.add(takerA);
+        final Taker takerB = _taker(); takerB.setName("B"); takerB.setTagSet(tagSet); takerB.setTagScoreSet(tagScoreSet); takers.add(takerB);
 
         final Matcher matcherA = _matcher(); matcherA.setName("A"); matcherA.setMaker(makerA); matcherA.setTaker(takerA); matchers.add(matcherA);
         final Matcher matcherB = _matcher(); matcherA.setName("B"); matcherB.setMaker(makerB); matcherB.setTaker(takerB); matchers.add(matcherB);
@@ -211,186 +230,187 @@ public class ScorerTest
         solution.setTakers(takers);
         solution.setMatchers(matchers);
 
-        final HardSoftScore exp = HardSoftScore.of(0,2);
+        final HardSoftScore exp = score.multiply(4);
         final HardSoftScore act = o.calculateScore(solution);
         assertEquals(exp, act);
     }
 
-    //// calculateScoreWithTaker() → Null | Exist
+    //// calculateScoreWithTrackables() → Null | Joint | Disjoint
 
     @Test
-    public void calculateScoreWithMakerNull()
+    public void calculateScoreWithTrackables_Null()
     {
         final Scorer o = _o();
-
-        final Maker maker = null;
-
         final HardSoftScore exp = HardSoftScore.of(-1,0);
-        final HardSoftScore act = o.calculateScoreWithMaker(maker);
+        final HardSoftScore act = o.calculateScoreWithTrackables(null, null);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithMakerExist()
+    public void calculateScoreWithTrackables_Joint()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
 
-        final Maker maker = new Maker();
-
-        final HardSoftScore exp = HardSoftScore.ZERO;
-        final HardSoftScore act = o.calculateScoreWithMaker(maker);
-        assertEquals(exp, act);
-    }
-
-    //// calculateScoreWithTaker() → Null | Exist
-
-    @Test
-    public void calculateScoreWithTakerNull()
-    {
-        final Scorer o = _o();
-
-        final Taker taker = null;
-
-        final HardSoftScore exp = HardSoftScore.of(-1,0);
-        final HardSoftScore act = o.calculateScoreWithTaker(taker);
-        assertEquals(exp, act);
-    }
-
-    @Test
-    public void calculateScoreWithTakerExist()
-    {
-        final Scorer o = _o();
-
-        final Taker taker = new Taker();
-        
-        final HardSoftScore exp = HardSoftScore.ZERO;
-        final HardSoftScore act = o.calculateScoreWithTaker(taker);
-        assertEquals(exp, act);
-    }
-
-    //// calculateScoreWithMakerTaker() → Null | Exist
-
-    @Test
-    public void calculateScoreWithMakerTakerNull()
-    {
-        final Scorer o = _o();
-        final Maker maker = null;
-        final Taker taker = null;
-
-        final HardSoftScore exp = HardSoftScore.of(-1,0);
-        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
-        assertEquals(exp, act);
-    }
-
-    @Test
-    public void calculateScoreWithMakerTakerExist()
-    {
-        final Scorer o = _o();
-
-        final Tag tag = _tag("myTag");
+        final Tag tag = _tag(name);
         final Set<Tag> tags = new HashSet<Tag>();
-        final TagSet tagSet = _tagSet("myTagSet");
+        final TagSet tagSet = _tagSet();
+        tags.add(tag);
         tagSet.setElements(tags);
 
-        final Maker maker = new Maker(); maker.setTagSet(tagSet);
-        final Taker taker = new Taker(); taker.setTagSet(tagSet);
+        final TagScore tagScore = _tagScore(name, score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        final TagScoreSet tagScoreSet = _tagScoreSet();
+        tagScores.add(tagScore);
+        tagScoreSet.setElements(tagScores);
 
-        final HardSoftScore exp = HardSoftScore.of(0,1);
-        final HardSoftScore act = o.calculateScoreWithMakerTaker(maker, taker);
-        assertEquals(exp, act);
-    }
+        final Maker maker = new Maker(); maker.setTagSet(tagSet); maker.setTagScoreSet(tagScoreSet);
+        final Taker taker = new Taker(); taker.setTagSet(tagSet); taker.setTagScoreSet(tagScoreSet);
 
-    //// calculateScoreWithTagSets() → Null | Equal | Unequal
-
-    @Test
-    public void calculateScoreWithTagSetsNull()
-    {
-        final Scorer o = _o();
-
-        final TagSet tagSet = null;
-
-        final HardSoftScore exp = HardSoftScore.of(-1,0);
-        final HardSoftScore act = o.calculateScoreWithTagSets(tagSet, tagSet);
+        final HardSoftScore exp = score;
+        final HardSoftScore act = o.calculateScoreWithTrackables(maker, taker);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithTagSetsPositive()
+    public void calculateScoreWithTrackables_Disjoint()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
 
-        final Tag tag = _tag("myTag");
+        final Tag tag = _tag(name);
         final Set<Tag> tags = new HashSet<Tag>();
-        final TagSet tagSet = _tagSet("myTagSet");
+        final TagSet tagSet = _tagSet();
+        tags.add(tag);
         tagSet.setElements(tags);
 
-        final HardSoftScore exp = HardSoftScore.of(0,1);
-        final HardSoftScore act = o.calculateScoreWithTagSets(tagSet, tagSet);
+        final TagScore tagScore = _tagScore(name + "chaff", score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        final TagScoreSet tagScoreSet = _tagScoreSet();
+        tagScores.add(tagScore);
+        tagScoreSet.setElements(tagScores);
+
+        final Maker maker = new Maker(); maker.setTagSet(tagSet); maker.setTagScoreSet(tagScoreSet);
+        final Taker taker = new Taker(); taker.setTagSet(tagSet); taker.setTagScoreSet(tagScoreSet);
+
+        final HardSoftScore exp = HardSoftScore.ZERO;
+        final HardSoftScore act = o.calculateScoreWithTrackables(maker, taker);
+        assertEquals(exp, act);
+    }
+
+    //// calculateScoreWithTagSetAndTagScoreSet() → Null | Joint | Disjoint
+
+    @Test
+    public void calculateScoreWithTagSetAndTagScoreSet_withNull()
+    {
+        final Scorer o = _o();
+        final HardSoftScore exp = HardSoftScore.of(-1,0);
+        final HardSoftScore act = o.calculateScoreWithTrackables(null, null);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithTagSetsNegative()
+    public void calculateScoreWithTagSetAndTagScoreSet_withJoint()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
 
-        final Tag tagA = _tag("myTagA");
-        final Set<Tag> tagsA = new HashSet<Tag>();
-        final TagSet tagSetA = _tagSet("myTagSetA");
-        tagSetA.setElements(tagsA);
+        final Tag tag = _tag(name);
+        final Set<Tag> tags = new HashSet<Tag>();
+        final TagSet tagSet = _tagSet();
+        tags.add(tag);
+        tagSet.setElements(tags);
 
-        final Tag tagB = _tag("myTagB");
-        final Set<Tag> tagsB = new HashSet<Tag>();
-        final TagSet tagSetB = _tagSet("myTagSetB");
-        tagSetB.setElements(tagsB);
+        final TagScore tagScore = _tagScore(name, score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        final TagScoreSet tagScoreSet = _tagScoreSet();
+        tagScores.add(tagScore);
+        tagScoreSet.setElements(tagScores);
 
-        final HardSoftScore exp = HardSoftScore.of(0,-1);
-        final HardSoftScore act = o.calculateScoreWithTagSets(tagSetA, tagSetB);
+        final HardSoftScore exp = score;
+        final HardSoftScore act = o.calculateScoreWithTagsAndTagScores(tags, tagScores);
         assertEquals(exp, act);
     }
 
-    //// calculateScoreWithTags() → Null | Positive | Negative
-
     @Test
-    public void calculateScoreWithTagsNull()
+    public void calculateScoreWithTagSetAndTagScoreSet_withDisjoint()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
+
+        final Tag tag = _tag(name);
+        final Set<Tag> tags = new HashSet<Tag>();
+        final TagSet tagSet = _tagSet();
+        tags.add(tag);
+        tagSet.setElements(tags);
+
+        final TagScore tagScore = _tagScore(name + "chaff", score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        final TagScoreSet tagScoreSet = _tagScoreSet();
+        tagScores.add(tagScore);
+        tagScoreSet.setElements(tagScores);
+
+        final HardSoftScore exp = HardSoftScore.ZERO;
+        final HardSoftScore act = o.calculateScoreWithTagSetAndTagScoreSet(tagSet, tagScoreSet);
+        assertEquals(exp, act);
+    }
+
+    //// calculateScoreWithTagsAndTagScores() → Null | Joint | Disjoint
+
+    @Test
+    public void calculateScoreWithTagsAndTagScores_withNulls()
+    {
+        final Scorer o = _o();
+
         final Set<Tag> tags = null;
+        final Set<TagScore> tagScores = null;
 
         final HardSoftScore exp = HardSoftScore.of(-1,0);
-        final HardSoftScore act = o.calculateScoreWithTags(tags, tags);
+        final HardSoftScore act = o.calculateScoreWithTagsAndTagScores(tags, tagScores);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithTagsPositive()
+    public void calculateScoreWithTagsAndTagScores_withJointNames()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
 
-        final Tag tag = _tag("myTag");
+        final Tag tag = _tag(name);
         final Set<Tag> tags = new HashSet<Tag>();
         tags.add(tag);
 
-        final HardSoftScore exp = HardSoftScore.of(0,1);
-        final HardSoftScore act = o.calculateScoreWithTags(tags, tags);
+        final TagScore tagScore = _tagScore(name, score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        tagScores.add(tagScore);
+
+        final HardSoftScore exp = score;
+        final HardSoftScore act = o.calculateScoreWithTagsAndTagScores(tags, tagScores);
         assertEquals(exp, act);
     }
 
     @Test
-    public void calculateScoreWithTagsNegative()
+    public void calculateScoreWithTagsAndTagScores_withDisjointNames()
     {
         final Scorer o = _o();
+        final String name = "alpha";
+        final HardSoftScore score = HardSoftScore.of(123,456);
 
-        final Tag tagA = _tag("myTagA");
-        final Set<Tag> tagsA = new HashSet<Tag>();
-        tagsA.add(tagA);
+        final Tag tag = _tag(name);
+        final Set<Tag> tags = new HashSet<Tag>();
+        tags.add(tag);
 
-        final Tag tagB = _tag("myTagB");
-        final Set<Tag> tagsB = new HashSet<Tag>();
-        tagsB.add(tagB);
+        final TagScore tagScore = _tagScore(name + "chaff", score);
+        final Set<TagScore> tagScores = new HashSet<TagScore>();
+        tagScores.add(tagScore);
 
-        final HardSoftScore exp = HardSoftScore.of(0,-1);
-        final HardSoftScore act = o.calculateScoreWithTags(tagsA, tagsB);
+        final HardSoftScore exp = HardSoftScore.ZERO;
+        final HardSoftScore act = o.calculateScoreWithTagsAndTagScores(tags, tagScores);
         assertEquals(exp, act);
     }
 

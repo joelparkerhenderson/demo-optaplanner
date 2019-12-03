@@ -95,17 +95,7 @@ Solution pseudocode:
 
   * The solver will try associating the matchers with various takers, then report results.
 
-
-### Run
-
-Run the app:
-
-```sh
-java \
-    -classpath "$CLASSPATH:./target/demo_optaplanner-1.0-SNAPSHOT.jar" \
-    -Dorg.slf4j.simpleLogger.defaultLogLevel=warn  \
-    com.joelparkerhenderson.demo.optaplanner.App
-```
+See [setup.md](doc/setup.md)
 
 ### Output
 

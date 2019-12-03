@@ -4,7 +4,7 @@ import java.util.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasUUID, HasName, HasTagSet, Comparable<T> {
+public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasUUID, HasName, HasTagSet, HasTagScoreSet, Comparable<T> {
 
     public String toString(){
         return 
@@ -63,6 +63,18 @@ public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString
     @Override
     public void setTagSet(TagSet tagSet){
         this.tagSet = tagSet;
+    }
+
+    private TagScoreSet tagScoreSet;
+
+    @Override
+    public TagScoreSet getTagScoreSet(){
+        return tagScoreSet;
+    }
+
+    @Override
+    public void setTagScoreSet(TagScoreSet tagScoreSet){
+        this.tagScoreSet = tagScoreSet;
     }
 
     @Override
