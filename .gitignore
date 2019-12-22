@@ -1,2 +1,6 @@
 /target
 /tmp
+.vscode
+.project
+.settings
+.classpath
