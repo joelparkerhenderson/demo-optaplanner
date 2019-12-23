@@ -2,8 +2,6 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import java.util.*;
 
 public class MakerTest

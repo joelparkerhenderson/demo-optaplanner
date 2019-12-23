@@ -1,5 +1,5 @@
-package com.joelparkerhenderson.demo.optaplanner;
+package com.joelparkerhenderson.demo.optaplanner.interfaces;
 
-interface ToXMLString { 
+public interface ToXMLString { 
     public String toXMLString(); 
 }

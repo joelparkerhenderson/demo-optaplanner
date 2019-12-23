@@ -1,6 +1,6 @@
-package com.joelparkerhenderson.demo.optaplanner;
+package com.joelparkerhenderson.demo.optaplanner.interfaces;
 
-interface HasName { 
+public interface HasName { 
     public String getName(); 
     public void setName(String s); 
 }

@@ -1,4 +1,7 @@
-package com.joelparkerhenderson.demo.optaplanner;
+package com.joelparkerhenderson.demo.optaplanner.interfaces;
+
+import com.joelparkerhenderson.demo.optaplanner.*;
+import com.joelparkerhenderson.demo.optaplanner.tag.*;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

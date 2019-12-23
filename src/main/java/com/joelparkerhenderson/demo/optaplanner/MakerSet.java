@@ -1,8 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class MakerSet extends Trackable<MakerSet> implements Comparable<MakerSet> {
 

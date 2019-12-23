@@ -1,9 +1,11 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import com.joelparkerhenderson.demo.optaplanner.interfaces.ToStringDeep;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.ToXMLString;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.FromXMLString;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.HasName;
+
 import java.util.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 public class TagScoreSet implements ToStringDeep, ToXMLString, FromXMLString, HasName {
 

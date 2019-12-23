@@ -1,9 +1,9 @@
-package com.joelparkerhenderson.demo.optaplanner;
+package com.joelparkerhenderson.demo.optaplanner.interfaces;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+//import com.thoughtworks.xstream.XStream;
+//import com.thoughtworks.xstream.io.xml.DomDriver;
 
-interface FromXMLString {
+public interface FromXMLString {
 
     // This interface is merely a marker that the implementing
     // class has a method that matches this type signature:

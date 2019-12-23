@@ -1,8 +1,8 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import com.joelparkerhenderson.demo.optaplanner.interfaces.*;
+
 import java.util.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Trackable<T extends Trackable> implements ToStringDeep, ToXMLString, FromXMLString, HasUUID, HasName, HasTagSet, HasTagScoreSet, Comparable<T> {
 

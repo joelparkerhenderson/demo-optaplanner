@@ -1,9 +1,5 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-import java.util.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
 public class Taker extends Trackable<Taker> implements Comparable<Taker> {
 
     //@Interface FromXMLString

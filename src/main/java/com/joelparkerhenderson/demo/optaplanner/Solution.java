@@ -1,9 +1,9 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import com.joelparkerhenderson.demo.optaplanner.interfaces.*;
+
 import java.util.*;
 import java.util.stream.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;

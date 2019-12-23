@@ -1,8 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class TakerSet extends Trackable<TakerSet> implements Comparable<TakerSet> {
 

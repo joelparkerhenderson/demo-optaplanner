@@ -1,5 +1,7 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
+import com.joelparkerhenderson.demo.optaplanner.interfaces.*;
+
 import java.util.*;
 import java.util.stream.*;
 import com.google.common.collect.*;

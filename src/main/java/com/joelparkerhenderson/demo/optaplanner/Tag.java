@@ -1,6 +1,9 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.ToStringDeep;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.ToXMLString;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.FromXMLString;
+import com.joelparkerhenderson.demo.optaplanner.interfaces.HasName;
 
 public class Tag implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Tag> {
 

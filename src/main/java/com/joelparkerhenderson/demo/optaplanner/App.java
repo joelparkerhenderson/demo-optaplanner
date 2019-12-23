@@ -4,8 +4,6 @@ import java.util.*;
 import java.util.stream.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
