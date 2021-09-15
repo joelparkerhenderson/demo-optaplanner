@@ -38,12 +38,10 @@ public class Solution extends Trackable<Solution> {
     @PlanningScore
     private HardSoftScore score = HardSoftScore.ZERO;
 
-    @Override
     public HardSoftScore getScore() {
         return score;
     }
 
-    @Override
     public void setScore(HardSoftScore score) {
         this.score = score;
     }
