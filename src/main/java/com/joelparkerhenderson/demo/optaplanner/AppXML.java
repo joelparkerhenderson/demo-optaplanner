@@ -9,6 +9,9 @@ class AppXML {
 
     public static void init() {
         AppXML.xstream = new XStream(new DomDriver());
+        AppXML.xstream.allowTypesByWildcard(new String[] { 
+            "com.joelparkerhenderson.demo.optaplanner.**",
+        });
         AppXML.xstream.alias("trackable", Trackable.class);
         AppXML.xstream.alias("solution", Solution.class);
         AppXML.xstream.alias("scorer", Scorer.class);
