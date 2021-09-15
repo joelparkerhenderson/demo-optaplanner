@@ -1,6 +1,6 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-public class Maker extends Trackable<Maker> implements Comparable<Maker> {
+public class Maker extends Trackable<Maker> {
 
     //@Interface FromXMLString
     public static Maker fromXMLString(String xml) {

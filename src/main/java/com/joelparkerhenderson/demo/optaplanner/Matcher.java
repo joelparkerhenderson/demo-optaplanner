@@ -1,14 +1,10 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-import com.joelparkerhenderson.demo.optaplanner.interfaces.*;
-
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
-import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
-import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 
 @PlanningEntity
-public class Matcher extends Trackable<Matcher> implements ToStringDeep, ToXMLString, FromXMLString, HasName, Comparable<Matcher> {
+public class Matcher extends Trackable<Matcher> {
 
     @Override
     public String toStringDeep() {

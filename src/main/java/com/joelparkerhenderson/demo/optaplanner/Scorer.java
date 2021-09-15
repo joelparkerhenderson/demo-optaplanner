@@ -1,14 +1,11 @@
 package com.joelparkerhenderson.demo.optaplanner;
 
-import com.joelparkerhenderson.demo.optaplanner.interfaces.*;
-
 import java.util.*;
 import java.util.stream.*;
-import com.google.common.collect.*;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
-public class Scorer extends Trackable<Scorer> implements ToStringDeep, ToXMLString, FromXMLString, HasName, EasyScoreCalculator<Solution> {
+public class Scorer extends Trackable<Scorer> implements EasyScoreCalculator<Solution> {
 
     //@Interface FromXMLString
     public static Scorer fromXMLString(String xml) {

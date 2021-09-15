@@ -12,7 +12,7 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 
 @PlanningSolution
-public class Solution extends Trackable<Solution> implements ToStringDeep, ToXMLString, FromXMLString, HasName, HasScore {
+public class Solution extends Trackable<Solution> {
 
     public String toString() {
         return super.toString() +

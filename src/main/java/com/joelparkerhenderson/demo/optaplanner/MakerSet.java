@@ -2,7 +2,7 @@ package com.joelparkerhenderson.demo.optaplanner;
 
 import java.util.*;
 
-public class MakerSet extends Trackable<MakerSet> implements Comparable<MakerSet> {
+public class MakerSet extends Trackable<MakerSet> {
 
     //@Interface FromXMLString
     public static MakerSet fromXMLString(String xml) {
